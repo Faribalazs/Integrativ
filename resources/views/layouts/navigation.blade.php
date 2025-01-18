@@ -1,206 +1,80 @@
 @php
     $lang = App::currentLocale();
 @endphp
-<div class="nav xl:hidden">
-    <div class="nav__content">
-        <div class="nav__list px-4 gap-4">
-            <div class="nav__list-item mt-32 text-center">
-                @if (Auth::guard('worker')->check())
-                    @if (Auth::guard('worker')->user()->hasRole('worker') || Auth::guard('worker')->user()->hasRole('super_worker'))
-                        <div class=" font-bold py-3 text-2xl space-x-8 sm:-my-px sm:ml-10 xl:flex items-center">
-                            <x-nav-link :href="route('worker.catalogue-categories')" :active="request()->routeIs('worker.catalogue-categories')">
-                                {{ __('app.categories.catalogue-categories') }}
-                            </x-nav-link>
-                        </div>
-                    @endif
-                @endif
-                @if (Auth::guard('worker')->check())
-                    @if (Auth::guard('worker')->user()->hasRole('worker') || Auth::guard('worker')->user()->hasRole('super_worker'))
-                        <div class=" font-bold py-3 text-2xl space-x-8 sm:-my-px sm:ml-10 xl:flex items-center">
-                            <x-nav-link :href="route('worker.new.ponuda')" :active="request()->routeIs('worker.new.ponuda')">
-                                {{ __('app.nav.new-ponuda') }}
-                            </x-nav-link>
-                        </div>
-                    @endif
-                @endif
-                @if (Auth::guard('worker')->check())
-                    @if (Auth::guard('worker')->user()->hasRole('worker') || Auth::guard('worker')->user()->hasRole('super_worker'))
-                        <div class=" text-2xl font-bold py-3 space-x-8 sm:-my-px sm:ml-10 xl:flex items-center">
-                            <x-nav-link :href="route('worker.options.update')" :active="request()->routeIs('worker.my-categories*')">
-                                {{ __('app.nav.my-categories') }}
-                            </x-nav-link>
-                        </div>
-                    @endif
-                @endif
-                @if (Auth::guard('worker')->check())
-                    @if (Auth::guard('worker')->user()->hasRole('worker') || Auth::guard('worker')->user()->hasRole('super_worker'))
-                        <div class=" text-2xl font-bold py-3 space-x-8 sm:-my-px sm:ml-10 xl:flex items-center">
-                            <x-nav-link :href="route('worker.archive')" :active="request()->routeIs('worker.archive*')">
-                                {{ __('app.nav.archive') }}
-                            </x-nav-link>
-                        </div>
-                    @endif
-                @endif
-            </div>
+<nav>
+    <div class="menu-btn">
+        <div class="mt-1 menu-btn-icon">
+            <div class="line line--1"></div>
+            <div class="line line--2"></div>
+            <div class="line line--3"></div>
         </div>
-    </div>
-</div>
-<nav x-data="{ open: false }" id="nav" class="nav-max">
-    <!-- Primary Navigation Menu -->
-    <div class="px-4 py-3 sm:px-6 lg:px-12 h-100 align-items-center nav-div">
-        <div class="flex justify-between h-100 nav-items">
-            <!-- Logo -->
-            <div class="flex-shrink-0 flex items-center z-50">
-                <a href="{{ route('home') }}">
-                    <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
-                </a>
-            </div>
 
-            <!-- Navigation Links -->
-            @if (Auth::user())
-                @if (Auth::user()->hasRole('user'))
-                    <div class="hidden space-x-8 sm:-my-px xl:flex items-center">
-                        <x-nav-link :href="route('myprofile')" :active="request()->routeIs('myprofile')">
-                            {{ __('My Profile') }}
-                        </x-nav-link>
-                    </div>
-                @endif
-            @endif
-
-            <!-- Settings Dropdown -->
-            <div class="hidden xl:flex xl:items-center xl:ml-6 space-x-5">
-                <button onclick="LanguageSwitcher('{{ $lang }}')"
-                    title="{{ __('app.basic.choose-language') }}">
-                    <i class="ri-earth-line sm:text-3xl text-2xl"></i>
-                </button>
-                @if (!Auth::user() && !Auth::guard('worker')->check() && !Auth::guard('admin')->check())
-                    <a href="{{ route('worker.session.create') }}">
-                        <i class="ri-user-3-line sm:text-3xl text-2xl"></i>
-                    </a>
-                @endif
-                @if (Auth::user())
-                    @if (Auth::user()->hasRole('user'))
-                        @php
-                            $logInCircle = mb_substr(Auth::user()->name, 0, 1);
-                        @endphp
-                        <div class="flex gap-1">
-                            <div class="flex justify-center items-center">
-                                <a href="{{ route('myprofile') }}">{{ Auth::user()->name }}</a>
-                                <i class="ri-user-3-line sm:text-3xl text-2xl pl-2"></i>
-                            </div>
-                        </div>
-                    @endif
-                @endif
-                @if (Auth::guard('worker')->user())
-                    @php
-                        $logInCircle = mb_substr(Auth::guard('worker')->user()->name, 0, 1);
-                    @endphp
-                    <div class="flex gap-1">
-                        <div class="flex justify-center items-center">
-                            <a href="{{ route('worker.myprofile') }}" class="flex profile-btn items-center">
-                                {{ Auth::guard('worker')->user()->first_name }}
-                                <i class="ri-user-3-line sm:text-3xl text-2xl pl-2"></i>
-                            </a>
-                        </div>
-                    </div>
-                @endif
-            </div>
-
-            <!-- Hamburger -->
-            <div class="flex items-center xl:hidden gap-4" style="margin-top:8px;">
-                <button onclick="LanguageSwitcher('{{ $lang }}')" class="lang-btn-nav"
-                    title="{{ __('app.basic.choose-language') }}">
-                    <i class="ri-earth-line sm:text-3xl text-2xl"></i>
-                </button>
-                @if (!Auth::guard('worker')->user())
-                    <a href="{{ route('worker.session.create') }}" class="log-in-btn-nav">
-                        <i class="ri-user-3-line sm:text-3xl text-2xl"></i>
-                    </a>
-                @elseif(Auth::guard('worker')->user())
-                    <a href="{{ route('worker.myprofile') }}" class="log-in-btn-nav">
-                        <i class="ri-user-3-line sm:text-3xl text-2xl"></i>
-                    </a>
-                @endif
-                <div class="menu-icon">
-                    <span class="menu-icon__line menu-icon__line-left"></span>
-                    <span class="menu-icon__line"></span>
-                    <span class="menu-icon__line menu-icon__line-right"></span>
-                </div>
-            </div>
-        </div>
+        <button onclick="LanguageSwitcher()" class="flex justify-center items-center px-2 language-switcher">
+            <i class="ri-earth-line text-3xl"></i>
+        </button>
     </div>
 
-    <!-- Responsive Navigation Menu -->
-    <div :class="{ 'block': open, 'hidden': !open }" class="hidden xl:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
+    <div class="nav-links">
+        <div class="flex flex-col lg:w-[520px] sm:w-[405px] w-full justify-center bg-white items-center h-full">
+            <a href="#" class="link" onmouseover="setActiveMenu('home')" onmouseleave="setActiveMenu(null)">
+                {{ __('menu.home') }}
+            </a>
+            <a href="#" class="link" onmouseover="setActiveMenu('event')" onmouseleave="setActiveMenu(null)">
+                {{ __('menu.event') }}
+            </a>
+            <a href="#" class="link" onmouseover="setActiveMenu('portrait')" onmouseleave="setActiveMenu(null)">
+                {{ __('menu.portrait') }}
+            </a>
+            <a href="#" class="link" onmouseover="setActiveMenu('birthday')" onmouseleave="setActiveMenu(null)">
+                {{ __('menu.birthday') }}
+            </a>
+            <span class="link cursor-pointer" onclick="LanguageSwitcher()">
+                {{ __('language.name') }}
+            </span>
         </div>
-
-        @if (Auth::user())
-            <!-- Responsive Settings Options -->
-            <div class="pt-4 pb-1 border-t border-gray-200">
-                <div class="flex items-center px-4">
-                    <div class="flex-shrink-0">
-                        <svg class="h-10 w-10 fill-current text-gray-400" xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                        </svg>
-                    </div>
-
-                    <div class="ml-3">
-                        <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                        <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
-                    </div>
+        <div class="w-full h-full relative lg:block hidden">
+            @foreach ($menuImages as $index => $image)
+                <div class="menu-image {{ $loop->first ? 'hover-div-show' : '' }}"
+                    style="z-index: {{ $loop->iteration }}; background-image: url('{{ $image['url'] }}')"
+                    id="menu-image-{{ $image['key'] }}">
                 </div>
+            @endforeach
 
-                <div class="mt-3 space-y-1">
-                    <!-- Authentication -->
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-
-                        <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
-                                            this.closest('form').submit();">
-                            {{ __('Logout') }}
-                        </x-responsive-nav-link>
-                    </form>
-                </div>
-            </div>
-        @endif
+        </div>
     </div>
 </nav>
-<script>
-    setTimeout(() => {
-        let body;
-        let menu;
-        let menuItems;
 
-        const init = () => {
-            body = document.querySelector('body');
-            menu = document.querySelector('.menu-icon');
-            nav = document.querySelector('.nav');
-            navmax = document.querySelector('.nav-max');
-            menuItems = document.querySelectorAll('.nav__list-item');
-            applyListeners();
+<script>
+    var menuBtn = document.querySelector('.menu-btn');
+    var nav = document.querySelector('nav');
+    var lineOne = document.querySelector('nav .menu-btn .line--1');
+    var lineTwo = document.querySelector('nav .menu-btn .line--2');
+    var lineThree = document.querySelector('nav .menu-btn .line--3');
+    var link = document.querySelector('nav .nav-links');
+    menuBtn.addEventListener('click', () => {
+        nav.classList.toggle('nav-open');
+        lineOne.classList.toggle('line-cross');
+        lineTwo.classList.toggle('line-fade-out');
+        lineThree.classList.toggle('line-cross');
+        link.classList.toggle('fade-in');
+    })
+
+    document.addEventListener('DOMContentLoaded', function() {
+        let activeMenu = null;
+
+        function setActiveMenu(menu) {
+            activeMenu = menu;
+            document.querySelectorAll('.menu-image').forEach(image => {
+                if (image.id === `menu-image-${menu}`) {
+                    image.classList.add('hover-div-show');
+                } else {
+                    image.classList.remove('hover-div-show');
+                }
+            });
         }
-        const applyListeners = () => {
-            menu.addEventListener('click', () => toggleClass(body, 'nav-active'));
-            menu.addEventListener('click', () => toggleClass(nav, 'nav-index'));
-            menu.addEventListener('click', () => toggleClass(navmax, 'nav-shadow'));
-            menu.addEventListener('click', () => toggleClass(body, 'pf'));
-        }
-        const toggleClass = (element, stringClass) => {
-            if (element.classList.contains(stringClass))
-                element.classList.remove(stringClass);
-            else
-                element.classList.add(stringClass);
-        }
-        init();
-        var navbar = document.getElementById("nav");
-    }, 10);
+
+        window.setActiveMenu = setActiveMenu;
+    });
 
     function LanguageSwitcher(lang) {
         Swal.fire({
@@ -223,21 +97,163 @@
     }
 </script>
 <style>
-    .profile-circle {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        font-weight: 700;
-        font-size: 15px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        margin-left: 5px;
-        background-color: #0d2c5a;
+    /* Nav bar design start */
+
+    nav {
+        overflow: hidden;
+        position: fixed;
+        height: 240px;
+        width: 450px;
+        transition: all 700ms cubic-bezier(0.8, 0, 0.33, 1);
+        border-radius: 0% 0% 50% 100%;
+        right: 0;
+        transform: translateX(0px);
     }
 
-    .sticky {
-        position: sticky !important;
+    .no-scroll {
+        overflow: hidden;
+        height: 100vh;
     }
+
+    .nav-open {
+        transform: translateX(0px);
+        border-radius: 0% 0% 0% 0%;
+        height: 100vh;
+        width: 100vw;
+        background: rgba(0, 0, 0, 0.16);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(6.7px);
+        -webkit-backdrop-filter: blur(6.7px);
+    }
+
+    .menu-btn {
+        position: absolute;
+        top: 50px;
+        right: 50px;
+        padding: 20px 30px;
+        background-color: var(--white);
+        border-top-left-radius: 50px;
+        border-bottom-left-radius: 50px;
+        cursor: pointer;
+        z-index: 2;
+        display: flex;
+        gap: 20px;
+        transition: all 700ms ease;
+        width: 150px;
+        right: 0px;
+    }
+
+    nav.nav-open .menu-btn {
+        padding-left: 50px;
+        right: -50px !important;
+    }
+
+    nav .menu-btn .line {
+        padding: 0;
+        width: 30px;
+        background: var(--black);
+        height: 2px;
+        margin: 5px 0;
+        transition: all 700ms cubic-bezier(0.9, 0, 0.33, 1);
+    }
+
+    nav .menu-btn .line.line--1 {
+        width: 30px;
+        transform: rotate(0) translateY(0);
+    }
+
+    nav .menu-btn .line.line--1.line-cross {
+        width: 30px;
+        transform: rotate(45deg) translateY(10px);
+        background: var(--black);
+    }
+
+    nav .menu-btn .line.line--2 {
+        width: 28px;
+        transform: translateX(0);
+    }
+
+    nav .menu-btn .line.line--2.line-fade-out {
+        width: 28px;
+        transform: translate(-30px);
+        opacity: 0;
+    }
+
+    nav .menu-btn .line.line--3 {
+        width: 20px;
+        transform: rotate(0) translateY(0);
+    }
+
+    nav .menu-btn .line.line--3.line-cross {
+        width: 30px;
+        transform: rotate(-45deg) translateY(-10px);
+        background: var(--black);
+    }
+
+    nav .nav-links {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100vw;
+        height: 100%;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: end;
+        transform: translateX(100px);
+        opacity: 0;
+        transition: all 900ms cubic-bezier(0.9, 0, 0.33, 1);
+
+        @media (min-width: 1024px) {
+            justify-content: center;
+        }
+    }
+
+    nav .nav-links.fade-in {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+
+    nav .nav-links .link {
+        padding: 20px 0;
+        text-decoration: none;
+        font-family: sans-serif;
+        color: var(--black);
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 1.2rem;
+        transition: all 300ms cubic-bezier(0.9, 0, 0.33, 1);
+    }
+
+    nav .nav-links .link:hover {
+        color: var(--black);
+    }
+
+    .hide-switch {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.8s ease;
+    }
+
+    .show-switch {
+        opacity: 1;
+        transition: opacity 0.8s ease;
+    }
+
+    .menu-image {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        transition: opacity 0.4s ease;
+    }
+
+    .hover-div-show {
+        opacity: 1;
+    }
+
+    /* Nav bar design end */
 </style>

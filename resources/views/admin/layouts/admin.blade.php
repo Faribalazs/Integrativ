@@ -40,15 +40,11 @@
                             class="icons {{ request()->routeIs('admin.dashboard') ? 'closed-icon-active' : '' }}">
                             <i class="ri-home-4-line"></i>
                         </a>
-                        {{-- <a href="{{ route('admin.users') }}"
-                            class="icons {{ request()->routeIs('admin.users') ? 'closed-icon-active' : '' }}">
-                            <i class="ri-group-line"></i>
-                        </a>
-                        <a href="{{ route('admin.workers') }}"
+                        <a href="{{ route('admin.category.create') }}"
                             class="icons 
-                            {{ request()->routeIs('admin.workers') ? 'closed-icon-active' : '' }}">
-                            <i class="ri-group-fill"></i>
-                        </a> --}}
+                            {{ request()->routeIs('admin.category.create') ? 'closed-icon-active' : '' }}">
+                            <i class="ri-draft-line"></i>
+                        </a>
                         <a href="{{ route('admin.sections.create') }}"
                             class="icons 
                             {{ request()->routeIs('admin.sections.create') ? 'closed-icon-active' : '' }}">
@@ -64,12 +60,9 @@
                         <a href="{{ route('admin.dashboard') }}" class="link">
                             {{ __('app.admin.dashboard') }}
                         </a>
-                        {{-- <a href="{{ route('admin.users') }}" class="link">
-                            {{ __('app.admin.users') }}
+                        <a href="{{ route('admin.category.create') }}" class="link">
+                            {{ __('app.admin.category') }}
                         </a>
-                        <a href="{{ route('admin.workers') }}" class="link">
-                            {{ __('app.admin.workers') }}
-                        </a> --}}
                         <a href="{{ route('admin.sections.create') }}" class="link">
                             {{ __('app.admin.sections') }}
                         </a>
@@ -86,9 +79,11 @@
                             <i class="ri-earth-line sm:text-3xl pr-3 text-2xl"></i>
 
                             @if ( strtoupper($lang) == "SR")
-                                <b>Srpski - latinica</b>
-                            @elseif (strtoupper($lang) == "RS-CYRL")
-                                <b>Српски - ћирилица</b>
+                                <b>Srpski</b>
+                            @elseif (strtoupper($lang) == "HU")
+                                <b>Magyar</b>
+                            @elseif (strtoupper($lang) == "EN")
+                                <b>English</b>
                             @endif
 
                         </button>
@@ -137,17 +132,14 @@
 
     function LanguageSwitcher(lang) {
         Swal.fire({
-            html: "@if ($lang == 'sr')<a href='{{ url(Helper::getCurrentUrlWithLocale('sr')) }}' class='disabled-link'>Srpski - latinica</a><br>" +
-                "@else <a href='{{ url(Helper::getCurrentUrlWithLocale('sr')) }}' class='language-name'>Srpski - latinica</a><br> @endif" +
+            html: "@if ($lang == 'sr')<a href='{{ url(Helper::getCurrentUrlWithLocale('sr')) }}' class='disabled-link'>Srpski</a><br>" +
+                "@else <a href='{{ url(Helper::getCurrentUrlWithLocale('sr')) }}' class='language-name'>Srpski</a><br> @endif" +
 
-                "@if ($lang == 'rs-cyrl')<a href='{{ url(Helper::getCurrentUrlWithLocale('rs-cyrl')) }}' class='disabled-link'>Српски - ћирилица</a><br>" +
-                "@else <a href='{{ url(Helper::getCurrentUrlWithLocale('rs-cyrl')) }}' class='language-name'>Српски - ћирилица</a><br> @endif",
+                "@if ($lang == 'hu')<a href='{{ url(Helper::getCurrentUrlWithLocale('hu')) }}' class='disabled-link'>Magyar</a><br>" +
+                "@else <a href='{{ url(Helper::getCurrentUrlWithLocale('hu')) }}' class='language-name'>Magyar</a><br> @endif" +
 
-            // "@if ($lang == 'hu')<a href='{{ url(Helper::getCurrentUrlWithLocale('hu')) }}' class='disabled-link'>Magyar</a><br>" +
-            // "@else <a href='{{ url(Helper::getCurrentUrlWithLocale('hu')) }}' class='language-name'>Magyar</a><br> @endif" +
-
-            // "@if ($lang == 'en')<a href='{{ url(Helper::getCurrentUrlWithLocale('en')) }}' class='disabled-link'>English</a><br>" +
-            // "@else <a href='{{ url(Helper::getCurrentUrlWithLocale('en')) }}' class='language-name' >English</a><br> @endif",
+                "@if ($lang == 'en')<a href='{{ url(Helper::getCurrentUrlWithLocale('en')) }}' class='disabled-link'>English</a><br>" +
+                "@else <a href='{{ url(Helper::getCurrentUrlWithLocale('en')) }}' class='language-name' >English</a><br> @endif",
             showCloseButton: true,
             showCancelButton: false,
             showConfirmButton: false,

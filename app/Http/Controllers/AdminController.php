@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{User,Worker,Admin,Default_category, Default_subcategory, Default_pozicija, Units, Tracker, Sections, FreeTrial, Premium};
+use App\Models\{User,Worker,Admin, Tracker, Sections, Category, };
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
@@ -64,9 +64,6 @@ class AdminController extends Controller
       'email' => 'test@test.com',
       'password' => Hash::make('testpass'),
       'email_verified_at' => '2023-05-03',
-      'image' => null,
-      'cv'  => 'Opis majstora cime se bavim i takve stavri',
-      'phone' => '0645871325',
     ]);
 
     $user->attachRole('super_worker'); 
@@ -78,9 +75,6 @@ class AdminController extends Controller
       'email' => 'worker@worker.com',
       'password' => Hash::make('worker'),
       'email_verified_at' => '2023-05-03',
-      'image' => null,
-      'cv'  => 'Opis majstora cime se bavim i takve stavri',
-      'phone' => '0645871325',
     ]);
 
     $user->attachRole('worker'); 
@@ -91,7 +85,6 @@ class AdminController extends Controller
       'email' => 'admin@admin.com',
       'password' => Hash::make('admin123'),
       'email_verified_at' => '2023-05-03',
-      'image' => null,
     ]);
     $user->attachRole('admin');
     event(new Registered($user));
@@ -100,6 +93,48 @@ class AdminController extends Controller
   public function create()
   {
       return view('admin.views.admin-profile');
+  }
+
+  public function categoryCreate()
+  {
+    $categories = Category::paginate(15);
+
+    return view('admin.views.show-category', ['categories' => $categories]);
+  }
+
+  public function categoryEdit($id)
+  {
+    $category = Category::where('id', $id)->get();
+
+    return view('admin.views.edit-category', ['category' => $category]);
+  }
+
+  public function categoryEditDone($id, Request $request)
+  {
+    $locale = app()->getLocale();
+
+    $category = Category::where('id', $id)->first();
+    
+    $category->update([
+      'page' => $request->page,
+      'section_name' => $request->section_name,
+      'order' => $request->order,
+      'section_number' => $request->section_number,
+    ]);
+
+    $sections->setTranslations('title', [$locale => $request->input('title')]);
+    $sections->setTranslations('content', [$locale => $request->input('content')]);
+    $sections->setTranslations('btn_text', [$locale => $request->input('btn_text')]);
+    $sections->setTranslations('btn_link', [$locale => $request->input('btn_link')]);
+
+    $category->save();
+
+    return view('admin.views.edit-category', ['category' => Category::where('id', $id)->get()]);
+  }
+
+  public function categoryDelete(Request $request){
+    Category::where('id', $request->input('id'))->delete();
+    return redirect()->back();
   }
 
   public function sectionsCreate()

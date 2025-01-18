@@ -37,7 +37,7 @@ class DashboardController extends Controller
       $thirdSection = Sections::where('section_name', "after-slider-section")->get();
 
       $isMobile = $this->isMobileDev();
-      
+
       return view('worker.views.home.home',['mainImageSection' => $mainImageSection, 'sliderSection' => $sliderSection, 'thirdSection' => $thirdSection, 'isMobile' => $isMobile]);
    }
 
