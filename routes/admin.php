@@ -19,13 +19,13 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
     Route::get('/category', [AdminController::class, 'categoryCreate'])
         ->name('category.create');
 
-    Route::get('/category/edit/{id}', [AdminController::class, 'sectionsEdit'])
+    Route::get('/category/edit/{id}', [AdminController::class, 'categoryEdit'])
         ->name('category.edit');
 
-    Route::post('/category/edit/{id}', [AdminController::class, 'sectionsEditDone'])
+    Route::post('/category/edit/{id}', [AdminController::class, 'categoryEditDone'])
         ->name('category.edit.done');
 
-    Route::delete('/category/delete', [AdminController::class, 'sectionsDelete'])
+    Route::delete('/category/delete', [AdminController::class, 'categoryDelete'])
         ->name('category.delete');
 
     Route::get('/sections', [AdminController::class, 'sectionsCreate'])

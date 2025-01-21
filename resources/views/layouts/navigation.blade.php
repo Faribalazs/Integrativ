@@ -1,5 +1,9 @@
 @php
     $lang = App::currentLocale();
+
+    use App\Models\Category;
+
+    $categories = Category::all();
 @endphp
 <nav>
     <div class="menu-btn">
@@ -16,27 +20,20 @@
 
     <div class="nav-links">
         <div class="flex flex-col lg:w-[520px] sm:w-[405px] w-full justify-center bg-white items-center h-full">
-            <a href="#" class="link" onmouseover="setActiveMenu('home')" onmouseleave="setActiveMenu(null)">
-                {{ __('menu.home') }}
-            </a>
-            <a href="#" class="link" onmouseover="setActiveMenu('event')" onmouseleave="setActiveMenu(null)">
-                {{ __('menu.event') }}
-            </a>
-            <a href="#" class="link" onmouseover="setActiveMenu('portrait')" onmouseleave="setActiveMenu(null)">
-                {{ __('menu.portrait') }}
-            </a>
-            <a href="#" class="link" onmouseover="setActiveMenu('birthday')" onmouseleave="setActiveMenu(null)">
-                {{ __('menu.birthday') }}
-            </a>
+            @foreach ($categories as $category)
+                <a href="#" class="link" onmouseover="setActiveMenu({{ $category->order }})" onmouseleave="setActiveMenu(null)">
+                    {{ $category->category_name }}
+                </a>
+            @endforeach
             <span class="link cursor-pointer" onclick="LanguageSwitcher()">
-                {{ __('language.name') }}
+                Izaberi jezik
             </span>
         </div>
         <div class="w-full h-full relative lg:block hidden">
-            @foreach ($menuImages as $index => $image)
+            @foreach ($categories as $index => $image)
                 <div class="menu-image {{ $loop->first ? 'hover-div-show' : '' }}"
-                    style="z-index: {{ $loop->iteration }}; background-image: url('{{ $image['url'] }}')"
-                    id="menu-image-{{ $image['key'] }}">
+                    style="z-index: {{ $loop->iteration }}; background-image: url('{{ asset('storage/' . $image->image) }}')"
+                    id="menu-image-{{ $image->order }}">
                 </div>
             @endforeach
 

@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{User,Worker,Admin, Tracker, Sections, Category, };
+use App\Models\{Admin, Tracker, Sections, Category };
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
+use Intervention\Image\Facades\Image as Image;
+use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminController extends Controller
 {
@@ -104,32 +107,62 @@ class AdminController extends Controller
 
   public function categoryEdit($id)
   {
-    $category = Category::where('id', $id)->get();
+    $category = Category::where('id', $id)->first();
 
     return view('admin.views.edit-category', ['category' => $category]);
   }
 
   public function categoryEditDone($id, Request $request)
   {
-    $locale = app()->getLocale();
+    try {
 
-    $category = Category::where('id', $id)->first();
-    
-    $category->update([
-      'page' => $request->page,
-      'section_name' => $request->section_name,
-      'order' => $request->order,
-      'section_number' => $request->section_number,
-    ]);
+        $category = Category::findOrFail($id);
+        
+        // Validate the incoming request
+        $data = $request->validate([
+            'category_name' => 'required|string|max:255',
+            'order' => 'nullable|integer',
+            'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
 
-    $sections->setTranslations('title', [$locale => $request->input('title')]);
-    $sections->setTranslations('content', [$locale => $request->input('content')]);
-    $sections->setTranslations('btn_text', [$locale => $request->input('btn_text')]);
-    $sections->setTranslations('btn_link', [$locale => $request->input('btn_link')]);
+        // Handle image upload
+        $path = $category->image; // Keep existing image path
+        if ($request->hasFile('image')) {
+            // Remove previously added image if it exists
+            if ($path && Storage::disk('public')->exists($path)) {
+                Storage::disk('public')->delete($path);
+            }
 
-    $category->save();
+            // Process and save the new image
+            $image = Image::make($request->file('image'))->encode('webp', 90)->resize(360, 270);
+            $name = uniqid() . '.webp';
+            $path = 'category/' . $id . '/image/' . $name;
+            Storage::disk('public')->put($path, $image);
+        }
 
-    return view('admin.views.edit-category', ['category' => Category::where('id', $id)->get()]);
+        $finalData = [
+            'category_name' => $data['category_name'],
+            'order' => $data['order'],
+            'image' => $path ?? null,
+        ];
+
+        // Update the category
+        $category->update($finalData);
+
+        $category->save();
+
+        // Success message
+        return redirect()
+            ->route('admin.category.create')
+            ->with('success', 'Category updated successfully!');
+    } catch (\Illuminate\Validation\ValidationException $e) {
+        // Handle validation errors
+        return back()->withErrors($e->validator)->withInput();
+    } catch (\Exception $e) {
+        // Generic error handling
+        alert()->error($e)->showCloseButton()->showConfirmButton(__('app.basic.close'));
+    }
+
   }
 
   public function categoryDelete(Request $request){

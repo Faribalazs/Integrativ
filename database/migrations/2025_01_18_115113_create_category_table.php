@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->json('category_name');
             $table->string('image')->nullable();
+            $table->string('slug');
+            $table->integer('order');
             $table->timestamps();
         });
     }

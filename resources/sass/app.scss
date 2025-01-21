@@ -1648,6 +1648,12 @@ textarea:focus {
     box-shadow: none !important;
 }
 
+.input-style-readonly {
+    border-radius: 0.5rem !important;
+    border-color: #ccc !important;
+    background-color: #c3c3c3 !important;
+}
+
 .submit-btn {
     border: none;
     width: 50%;
@@ -1964,7 +1970,6 @@ textarea:focus {
     width: 10rem;
     height: 10rem;
     object-fit: cover;
-    border-radius: 50%;
     border: 0.125rem solid var(--border-gray);
     @media (max-width: 400px) {
         width: 8.125rem;
@@ -2575,3 +2580,12 @@ body {
 }
 
 /* Home page design end */
+
+/* Admin design start */
+
+.main-container-admin {
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+/* Admin design end */

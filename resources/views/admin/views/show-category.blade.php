@@ -8,6 +8,27 @@
     @php
         $locale = app()->getLocale();
     @endphp
+    
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('success') }}',
+            });
+        </script>
+    @endif
+
+    @if (session('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: '{{ session('error') }}',
+            });
+        </script>
+    @endif
+
     <div class="main-container w-full mt-10" style="overflow: auto">
         <table class="table text-center">
             <thead>

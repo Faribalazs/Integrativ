@@ -22,6 +22,8 @@ class DataSeeder extends Seeder
               'hu' => 'Kezdolap',
               'en' => 'Home Page',
           ],
+          'slug' => 'naslovna',
+          'order' => 1,
       ],
       [
           'category_name' => [
@@ -29,6 +31,8 @@ class DataSeeder extends Seeder
               'hu' => 'Rolunk',
               'en' => 'About us',
           ],
+          'slug' => 'o-nama',
+          'order' => 2,
       ],
       [
           'category_name' => [
@@ -36,13 +40,17 @@ class DataSeeder extends Seeder
               'hu' => '',
               'en' => '',
           ],
+          'slug' => 'modaliteti',
+          'order' => 3,
       ],
       [
         'category_name' => [
-            'sr' => 'Konferencija',
+            'sr' => 'Konferencije',
             'hu' => '',
             'en' => '',
         ],
+        'slug' => 'konferencije',
+        'order' => 4,
       ],
       [
         'category_name' => [
@@ -50,6 +58,8 @@ class DataSeeder extends Seeder
             'hu' => '',
             'en' => '',
         ],
+        'slug' => 'edukacija',
+        'order' => 5,
       ],
       [
         'category_name' => [
@@ -57,6 +67,8 @@ class DataSeeder extends Seeder
             'hu' => '',
             'en' => '',
         ],
+        'slug' => 'aktivnosti',
+        'order' => 6,
       ],
       [
         'category_name' => [
@@ -64,6 +76,8 @@ class DataSeeder extends Seeder
             'hu' => '',
             'en' => '',
         ],
+        'slug' => 'psihoterapeuti',
+        'order' => 7,
       ],
       [
         'category_name' => [
@@ -71,6 +85,8 @@ class DataSeeder extends Seeder
             'hu' => '',
             'en' => '',
         ],
+        'slug' => 'kontakt',
+        'order' => 8,
       ],
     ];
 

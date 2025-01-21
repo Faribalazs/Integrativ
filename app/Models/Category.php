@@ -17,6 +17,8 @@ class Category extends Model
     protected $fillable = [
         'image',
         'category_name',
+        'slug',
+        'order'
     ];
 
     public $translatable = ['category_name'];
