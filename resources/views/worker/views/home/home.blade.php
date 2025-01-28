@@ -11,10 +11,10 @@
     @endphp
 
     <x-slot name="homePage">
-        {{-- <div class="swiper homePageSwiper">
+        <div class="swiper homePageSwiper">
             <div class="swiper-wrapper">
                 <div class="swiper-slide relative">
-                    <img src="{{ asset('img/slider-1.jpg') }}" />
+                    <img class="slider-img" src="{{ asset('img/slider-1.jpg') }}" />
                     <div class="gradient">
                         <span class="image-title">{{ __('app.slider.slider-one-title') }}</span>
                         <p class="image-text lg:w-1/2 w-10/12">
@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="swiper-slide">
-                    <img src="{{ asset('img/slider-2.jpg') }}" />
+                    <img class="slider-img" src="{{ asset('img/slider-2.jpg') }}" />
                     <div class="gradient">
                         <span class="image-title">{{ __('app.slider.slider-two-title') }}</span>
                         <p class="image-text lg:w-1/2 w-10/12">
@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <div class="swiper-slide">
-                    <img src="{{ asset('img/slider-3.jpg') }}" />
+                    <img class="slider-img" src="{{ asset('img/slider-3.jpg') }}" />
                     <div class="gradient">
                         <span class="image-title">{{ __('app.slider.slider-three-title') }}</span>
                         <p class="image-text lg:w-1/2 w-10/12">
@@ -54,6 +54,24 @@
                 </div>
             </div>
             <div class="swiper-pagination"></div>
-        </div> --}}
+        </div>
+
+        <script>
+            const swiper = new Swiper('.homePageSwiper', {
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+            });
+        </script>
     </x-slot>
 </x-app-worker-layout>

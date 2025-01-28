@@ -1,1 +1,1 @@
-<img src="{{ asset('img/logo.svg') }}" class="website-logo">
+<img src="{{ asset('img/integrativ-logo.png') }}" class="website-logo">

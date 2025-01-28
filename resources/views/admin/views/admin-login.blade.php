@@ -8,7 +8,7 @@
     <x-auth-validation-errors class="mb-4" :errors="$errors" />
     <div class="flex h-screen items-center justify-center flex-col">
         <div class="">
-            <img src="{{ asset('img/logo.svg') }}" class="h-36 mb-10">
+            <img src="{{ asset('img/integrativ-logo.png') }}" class="h-36 mb-10">
         </div>
         <form method="POST" class="md:w-1/2 w-full" action="{{ route('admin.session.create') }}">
             @csrf

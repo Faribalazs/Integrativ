@@ -5,6 +5,12 @@
 
     $categories = Category::all();
 @endphp
+<a href="/" class="nav-icon-div">
+    <img src="{{ asset('img/integrativ-logo.png') }}" class="nav-icon">
+    <span class="nav-logo-text">
+        Integrativna dečja psihoterapija
+    </span>
+</a>
 <nav>
     <div class="menu-btn">
         <div class="mt-1 menu-btn-icon">
@@ -14,12 +20,12 @@
         </div>
 
         <button onclick="LanguageSwitcher()" class="flex justify-center items-center px-2 language-switcher">
-            <i class="ri-earth-line text-3xl"></i>
+            <i class="ri-earth-line text-3xl text-white"></i>
         </button>
     </div>
 
     <div class="nav-links">
-        <div class="flex flex-col lg:w-[520px] sm:w-[405px] w-full justify-center bg-white items-center h-full">
+        <div class="flex flex-col lg:w-[450px] sm:w-[405px] w-full justify-center open-menu-bg items-center h-full">
             @foreach ($categories as $category)
                 <a href="#" class="link" onmouseover="setActiveMenu({{ $category->order }})" onmouseleave="setActiveMenu(null)">
                     {{ $category->category_name }}
@@ -42,14 +48,14 @@
 </nav>
 
 <script>
-    var menuBtn = document.querySelector('.menu-btn');
+    var menuBtn = document.querySelector('.menu-btn-icon');
     var nav = document.querySelector('nav');
     var lineOne = document.querySelector('nav .menu-btn .line--1');
     var lineTwo = document.querySelector('nav .menu-btn .line--2');
     var lineThree = document.querySelector('nav .menu-btn .line--3');
     var link = document.querySelector('nav .nav-links');
     menuBtn.addEventListener('click', () => {
-        nav.classList.toggle('nav-open');
+        nav.classList.toggle('nav-open-menu');
         lineOne.classList.toggle('line-cross');
         lineTwo.classList.toggle('line-fade-out');
         lineThree.classList.toggle('line-cross');
@@ -76,17 +82,16 @@
     function LanguageSwitcher(lang) {
         Swal.fire({
             html: "<span class='language-title-swall md:text-4xl text-3xl'>{{ __('app.basic.choose-language') }}</span><br>" +
-                "@if ($lang == 'sr')<a href='{{ url(Helper::getCurrentUrlWithLocale('sr')) }}' class='disabled-link block md:text-2xl text-xl mt-2'>Srpski - latinica</a><br>" +
-                "@else <a href='{{ url(Helper::getCurrentUrlWithLocale('sr')) }}' class='language-name block md:text-2xl text-xl mt-2'>Srpski - latinica</a><br> @endif" +
+                "<div class='flex flex-col'>" +
+                    "@if ($lang == 'sr')<a href='{{ url(Helper::getCurrentUrlWithLocale('sr')) }}' class='disabled-link block md:text-2xl text-xl mt-2'>Srpski</a>" +
+                    "@else <a href='{{ url(Helper::getCurrentUrlWithLocale('sr')) }}' class='language-name block md:text-2xl text-xl mt-2'>Srpski</a> @endif" +
 
-                "@if ($lang == 'rs-cyrl')<a href='{{ url(Helper::getCurrentUrlWithLocale('rs-cyrl')) }}' class='disabled-link md:text-2xl text-xl'>Српски - ћирилица</a><br>" +
-                "@else <a href='{{ url(Helper::getCurrentUrlWithLocale('rs-cyrl')) }}' class='language-name md:text-2xl text-xl'>Српски - ћирилица</a><br> @endif",
+                    "@if ($lang == 'hu')<a href='{{ url(Helper::getCurrentUrlWithLocale('hu')) }}' class='disabled-link block md:text-2xl text-xl mt-4'>Magyar</a>" +
+                    "@else <a href='{{ url(Helper::getCurrentUrlWithLocale('hu')) }}' class='language-name block md:text-2xl text-xl mt-4'>Magyar</a> @endif" +
 
-            // "@if ($lang == 'hu')<a href='{{ url(Helper::getCurrentUrlWithLocale('hu')) }}' class='disabled-link'>Magyar</a><br>" +
-            // "@else <a href='{{ url(Helper::getCurrentUrlWithLocale('hu')) }}' class='language-name'>Magyar</a><br> @endif" +
-
-            // "@if ($lang == 'en')<a href='{{ url(Helper::getCurrentUrlWithLocale('en')) }}' class='disabled-link'>English</a><br>" +
-            // "@else <a href='{{ url(Helper::getCurrentUrlWithLocale('en')) }}' class='language-name' >English</a><br> @endif",
+                    "@if ($lang == 'en')<a href='{{ url(Helper::getCurrentUrlWithLocale('en')) }}' class='disabled-link block md:text-2xl text-xl mt-4'>English</a>" +
+                    "@else <a href='{{ url(Helper::getCurrentUrlWithLocale('en')) }}' class='language-name block md:text-2xl text-xl mt-4' >English</a> @endif" +
+                "</div>",
             showCloseButton: true,
             showCancelButton: false,
             showConfirmButton: false,
@@ -96,6 +101,30 @@
 <style>
     /* Nav bar design start */
 
+    .nav-icon-div {
+        position: fixed;
+        top: 30px;
+        left: 30px;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .nav-logo-text {
+        font-size: 1.2rem;
+        color: var(--white);
+        font-weight: 700;
+        text-transform: uppercase;
+        @media (max-width: 700px) {
+            display: none;
+        }
+    }
+
+    .nav-icon {
+        width: 100px;
+    }
+
     nav {
         overflow: hidden;
         position: fixed;
@@ -104,6 +133,7 @@
         transition: all 700ms cubic-bezier(0.8, 0, 0.33, 1);
         border-radius: 0% 0% 50% 100%;
         right: 0;
+        z-index: 100;
         transform: translateX(0px);
     }
 
@@ -112,7 +142,7 @@
         height: 100vh;
     }
 
-    .nav-open {
+    .nav-open-menu {
         transform: translateX(0px);
         border-radius: 0% 0% 0% 0%;
         height: 100vh;
@@ -123,12 +153,16 @@
         -webkit-backdrop-filter: blur(6.7px);
     }
 
+    .open-menu-bg {
+        background: #B41919;
+    }
+
     .menu-btn {
         position: absolute;
-        top: 50px;
+        top: 30px;
         right: 50px;
         padding: 20px 30px;
-        background-color: var(--white);
+        background-color: #B41919;
         border-top-left-radius: 50px;
         border-bottom-left-radius: 50px;
         cursor: pointer;
@@ -140,7 +174,7 @@
         right: 0px;
     }
 
-    nav.nav-open .menu-btn {
+    nav.nav-open-menu .menu-btn {
         padding-left: 50px;
         right: -50px !important;
     }
@@ -148,7 +182,7 @@
     nav .menu-btn .line {
         padding: 0;
         width: 30px;
-        background: var(--black);
+        background: var(--white);
         height: 2px;
         margin: 5px 0;
         transition: all 700ms cubic-bezier(0.9, 0, 0.33, 1);
@@ -162,7 +196,7 @@
     nav .menu-btn .line.line--1.line-cross {
         width: 30px;
         transform: rotate(45deg) translateY(10px);
-        background: var(--black);
+        background: var(--white);
     }
 
     nav .menu-btn .line.line--2 {
@@ -184,7 +218,7 @@
     nav .menu-btn .line.line--3.line-cross {
         width: 30px;
         transform: rotate(-45deg) translateY(-10px);
-        background: var(--black);
+        background: var(--white);
     }
 
     nav .nav-links {
@@ -214,7 +248,7 @@
         padding: 20px 0;
         text-decoration: none;
         font-family: sans-serif;
-        color: var(--black);
+        color: var(--white);
         font-weight: 700;
         text-transform: uppercase;
         font-size: 1.2rem;
@@ -222,7 +256,7 @@
     }
 
     nav .nav-links .link:hover {
-        color: var(--black);
+        color: var(--white);
     }
 
     .hide-switch {
