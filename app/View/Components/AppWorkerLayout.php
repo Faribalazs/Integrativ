@@ -13,6 +13,6 @@ class AppWorkerLayout extends Component
      */
     public function render()
     {
-        return view('worker.layouts.app');
+        return view('user.layouts.app');
     }
 }

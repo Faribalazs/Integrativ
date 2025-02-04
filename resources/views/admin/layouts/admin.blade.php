@@ -40,6 +40,11 @@
                             class="icons {{ request()->routeIs('admin.dashboard') ? 'closed-icon-active' : '' }}">
                             <i class="ri-home-4-line"></i>
                         </a>
+                        <a href="{{ route('admin.slider.create') }}"
+                            class="icons 
+                            {{ request()->routeIs('admin.slider.create') ? 'closed-icon-active' : '' }}">
+                            <i class="ri-image-line"></i>
+                        </a>
                         <a href="{{ route('admin.category.create') }}"
                             class="icons 
                             {{ request()->routeIs('admin.category.create') ? 'closed-icon-active' : '' }}">
@@ -62,6 +67,9 @@
                         </a>
                         <a href="{{ route('admin.category.create') }}" class="link">
                             {{ __('app.admin.category') }}
+                        </a>
+                        <a href="{{ route('admin.category.create') }}" class="link">
+                            {{ __('app.admin.slider') }}
                         </a>
                         <a href="{{ route('admin.sections.create') }}" class="link">
                             {{ __('app.admin.sections') }}

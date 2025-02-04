@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Sections;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,7 +21,7 @@ class DashboardController extends Controller
 
    public function aboutUs()
    {
-      return view('worker.views.home.about-us');
+      return view('user.views.home.about-us');
    }
 
    public function profile()
@@ -30,15 +31,9 @@ class DashboardController extends Controller
 
    public function home()
    {
-      $mainImageSection = Sections::where('section_name', "main-image-section")->get();
+      $sliderData = Slider::orderBy('order', 'asc')->get();
 
-      $sliderSection = Sections::where('page', "slider")->get();
-
-      $thirdSection = Sections::where('section_name', "after-slider-section")->get();
-
-      $isMobile = $this->isMobileDev();
-
-      return view('worker.views.home.home',['mainImageSection' => $mainImageSection, 'sliderSection' => $sliderSection, 'thirdSection' => $thirdSection, 'isMobile' => $isMobile]);
+      return view('user.views.home.home',['sliderData' => $sliderData]);
    }
 
    private function isMobileDev(){

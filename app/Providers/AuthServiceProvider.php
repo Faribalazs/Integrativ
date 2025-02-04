@@ -57,7 +57,7 @@ class AuthServiceProvider extends ServiceProvider
             if ($notifiable->getGuard() == 'worker') {
             return (new MailMessage)
                 ->subject('Reset password')
-                ->view('worker.emails.reset-password', ['url'=> $url, 'notifiable' => $notifiable]);
+                ->view('user.emails.reset-password', ['url'=> $url, 'notifiable' => $notifiable]);
             }
             return (new MailMessage)
                 ->subject('Reset password')

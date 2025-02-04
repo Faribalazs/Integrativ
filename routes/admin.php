@@ -16,6 +16,7 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
     Route::get('/dashboard', [AdminController::class, 'dashboard'])
         ->name('dashboard');
 
+    //Category routes
     Route::get('/category', [AdminController::class, 'categoryCreate'])
         ->name('category.create');
 
@@ -28,6 +29,20 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
     Route::delete('/category/delete', [AdminController::class, 'categoryDelete'])
         ->name('category.delete');
 
+    //Slider routes
+    Route::get('/slider', [AdminController::class, 'sliderCreate'])
+        ->name('slider.create');
+
+    Route::get('/slider/edit/{id}', [AdminController::class, 'sliderEdit'])
+        ->name('slider.edit');
+
+    Route::post('/slider/edit/{id}', [AdminController::class, 'sliderEditDone'])
+        ->name('slider.edit.done');
+
+    Route::delete('/slider/delete', [AdminController::class, 'sliderDelete'])
+        ->name('slider.delete');
+
+    //Sections routes
     Route::get('/sections', [AdminController::class, 'sectionsCreate'])
         ->name('sections.create');
 

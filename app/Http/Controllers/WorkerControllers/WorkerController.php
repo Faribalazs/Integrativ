@@ -27,6 +27,6 @@ class WorkerController extends Controller
 
    public function profile()
    {
-      return view('worker.views.profile.profile-page');
+      return view('user.views.profile.profile-page');
    }
 }

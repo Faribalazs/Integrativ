@@ -29,7 +29,7 @@ class AuthenticatedSessionController extends Controller
 
         session()->put('url.intended', $intendedUrl);
 
-        return view('worker.auth.login');
+        return view('user.auth.login');
     }
 
     /**

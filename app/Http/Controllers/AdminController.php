@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Admin, Tracker, Sections, Category };
+use App\Models\{Admin, Tracker, Sections, Category, Worker, Slider};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
@@ -102,14 +102,14 @@ class AdminController extends Controller
   {
     $categories = Category::paginate(15);
 
-    return view('admin.views.show-category', ['categories' => $categories]);
+    return view('admin.views.category.show-category', ['categories' => $categories]);
   }
 
   public function categoryEdit($id)
   {
     $category = Category::where('id', $id)->first();
 
-    return view('admin.views.edit-category', ['category' => $category]);
+    return view('admin.views.category.edit-category', ['category' => $category]);
   }
 
   public function categoryEditDone($id, Request $request)
@@ -170,18 +170,97 @@ class AdminController extends Controller
     return redirect()->back();
   }
 
+  public function SliderCreate()
+  {
+    $sliders = Slider::paginate(15);
+
+    return view('admin.views.slider.show-slider', ['sliders' => $sliders]);
+  }
+
+  public function sliderEdit($id)
+  {
+    $slider = Slider::where('id', $id)->first();
+
+    return view('admin.views.slider.edit-slider', ['slider' => $slider]);
+  }
+
+  public function sliderEditDone($id, Request $request)
+  {
+    try {
+
+        $slider = Slider::findOrFail($id);
+        
+        // Validate the incoming request
+        $data = $request->validate([
+            'slider_name' => 'required|string|max:255',
+            'text' => 'required|string|max:255',
+            'vertical' => 'required|string|max:255',
+            'horizontal' => 'required|string|max:255',
+            'order' => 'nullable|integer',
+            'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        // Handle image upload
+        $path = $slider->image; // Keep existing image path
+        if ($request->hasFile('image')) {
+            // Remove previously added image if it exists
+            if ($path && Storage::disk('public')->exists($path)) {
+                Storage::disk('public')->delete($path);
+            }
+
+            // Process and save the new image
+            $image = Image::make($request->file('image'))->encode('webp', 90)->resize(360, 270);
+            $name = uniqid() . '.webp';
+            $path = 'slider/' . $id . '/image/' . $name;
+            Storage::disk('public')->put($path, $image);
+        }
+
+        $finalData = [
+            'slider_name' => $data['slider_name'],
+            'slider_text' => $data['text'],
+            'vertical' => $data['vertical'],
+            'horizontal' => $data['horizontal'],
+            'order' => $data['order'],
+            'image' => $path ?? null,
+        ];
+
+        // Update the category
+        $slider->update($finalData);
+
+        $slider->save();
+
+        // Success message
+        return redirect()
+            ->route('admin.slider.create')
+            ->with('success', 'Slider updated successfully!');
+    } catch (\Illuminate\Validation\ValidationException $e) {
+        // Handle validation errors
+        alert()->error($e->validator)->showCloseButton()->showConfirmButton(__('app.basic.close'));
+        return back()->withErrors($e->validator)->withInput();
+    } catch (\Exception $e) {
+        // Generic error handling
+        alert()->error($e)->showCloseButton()->showConfirmButton(__('app.basic.close'));
+    }
+
+  }
+
+  public function sliderDelete(Request $request){
+    Slider::where('id', $request->input('id'))->delete();
+    return redirect()->back();
+  }
+
   public function sectionsCreate()
   {
     $sections = Sections::paginate(15);
 
-    return view('admin.views.show-sections', ['sections' => $sections]);
+    return view('admin.views.sections.show-sections', ['sections' => $sections]);
   }
 
   public function sectionsEdit($id)
   {
     $section = Sections::where('id', $id)->get();
 
-    return view('admin.views.edit-sections', ['section' => $section]);
+    return view('admin.views.sections.edit-sections', ['section' => $section]);
   }
 
   public function sectionsEditDone($id, Request $request)
@@ -203,7 +282,7 @@ class AdminController extends Controller
 
     $sections->save();
 
-    return view('admin.views.edit-sections', ['section' => Sections::where('id', $id)->get()]);
+    return view('admin.views.sections.edit-sections', ['section' => Sections::where('id', $id)->get()]);
   }
 
   public function sectionsDelete(Request $request){

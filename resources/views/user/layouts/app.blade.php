@@ -57,7 +57,7 @@
             @endif
         </script>
     </div>
-    @include('worker.layouts.footer')
+    @include('user.layouts.footer')
     @include('sweetalert::alert')
     @php
         \App\Models\Tracker::hit();

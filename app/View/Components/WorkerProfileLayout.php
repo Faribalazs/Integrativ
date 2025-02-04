@@ -13,6 +13,6 @@ class WorkerProfileLayout extends Component
      */
     public function render()
     {
-        return view('worker.layouts.profile');
+        return view('user.layouts.profile');
     }
 }

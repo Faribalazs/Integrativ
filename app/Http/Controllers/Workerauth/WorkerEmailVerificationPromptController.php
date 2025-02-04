@@ -22,6 +22,6 @@ class WorkerEmailVerificationPromptController extends Controller
         // }
         // return $request->user()->hasVerifiedEmail()
         //             ? redirect()->intended(route('worker.myprofile'))
-        //             : view('worker.auth.verify-email');
+        //             : view('user.auth.verify-email');
     }
 }
