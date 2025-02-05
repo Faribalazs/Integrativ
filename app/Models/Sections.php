@@ -15,14 +15,13 @@ class Sections extends Model
     protected $table = 'sections';
     
     protected $fillable = [
-        'page',
         'section_name',
         'title',
         'content',
         'btn_text',
         'btn_link',
-        'section_number',
         'order',
+        'image',
         'status',
     ];
 

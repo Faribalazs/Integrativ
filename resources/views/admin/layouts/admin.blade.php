@@ -48,11 +48,11 @@
                         <a href="{{ route('admin.category.create') }}"
                             class="icons 
                             {{ request()->routeIs('admin.category.create') ? 'closed-icon-active' : '' }}">
-                            <i class="ri-draft-line"></i>
+                            <i class="ri-calendar-todo-line"></i>
                         </a>
-                        <a href="{{ route('admin.sections.create') }}"
+                        <a href="{{ route('admin.section.create') }}"
                             class="icons 
-                            {{ request()->routeIs('admin.sections.create') ? 'closed-icon-active' : '' }}">
+                            {{ request()->routeIs('admin.section.create') ? 'closed-icon-active' : '' }}">
                             <i class="ri-draft-line"></i>
                         </a>
                         <form method="POST" id="log-out-form" action="{{ route('admin.logout') }}"
@@ -65,13 +65,13 @@
                         <a href="{{ route('admin.dashboard') }}" class="link">
                             {{ __('app.admin.dashboard') }}
                         </a>
+                        <a href="{{ route('admin.slider.create') }}" class="link">
+                            {{ __('app.admin.slider') }}
+                        </a>
                         <a href="{{ route('admin.category.create') }}" class="link">
                             {{ __('app.admin.category') }}
                         </a>
-                        <a href="{{ route('admin.category.create') }}" class="link">
-                            {{ __('app.admin.slider') }}
-                        </a>
-                        <a href="{{ route('admin.sections.create') }}" class="link">
+                        <a href="{{ route('admin.section.create') }}" class="link">
                             {{ __('app.admin.sections') }}
                         </a>
                         <a onclick="logOut()" class="link cursor-pointer">

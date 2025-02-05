@@ -6,7 +6,7 @@
         {{ __('app.admin.sections') }} - {{ strip_tags($section[0]->title) }}
     </x-slot>
     <div class="main-container w-full mt-10" style="overflow: auto">
-        <form method="POST" class="w-full" action="{{ route('admin.sections.edit.done', ['id' => request()->id]) }}">
+        <form method="POST" class="w-full" action="{{ route('admin.section.edit.done', ['id' => request()->id]) }}">
             @csrf
 
             <div class="flex flex-col">
@@ -94,15 +94,14 @@
     </style>
     <script>
         tinymce.init({
-          selector: 'textarea#title',
-          plugins: 'code table lists',
-          toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table'
-        });
-
-        tinymce.init({
-          selector: 'textarea#content',
-          plugins: 'code table lists',
-          toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table'
+            selector: 'textarea#content',
+            height: 500,
+            plugins: 'advlist anchor autolink autosave charmap code codesample directionality emoticons fullscreen help hr image insertdatetime link lists media nonbreaking pagebreak preview print quickbars save searchreplace table template visualblocks visualchars wordcount',
+            toolbar: 'undo redo | fontselect fontsizeselect formatselect | bold italic underline strikethrough forecolor backcolor removeformat | alignleft aligncenter alignright alignjustify | outdent indent | bullist numlist | link image media table codesample | hr pagebreak blockquote | subscript superscript charmap emoticons | fullscreen preview print | visualblocks visualchars | insertdatetime searchreplace | help',
+            menubar: 'file edit view insert format tools table',
+            branding: false,
+            quickbars_insert_toolbar: 'quickimage quicktable',
+            quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote',
         });
       </script>
 </x-admin-app-layout>

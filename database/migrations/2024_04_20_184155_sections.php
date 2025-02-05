@@ -13,13 +13,12 @@ return new class extends Migration
     {
         Schema::create('sections', function (Blueprint $table) {
             $table->id();
-            $table->string('page');
             $table->string('section_name');
             $table->json('title')->nullable();
             $table->json('content')->nullable();
+            $table->string('image')->nullable();
             $table->json('btn_text')->nullable();
             $table->json('btn_link')->nullable();
-            $table->integer('section_number')->nullable();
             $table->integer('order')->nullable();
             $table->boolean('status')->nullable();
             $table->timestamps();
@@ -27,7 +26,6 @@ return new class extends Migration
 
         DB::table('sections')->insert([
             [
-                'page' => 'home',
                 'section_name' => 'main-image-section',
                 'title' => json_encode([
                     'sr' => 'Alat dobrog majstora',
@@ -41,12 +39,10 @@ return new class extends Migration
                 'btn_link' => json_encode([
                     'sr' => '#',
                 ]),
-                'section_number' => 1,
                 'order' => 1,
                 'status' => true,
             ],
             [
-                'page' => 'slider',
                 'section_name' => 'slider-one',
                 'title' => json_encode([
                     'sr' => 'Premeravanje objekta i sređivanje podataka',
@@ -55,12 +51,10 @@ return new class extends Migration
                     'sr' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi Lorem ipsum dolor',                ]),
                 'btn_text' => null,
                 'btn_link' => null,
-                'section_number' => 2,
                 'order' => 1,
                 'status' => true,
             ],
             [
-                'page' => 'slider',
                 'section_name' => 'slider-two',
                 'title' => json_encode([
                     'sr' => 'Unošenje podataka na portal PONUDA MAJSTORA i generisanje PONUDE',
@@ -70,12 +64,10 @@ return new class extends Migration
                 ]),
                 'btn_text' => null,
                 'btn_link' => null,
-                'section_number' => 2,
                 'order' => 2,
                 'status' => true,
             ],
             [
-                'page' => 'slider',
                 'section_name' => 'slider-three',
                 'title' => json_encode([
                     'sr' => 'Automatsko slanje PONUDE na klijentov e-mail',
@@ -85,12 +77,10 @@ return new class extends Migration
                 ]),
                 'btn_text' => null,
                 'btn_link' => null,
-                'section_number' => 2,
                 'order' => 3,
                 'status' => true,
             ],
             [
-                'page' => 'slider',
                 'section_name' => 'slider-four',
                 'title' => json_encode([
                     'sr' => 'Dogovor o izvođenju radova',
@@ -100,12 +90,10 @@ return new class extends Migration
                 ]),
                 'btn_text' => null,
                 'btn_link' => null,
-                'section_number' => 2,
                 'order' => 4,
                 'status' => true,
             ],
             [
-                'page' => 'home',
                 'section_name' => 'after-slider-section',
                 'title' => json_encode([
                     'sr' => 'Završni tekst',
@@ -135,7 +123,6 @@ return new class extends Migration
                         ,]),
                 'btn_text' => null,
                 'btn_link' => null,
-                'section_number' => 3,
                 'order' => 1,
                 'status' => true,
             ],

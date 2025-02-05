@@ -105,6 +105,61 @@ class AdminController extends Controller
     return view('admin.views.category.show-category', ['categories' => $categories]);
   }
 
+  public function categoryAddNew()
+  {
+    return view('admin.views.category.create-category');
+  }
+
+  public function categoryAddNewDone(Request $request)
+  {
+    try {
+
+      // Validate the incoming request
+      $data = $request->validate([
+          'category_name' => 'required|string|max:255',
+          'order' => 'nullable|integer',
+          'slug' => 'required|string|max:255',
+          'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
+      ]);
+
+      $path = null;
+
+      // Handle image upload
+      if ($request->hasFile('image')) {
+          $image = Image::make($request->file('image'))->encode('webp', 90)->resize(360, 270);
+          $name = uniqid() . '.webp';
+          $path = 'category/temp/' . $name;
+
+          // Store the image temporarily
+          Storage::disk('public')->put($path, (string) $image->stream());
+      }
+
+      // Create the category
+      $category = Category::create([
+          'category_name' => $data['category_name'],
+          'order' => $data['order'],
+          'slug' => $data['slug'],
+          'image' => $path, // Temporary path
+      ]);
+
+      // Move the image to the final path after category creation
+      if ($path) {
+          $newPath = 'category/' . $category->id . '/image/' . $name;
+          Storage::disk('public')->move($path, $newPath);
+          $category->update(['image' => $newPath]);
+      }
+
+      // Success message
+      return redirect()
+          ->route('admin.category.create')
+          ->with('success', 'Category created successfully!');
+      } catch (\Illuminate\Validation\ValidationException $e) {
+          return back()->withErrors($e->validator)->withInput();
+      } catch (\Exception $e) {
+          return back()->with('error', $e->getMessage());
+    }
+  }
+
   public function categoryEdit($id)
   {
     $category = Category::where('id', $id)->first();
@@ -162,7 +217,6 @@ class AdminController extends Controller
         // Generic error handling
         alert()->error($e)->showCloseButton()->showConfirmButton(__('app.basic.close'));
     }
-
   }
 
   public function categoryDelete(Request $request){
@@ -177,6 +231,68 @@ class AdminController extends Controller
     return view('admin.views.slider.show-slider', ['sliders' => $sliders]);
   }
 
+  public function sliderAddNew()
+  {
+    return view('admin.views.slider.create-slider');
+  }
+
+  public function sliderAddNewDone(Request $request)
+  {
+      try {
+          // Validate the incoming request
+          $data = $request->validate([
+              'slider_name' => 'required|string|max:255',
+              'text' => 'required|string|max:255',
+              'vertical' => 'required|string|max:255',
+              'horizontal' => 'required|string|max:255',
+              'order' => 'nullable|integer',
+              'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
+          ]);
+  
+          // Default path for image
+          $path = null;
+  
+          // Handle image upload
+          if ($request->hasFile('image')) {
+              $image = Image::make($request->file('image'))->encode('webp', 90)->resize(360, 270);
+              $name = uniqid() . '.webp';
+  
+              // Store the image temporarily
+              $tempPath = 'slider/temp/' . $name;
+              Storage::disk('public')->put($tempPath, (string) $image->stream());
+  
+              // Set path (will be updated after slider creation)
+              $path = $tempPath;
+          }
+  
+          // Create the slider
+          $slider = Slider::create([
+              'slider_name' => $data['slider_name'],
+              'slider_text' => $data['text'],
+              'vertical' => $data['vertical'],
+              'horizontal' => $data['horizontal'],
+              'order' => $data['order'],
+              'image' => $path, // Temporary path
+          ]);
+  
+          // Move the image to final path after slider is created
+          if ($path) {
+              $newPath = 'slider/' . $slider->id . '/image/' . $name;
+              Storage::disk('public')->move($path, $newPath);
+              $slider->update(['image' => $newPath]);
+          }
+  
+          // Success message
+          return redirect()
+              ->route('admin.slider.create')
+              ->with('success', 'Slider created successfully!');
+      } catch (\Illuminate\Validation\ValidationException $e) {
+          return back()->withErrors($e->validator)->withInput();
+      } catch (\Exception $e) {
+          return back()->with('error', $e->getMessage());
+      }
+  }
+  
   public function sliderEdit($id)
   {
     $slider = Slider::where('id', $id)->first();
@@ -249,21 +365,84 @@ class AdminController extends Controller
     return redirect()->back();
   }
 
-  public function sectionsCreate()
+  public function sectionCreate()
   {
     $sections = Sections::paginate(15);
 
-    return view('admin.views.sections.show-sections', ['sections' => $sections]);
+    return view('admin.views.section.show-section', ['sections' => $sections]);
   }
 
-  public function sectionsEdit($id)
+  public function sectionAddNew()
+  {
+    return view('admin.views.section.create-section');
+  }
+
+  public function sectionAddNewDone(Request $request)
+  {
+    try {
+
+      // Validate the incoming request
+      $data = $request->validate([
+          'section_name' => 'required|string|max:255',
+          'title' => 'required|string|max:255',
+          'content' => 'nullable|string',
+          'btn_link' => 'nullable|string',
+          'btn_text' => 'nullable|string',
+          'order' => 'nullable|integer',
+          'status' => 'required|string',
+          'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
+      ]);
+
+      $path = null;
+
+      // Handle image upload
+      if ($request->hasFile('image')) {
+          $image = Image::make($request->file('image'))->encode('webp', 90)->resize(360, 270);
+          $name = uniqid() . '.webp';
+          $path = 'category/temp/' . $name;
+
+          // Store the image temporarily
+          Storage::disk('public')->put($path, (string) $image->stream());
+      }
+
+      // Create the secetion
+      $section = Category::create([
+          'section_name' => $data['section_name'],
+          'title' => $data['title'],
+          'content' => $data['content'],
+          'btn_link' => $data['btn_link'],
+          'btn_text' => $data['btn_text'],
+          'status' => $data['status'],
+          'order' => $data['order'],
+          'image' => $path, // Temporary path
+      ]);
+
+      // Move the image to the final path after section creation
+      if ($path) {
+          $newPath = 'section/' . $section->id . '/image/' . $name;
+          Storage::disk('public')->move($path, $newPath);
+          $section->update(['image' => $newPath]);
+      }
+
+      // Success message
+      return redirect()
+          ->route('admin.section.create')
+          ->with('success', 'Section created successfully!');
+      } catch (\Illuminate\Validation\ValidationException $e) {
+          return back()->withErrors($e->validator)->withInput();
+      } catch (\Exception $e) {
+          return back()->with('error', $e->getMessage());
+    }
+  }
+
+  public function sectionEdit($id)
   {
     $section = Sections::where('id', $id)->get();
 
-    return view('admin.views.sections.edit-sections', ['section' => $section]);
+    return view('admin.views.section.edit-section', ['section' => $section]);
   }
 
-  public function sectionsEditDone($id, Request $request)
+  public function sectionEditDone($id, Request $request)
   {
     $sections = Sections::where('id', $id)->first();
     $sections->update([
@@ -282,10 +461,10 @@ class AdminController extends Controller
 
     $sections->save();
 
-    return view('admin.views.sections.edit-sections', ['section' => Sections::where('id', $id)->get()]);
+    return view('admin.views.section.edit-section', ['section' => Sections::where('id', $id)->get()]);
   }
 
-  public function sectionsDelete(Request $request){
+  public function sectionDelete(Request $request){
     Sections::where('id', $request->input('id'))->delete();
     return redirect()->back();
   }

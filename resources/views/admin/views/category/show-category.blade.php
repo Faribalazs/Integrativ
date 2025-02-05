@@ -1,9 +1,9 @@
 <x-admin-app-layout>
     <x-slot name="pageTitle">
-        {{ __('app.admin.sections') }}
+        Category
     </x-slot>
     <x-slot name="header">
-        {{ __('app.admin.sections') }}
+        Category
     </x-slot>
     @php
         $locale = app()->getLocale();
@@ -30,6 +30,12 @@
     @endif
 
     <div class="main-container w-full mt-10" style="overflow: auto">
+        <div class="flex justify-end mb-10">
+            <a href="{{ route('admin.category.add') }}" class="add-new-btn no-underline">
+                <i class="ri-add-line"></i>
+                Dodaj novu kategorij
+            </a>
+        </div>
         <table class="table text-center">
             <thead>
             <tr>

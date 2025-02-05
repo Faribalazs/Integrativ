@@ -6,6 +6,12 @@
         {{ __('app.admin.sections') }}
     </x-slot>
     <div class="main-container w-full mt-10" style="overflow: auto">
+        <div class="flex justify-end mb-10">
+            <a href="{{ route('admin.section.add') }}" class="add-new-btn no-underline">
+                <i class="ri-add-line"></i>
+                Dodaj novu sekciju
+            </a>
+        </div>
         <table class="table text-center">
             <thead>
             <tr>
@@ -25,7 +31,7 @@
                     <td>{{$section->title}}</td>
                     <td>{{$section->status}}</td>
                     <td>
-                        <a href="{{ route('admin.sections.edit', $section->id) }}" class="modositas-btn mr-1">
+                        <a href="{{ route('admin.section.edit', $section->id) }}" class="modositas-btn mr-1">
                             <i class="ri-edit-2-line"></i>
                         </a>
                     </td>
@@ -48,7 +54,7 @@
                 title: 'Da li želite da izbrišete sekciju '+name+'?',
                 icon: 'question',
                 html: 
-                    '<form method="POST" id="formDelete" action="{{ route('admin.sections.delete') }}">' +
+                    '<form method="POST" id="formDelete" action="{{ route('admin.section.delete') }}">' +
                     '@csrf' +
                     '@method("delete")' +
                     '<input class="mt-3 swal-input" hidden type="text" name="id" value="'+id+'"/>' +

@@ -20,6 +20,12 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
     Route::get('/category', [AdminController::class, 'categoryCreate'])
         ->name('category.create');
 
+    Route::get('/category/create', [AdminController::class, 'categoryAddNew'])
+        ->name('category.add');
+
+    Route::post('/category/create/save', [AdminController::class, 'categoryAddNewDone'])
+        ->name('category.add.done');
+
     Route::get('/category/edit/{id}', [AdminController::class, 'categoryEdit'])
         ->name('category.edit');
 
@@ -33,6 +39,12 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
     Route::get('/slider', [AdminController::class, 'sliderCreate'])
         ->name('slider.create');
 
+    Route::get('/slider/create', [AdminController::class, 'sliderAddNew'])
+        ->name('slider.add');
+
+    Route::post('/slider/create/save', [AdminController::class, 'sliderAddNewDone'])
+        ->name('slider.add.done');
+
     Route::get('/slider/edit/{id}', [AdminController::class, 'sliderEdit'])
         ->name('slider.edit');
 
@@ -43,16 +55,22 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
         ->name('slider.delete');
 
     //Sections routes
-    Route::get('/sections', [AdminController::class, 'sectionsCreate'])
-        ->name('sections.create');
+    Route::get('/sections', [AdminController::class, 'sectionCreate'])
+        ->name('section.create');
 
-    Route::get('/sections/edit/{id}', [AdminController::class, 'sectionsEdit'])
-        ->name('sections.edit');
+    Route::get('/sections/create', [AdminController::class, 'sectionAddNew'])
+        ->name('section.add');
 
-    Route::post('/sections/edit/{id}', [AdminController::class, 'sectionsEditDone'])
-        ->name('sections.edit.done');
+    Route::post('/sections/create/save', [AdminController::class, 'sectionAddNewDone'])
+        ->name('section.add.done');
 
-    Route::delete('/sections/delete', [AdminController::class, 'sectionsDelete'])
-        ->name('sections.delete');
+    Route::get('/sections/edit/{id}', [AdminController::class, 'sectionEdit'])
+        ->name('section.edit');
+
+    Route::post('/sections/edit/{id}', [AdminController::class, 'sectionEditDone'])
+        ->name('section.edit.done');
+
+    Route::delete('/sections/delete', [AdminController::class, 'sectionDelete'])
+        ->name('section.delete');
 
 });
