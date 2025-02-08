@@ -50,10 +50,20 @@
                             {{ request()->routeIs('admin.category.create') ? 'closed-icon-active' : '' }}">
                             <i class="ri-calendar-todo-line"></i>
                         </a>
+                        <a href="{{ route('admin.home.create') }}"
+                            class="icons 
+                            {{ request()->routeIs('admin.home.create') ? 'closed-icon-active' : '' }}">
+                            <i class="ri-home-4-line"></i>
+                        </a>
                         <a href="{{ route('admin.section.create') }}"
                             class="icons 
                             {{ request()->routeIs('admin.section.create') ? 'closed-icon-active' : '' }}">
                             <i class="ri-draft-line"></i>
+                        </a>
+                        <a href="{{ route('admin.partner.create') }}"
+                            class="icons 
+                            {{ request()->routeIs('admin.partner.create') ? 'closed-icon-active' : '' }}">
+                            <i class="ri-team-line"></i>
                         </a>
                         <form method="POST" id="log-out-form" action="{{ route('admin.logout') }}"
                             class="admin-logout icons">
@@ -71,8 +81,14 @@
                         <a href="{{ route('admin.category.create') }}" class="link">
                             {{ __('app.admin.category') }}
                         </a>
+                        <a href="{{ route('admin.home.create') }}" class="link">
+                            {{ __('app.admin.home') }}
+                        </a>
                         <a href="{{ route('admin.section.create') }}" class="link">
                             {{ __('app.admin.sections') }}
+                        </a>
+                        <a href="{{ route('admin.partner.create') }}" class="link">
+                            {{ __('app.admin.partner') }}
                         </a>
                         <a onclick="logOut()" class="link cursor-pointer">
                             {{ __('app.profile.log-out') }}

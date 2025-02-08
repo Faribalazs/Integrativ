@@ -29,7 +29,7 @@
         </script>
     @endif
 
-    <div class="main-container w-full mt-10" style="overflow: auto">
+    <div class="w-full mt-10" style="overflow: auto">
         <div class="flex justify-end mb-10">
             <a href="{{ route('admin.category.add') }}" class="add-new-btn no-underline">
                 <i class="ri-add-line"></i>

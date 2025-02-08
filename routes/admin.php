@@ -73,4 +73,33 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
     Route::delete('/sections/delete', [AdminController::class, 'sectionDelete'])
         ->name('section.delete');
 
+    //Home page routes
+    Route::get('/home/page', [AdminController::class, 'homeCreate'])
+        ->name('home.create');
+
+    Route::get('/home/edit/{id}', [AdminController::class, 'homeEdit'])
+        ->name('home.edit');
+
+    Route::post('/home/edit/{id}', [AdminController::class, 'homeEditDone'])
+        ->name('home.edit.done');
+
+    //Partners routes
+    Route::get('/partners', [AdminController::class, 'partnerCreate'])
+        ->name('partner.create');
+
+    Route::get('/partners/create', [AdminController::class, 'partnerAddNew'])
+        ->name('partner.add');
+
+    Route::post('/partners/create/save', [AdminController::class, 'partnerAddNewDone'])
+        ->name('partner.add.done');
+
+    Route::get('/partners/edit/{id}', [AdminController::class, 'partnerEdit'])
+        ->name('partner.edit');
+
+    Route::post('/partners/edit/{id}', [AdminController::class, 'partnerEditDone'])
+        ->name('partner.edit.done');
+
+    Route::delete('/partners/delete', [AdminController::class, 'partnerDelete'])
+        ->name('partner.delete');
+
 });

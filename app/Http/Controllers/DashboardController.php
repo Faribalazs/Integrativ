@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Sections;
-use App\Models\Slider;
+use App\Models\{Sections, Slider, HomePageContent};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,8 +31,9 @@ class DashboardController extends Controller
    public function home()
    {
       $sliderData = Slider::orderBy('order', 'asc')->get();
+      $homePageContent = HomePageContent::orderBy('order', 'asc')->get();
 
-      return view('user.views.home.home',['sliderData' => $sliderData]);
+      return view('user.views.home.home',['sliderData' => $sliderData, 'homePageContent' => $homePageContent]);
    }
 
    private function isMobileDev(){

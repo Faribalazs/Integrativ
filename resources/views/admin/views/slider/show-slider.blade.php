@@ -29,7 +29,7 @@
         </script>
     @endif
 
-    <div class="main-container w-full mt-10" style="overflow: auto">
+    <div class="w-full mt-10" style="overflow: auto">
         <div class="flex justify-end mb-10">
             <a href="{{ route('admin.slider.add') }}" class="add-new-btn no-underline">
                 <i class="ri-add-line"></i>
@@ -76,7 +76,7 @@
                 title: 'Da li želite da izbrišete slider '+name+'?',
                 icon: 'question',
                 html: 
-                    '<form method="POST" id="formDelete" action="{{ route('admin.category.delete') }}">' +
+                    '<form method="POST" id="formDelete" action="{{ route('admin.slider.delete') }}">' +
                     '@csrf' +
                     '@method("delete")' +
                     '<input class="mt-3 swal-input" hidden type="text" name="id" value="'+id+'"/>' +

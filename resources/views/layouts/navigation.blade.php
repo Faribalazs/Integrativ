@@ -6,10 +6,8 @@
     $categories = Category::all();
 @endphp
 <a href="/" class="nav-icon-div">
-    <img src="{{ asset('img/integrativ-logo.png') }}" class="nav-icon">
-    <span class="nav-logo-text">
-        Integrativna dečja psihoterapija
-    </span>
+    <img src="{{ asset('img/integrativ-logo.svg') }}" class="nav-icon">
+    <img src="{{ asset('img/integrativ-logo.png') }}" class="nav-icon-mobile">
 </a>
 <nav>
     <div class="menu-btn">
@@ -109,20 +107,6 @@
         display: flex;
         align-items: center;
         gap: 10px;
-    }
-
-    .nav-logo-text {
-        font-size: 1.2rem;
-        color: var(--white);
-        font-weight: 700;
-        text-transform: uppercase;
-        @media (max-width: 700px) {
-            display: none;
-        }
-    }
-
-    .nav-icon {
-        width: 100px;
     }
 
     nav {
