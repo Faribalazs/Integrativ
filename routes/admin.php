@@ -102,4 +102,23 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
     Route::delete('/partners/delete', [AdminController::class, 'partnerDelete'])
         ->name('partner.delete');
 
+    //Conference routes
+    Route::get('/conferences', [AdminController::class, 'conferenceCreate'])
+        ->name('conference.create');
+
+    Route::get('/conference/create', [AdminController::class, 'conferenceAddNew'])
+        ->name('conference.add');
+
+    Route::post('/conference/create/save', [AdminController::class, 'conferenceAddNewDone'])
+        ->name('conference.add.done');
+
+    Route::get('/conference/edit/{id}', [AdminController::class, 'conferenceEdit'])
+        ->name('conference.edit');
+
+    Route::post('/conference/edit/{id}', [AdminController::class, 'conferenceEditDone'])
+        ->name('conference.edit.done');
+
+    Route::delete('/conference/delete', [AdminController::class, 'conferenceDelete'])
+        ->name('conference.delete');
+
 });

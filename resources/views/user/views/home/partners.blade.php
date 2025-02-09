@@ -2,34 +2,37 @@
 
 @php
     $partnerImages = $helper->getPartnerImages();
-    $images = json_decode($partnerImages->section_image, true) ?? [];
 @endphp
 
-<div class="swiper partnerSlider">
-    <div class="swiper-wrapper">
-        @foreach ($images as $image)
+<div class="swiper partnerSlider my-16">
+    <div class="swiper-wrapper partners-slider-wrapper">
+        @foreach ($partnerImages as $partner)
             <div class="swiper-slide relative">
-                <img class="slider-img" src="{{ asset('storage/' . $image) }}" />
+                @if ($partner->slug)
+                    <a target="blank" href="{{ $partner->slug }}">
+                        <img class="partner-image" src="{{ asset('storage/' . $partner->image) }}" />
+                    </a>
+                @else
+                    <img class="partner-image" src="{{ asset('storage/' . $partner->image) }}" />
+                @endif
             </div>
         @endforeach
     </div>
-    <div class="swiper-pagination"></div>
 </div>
 
 <script>
-    const swiper = new Swiper('.partnerSlider', {
+    const partnerSwiper = new Swiper('.partnerSlider', {
         loop: true,
-        slidesPerView: 5,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
+        spaceBetween:100,
+        breakpoints: {
+            300: { slidesPerView: 1 },
+            640: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+            1400: { slidesPerView: 4 },
+            1900: { slidesPerView: 5 },
         },
         autoplay: {
-            delay: 5000,
+            delay: 2000,
             disableOnInteraction: false,
         },
     });

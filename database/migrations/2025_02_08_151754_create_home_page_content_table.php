@@ -128,7 +128,59 @@ return new class extends Migration
                     'en' => 'Contact',
                     'hu' => 'Kapcsolat',
                 ]),
-                'section_content' => null,
+                'section_content' => json_encode([
+                    'sr' => '<p>
+                                <a class="contact-number" href="tel:+381643468620">+381/643468620</a>
+                            </p>
+                            <p class="mt-2">
+                                <a class="contact-number" href="tel:+381642575758">+381/642575758</a>
+                            </p>
+                            <p class="mt-10 contact-address">
+                                24300 Bačka Topola, Srbija
+                            </p>
+                            <p class="mt-2 contact-address">
+                                Košut Lajoša 57.
+                            </p>
+                            <p class="mt-10">
+                                <a href="mailto:info@integrativ.org.rs" class="contact-mail">
+                                    info@integrativ.org.rs
+                                </a>
+                            </p>',
+                    'hu' => '<p>
+                                <a class="contact-number" href="tel:+381643468620">+381/643468620</a>
+                            </p>
+                            <p class="mt-2">
+                                <a class="contact-number" href="tel:+381642575758">+381/642575758</a>
+                            </p>
+                            <p class="mt-10 contact-address">
+                                24300 Bačka Topola, Srbija
+                            </p>
+                            <p class="mt-2 contact-address">
+                                Košut Lajoša 57.
+                            </p>
+                            <p class="mt-10">
+                                <a href="mailto:info@integrativ.org.rs" class="contact-mail">
+                                    info@integrativ.org.rs
+                                </a>
+                            </p>',
+                    'en' => '<p>
+                                <a class="contact-number" href="tel:+381643468620">+381/643468620</a>
+                            </p>
+                            <p class="mt-2">
+                                <a class="contact-number" href="tel:+381642575758">+381/642575758</a>
+                            </p>
+                            <p class="mt-10 contact-address">
+                                24300 Bačka Topola, Srbija
+                            </p>
+                            <p class="mt-2 contact-address">
+                                Košut Lajoša 57.
+                            </p>
+                            <p class="mt-10">
+                                <a href="mailto:info@integrativ.org.rs" class="contact-mail">
+                                    info@integrativ.org.rs
+                                </a>
+                            </p>'
+                ]),
                 'order' => 4,
             ],
         ]);

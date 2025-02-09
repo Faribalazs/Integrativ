@@ -6,7 +6,7 @@
         {{ __('app.admin.dashboard') }}
     </x-slot>
     <div class="flex mt-10 flex-col">
-        <div class="main-container" style="overflow: auto">
+        <div style="overflow: auto">
             <br>Aktivni korisnici (poslednjih 5 minuta): {{ $active ?? 0}}<br><br>
             Danas prijavljeni radnici: {{ $workers ?? 0 }}<br>
             Radnici prijavljeni u poslednjih 30 dana: {{ $workers_last_30_days ?? 0 }}<br>

@@ -2356,6 +2356,32 @@ body {
     }
 }
 
+.partner-image {
+    width: 100%;
+    object-fit: cover;
+    max-height: 200px;
+}
+
+.conference-image {
+    width: 100%;
+    object-fit: cover;
+}
+
+.contact-number {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+.contact-address {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.contact-mail {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
 /* Home page design end */
 
 /* Admin design start */

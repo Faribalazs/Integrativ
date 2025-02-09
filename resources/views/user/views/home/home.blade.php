@@ -51,7 +51,29 @@
                 @endif
 
                 @if ($content->id == 4)
-
+                    <h2 class="text-5xl font-bold my-10">{{ $content->section_name }}</h2>
+                    <div class="flex justify-center lg:flex-row flex-col lg:gap-10 gap-5">
+                        <div class="lg:w-1/2 w-full">
+                            <input class="input-style mb-3 w-full" type="text" name="name" placeholder="Ime i prezime"/>
+                            <div class="w-full flex">
+                                <div class="w-1/2">
+                                    <input class="input-style mb-3 w-full" type="text" name="name" placeholder="Ime i prezime"/>
+                                </div>
+                                <div class="w-1/2">
+                                    <input class="input-style mb-3 w-full" type="text" name="name" placeholder="Ime i prezime"/>
+                                </div>
+                            </div>
+                            <textarea class="w-full" rows="10"></textarea>
+                            <div class="felx w-full">
+                                <button class="main-btn w-full">
+                                    Posaji poruku
+                                </button>
+                            </div>
+                        </div>
+                        <div class="lg:w-1/2 w-full">
+                            <p class="text-center">{!! $content->section_content !!}</p>
+                        </div>
+                    </div>
                 @endif
             @endforeach
         </div>

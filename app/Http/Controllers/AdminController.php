@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Admin, Tracker, Sections, Category, Worker, Slider, HomePageContent, Partners};
+use App\Models\{Admin, Tracker, Sections, Category, Worker, Slider, HomePageContent, Partners, Conferences};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
@@ -126,7 +126,7 @@ class AdminController extends Controller
 
       // Handle image upload
       if ($request->hasFile('image')) {
-          $image = Image::make($request->file('image'))->encode('webp', 90)->resize(360, 270);
+          $image = Image::make($request->file('image'))->encode('webp', 90);
           $name = uniqid() . '.webp';
           $path = 'category/temp/' . $name;
 
@@ -189,7 +189,7 @@ class AdminController extends Controller
             }
 
             // Process and save the new image
-            $image = Image::make($request->file('image'))->encode('webp', 90)->resize(360, 270);
+            $image = Image::make($request->file('image'))->encode('webp', 90);
             $name = uniqid() . '.webp';
             $path = 'category/' . $id . '/image/' . $name;
             Storage::disk('public')->put($path, $image);
@@ -254,7 +254,7 @@ class AdminController extends Controller
   
           // Handle image upload
           if ($request->hasFile('image')) {
-              $image = Image::make($request->file('image'))->encode('webp', 90)->resize(360, 270);
+              $image = Image::make($request->file('image'))->encode('webp', 90);
               $name = uniqid() . '.webp';
   
               // Store the image temporarily
@@ -325,7 +325,7 @@ class AdminController extends Controller
             }
 
             // Process and save the new image
-            $image = Image::make($request->file('image'))->encode('webp', 90)->resize(360, 270);
+            $image = Image::make($request->file('image'))->encode('webp', 90);
             $name = uniqid() . '.webp';
             $path = 'slider/' . $id . '/image/' . $name;
             Storage::disk('public')->put($path, $image);
@@ -397,7 +397,7 @@ class AdminController extends Controller
 
       // Handle image upload
       if ($request->hasFile('image')) {
-          $image = Image::make($request->file('image'))->encode('webp', 90)->resize(360, 270);
+          $image = Image::make($request->file('image'))->encode('webp', 90);
           $name = uniqid() . '.webp';
           $path = 'category/temp/' . $name;
 
@@ -500,7 +500,7 @@ class AdminController extends Controller
           if ($request->hasFile('images')) {
               foreach ($request->file('images') as $imageFile) {
                   // Process and save the new image
-                  $image = Image::make($imageFile)->encode('webp', 90)->resize(360, 270);
+                  $image = Image::make($imageFile)->encode('webp', 90);
                   $name = uniqid() . '.webp';
                   $path = 'home_page/' . $id . '/images/' . $name;
                   Storage::disk('public')->put($path, $image);
@@ -548,7 +548,7 @@ class AdminController extends Controller
 
   public function partnerAddNew()
   {
-    return view('admin.views.slider.create-slider');
+    return view('admin.views.partners.create-partner');
   }
 
   public function partnerAddNewDone(Request $request)
@@ -556,10 +556,8 @@ class AdminController extends Controller
       try {
           // Validate the incoming request
           $data = $request->validate([
-              'slider_name' => 'required|string|max:255',
-              'text' => 'required|string|max:255',
-              'vertical' => 'required|string|max:255',
-              'horizontal' => 'required|string|max:255',
+              'partner_name' => 'nullable|string|max:255',
+              'partner_slug' => 'nullable|string|max:255',
               'order' => 'nullable|integer',
               'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
           ]);
@@ -569,11 +567,11 @@ class AdminController extends Controller
   
           // Handle image upload
           if ($request->hasFile('image')) {
-              $image = Image::make($request->file('image'))->encode('webp', 90)->resize(360, 270);
+              $image = Image::make($request->file('image'))->encode('webp', 90);
               $name = uniqid() . '.webp';
   
               // Store the image temporarily
-              $tempPath = 'slider/temp/' . $name;
+              $tempPath = 'partner/temp/' . $name;
               Storage::disk('public')->put($tempPath, (string) $image->stream());
   
               // Set path (will be updated after slider creation)
@@ -581,26 +579,24 @@ class AdminController extends Controller
           }
   
           // Create the slider
-          $slider = Slider::create([
-              'slider_name' => $data['slider_name'],
-              'slider_text' => $data['text'],
-              'vertical' => $data['vertical'],
-              'horizontal' => $data['horizontal'],
+          $partner = Partners::create([
+              'name' => $data['partner_name'],
+              'slug' => $data['partner_slug'],
               'order' => $data['order'],
               'image' => $path, // Temporary path
           ]);
   
           // Move the image to final path after slider is created
           if ($path) {
-              $newPath = 'slider/' . $slider->id . '/image/' . $name;
+              $newPath = 'partner/' . $partner->id . '/image/' . $name;
               Storage::disk('public')->move($path, $newPath);
-              $slider->update(['image' => $newPath]);
+              $partner->update(['image' => $newPath]);
           }
   
           // Success message
           return redirect()
-              ->route('admin.slider.create')
-              ->with('success', 'Slider created successfully!');
+              ->route('admin.partner.create')
+              ->with('success', 'Partner created successfully!');
       } catch (\Illuminate\Validation\ValidationException $e) {
           return back()->withErrors($e->validator)->withInput();
       } catch (\Exception $e) {
@@ -610,29 +606,27 @@ class AdminController extends Controller
   
   public function partnerEdit($id)
   {
-    $slider = Slider::where('id', $id)->first();
+    $partner = Partners::where('id', $id)->first();
 
-    return view('admin.views.slider.edit-slider', ['slider' => $slider]);
+    return view('admin.views.partners.edit-partner', ['partner' => $partner]);
   }
 
   public function partnerEditDone($id, Request $request)
   {
     try {
 
-        $slider = Slider::findOrFail($id);
+        $partner = Partners::findOrFail($id);
         
         // Validate the incoming request
         $data = $request->validate([
-            'slider_name' => 'required|string|max:255',
-            'text' => 'required|string|max:255',
-            'vertical' => 'required|string|max:255',
-            'horizontal' => 'required|string|max:255',
-            'order' => 'nullable|integer',
-            'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
+          'partner_name' => 'nullable|string|max:255',
+          'partner_slug' => 'nullable|string|max:255',
+          'order' => 'nullable|integer',
+          'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         // Handle image upload
-        $path = $slider->image; // Keep existing image path
+        $path = $partner->image; // Keep existing image path
         if ($request->hasFile('image')) {
             // Remove previously added image if it exists
             if ($path && Storage::disk('public')->exists($path)) {
@@ -640,30 +634,28 @@ class AdminController extends Controller
             }
 
             // Process and save the new image
-            $image = Image::make($request->file('image'))->encode('webp', 90)->resize(360, 270);
+            $image = Image::make($request->file('image'))->encode('webp', 90);
             $name = uniqid() . '.webp';
-            $path = 'slider/' . $id . '/image/' . $name;
+            $path = 'partner/' . $id . '/image/' . $name;
             Storage::disk('public')->put($path, $image);
         }
 
         $finalData = [
-            'slider_name' => $data['slider_name'],
-            'slider_text' => $data['text'],
-            'vertical' => $data['vertical'],
-            'horizontal' => $data['horizontal'],
+            'name' => $data['partner_name'],
+            'slug' => $data['partner_slug'],
             'order' => $data['order'],
             'image' => $path ?? null,
         ];
 
         // Update the category
-        $slider->update($finalData);
+        $partner->update($finalData);
 
-        $slider->save();
+        $partner->save();
 
         // Success message
         return redirect()
-            ->route('admin.slider.create')
-            ->with('success', 'Slider updated successfully!');
+            ->route('admin.partner.create')
+            ->with('success', 'Partner updated successfully!');
     } catch (\Illuminate\Validation\ValidationException $e) {
         // Handle validation errors
         alert()->error($e->validator)->showCloseButton()->showConfirmButton(__('app.basic.close'));
@@ -676,7 +668,145 @@ class AdminController extends Controller
   }
 
   public function partnerDelete(Request $request){
-    Slider::where('id', $request->input('id'))->delete();
+    Partners::where('id', $request->input('id'))->delete();
+    return redirect()->back();
+  }
+
+  public function conferenceCreate()
+  {
+    $conferences = Conferences::paginate(15);
+
+    return view('admin.views.conferences.show-conference', ['conferences' => $conferences]);
+  }
+
+  public function conferenceAddNew()
+  {
+    return view('admin.views.conferences.create-conference');
+  }
+
+  public function conferenceAddNewDone(Request $request)
+  {
+      try {
+          // Validate the incoming request
+          $data = $request->validate([
+              'conference_name' => 'nullable|string|max:255',
+              'content' => 'nullable',
+              'order' => 'nullable|integer',
+              'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
+          ]);
+  
+          // Default path for image
+          $path = null;
+  
+          // Handle image upload
+          if ($request->hasFile('image')) {
+              $image = Image::make($request->file('image'))->encode('webp', 90);
+              $name = uniqid() . '.webp';
+  
+              // Store the image temporarily
+              $tempPath = 'conference/temp/' . $name;
+              Storage::disk('public')->put($tempPath, (string) $image->stream());
+  
+              // Set path (will be updated after slider creation)
+              $path = $tempPath;
+          }
+  
+          // Create the slider
+          $conference = Conferences::create([
+              'name' => $data['conference_name'],
+              'content' => $data['content'],
+              'order' => $data['order'],
+              'image' => $path, // Temporary path
+          ]);
+  
+          // Move the image to final path after slider is created
+          if ($path) {
+              $newPath = 'conference/' . $conference->id . '/image/' . $name;
+              Storage::disk('public')->move($path, $newPath);
+              $conference->update(['image' => $newPath]);
+          }
+  
+          // Success message
+          return redirect()
+              ->route('admin.conference.create')
+              ->with('success', 'Konferencija created successfully!');
+      } catch (\Illuminate\Validation\ValidationException $e) {
+          return back()->withErrors($e->validator)->withInput();
+      } catch (\Exception $e) {
+          return back()->with('error', $e->getMessage());
+      }
+  }
+  
+  public function conferenceEdit($id)
+  {
+    $conference = Conferences::where('id', $id)->first();
+
+    return view('admin.views.conferences.edit-conference', ['conference' => $conference]);
+  }
+
+  public function conferenceEditDone($id, Request $request)
+  {
+    try {
+
+        $conference = Conferences::findOrFail($id);
+        
+        // Validate the incoming request
+        $data = $request->validate([
+            'conference_name' => 'nullable|string|max:255',
+            'content' => 'nullable',
+            'order' => 'nullable|integer',
+            'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        // Handle image upload
+        $path = null;
+
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            $image = Image::make($request->file('image'))->encode('webp', 90);
+            $name = uniqid() . '.webp';
+            $path = 'conference/temp/' . $name;
+
+            // Store the image temporarily
+            Storage::disk('public')->put($path, (string) $image->stream());
+        }
+
+        $finalData = [
+            'name' => $data['conference_name'],
+            'content' => $data['content'],
+            'order' => $data['order'],
+            'image' => $path ?? null,
+        ];
+
+        // Update the category
+        $conference->update($finalData);
+
+        $conference->save();
+
+        // Move the image to the final path after category creation
+        if ($path) {
+            $newPath = 'conference/' . $conference->id . '/image/' . $name;
+            Storage::disk('public')->move($path, $newPath);
+            $conference->update(['image' => $newPath]);
+        }
+
+        // Success message
+        return redirect()
+            ->route('admin.conference.create')
+            ->with('success', 'Konferencija updated successfully!');
+    } catch (\Illuminate\Validation\ValidationException $e) {
+        // Handle validation errors
+        alert()->error($e->validator)->showCloseButton()->showConfirmButton(__('app.basic.close'));
+        return back()->withErrors($e->validator)->withInput();
+    } catch (\Exception $e) {
+        // Generic error handling
+        alert()->error($e)->showCloseButton()->showConfirmButton(__('app.basic.close'));
+    }
+
+  }
+
+  public function conferenceDelete(Request $request){
+    Partners::where('id', $request->input('id'))->delete();
     return redirect()->back();
   }
 

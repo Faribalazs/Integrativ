@@ -1,10 +1,10 @@
 <x-admin-app-layout>
     <x-slot name="pageTitle">
-        Partner
+        Nova konferencija
     </x-slot>
 
     <x-slot name="header">
-        Partner
+        Nova konferencija
     </x-slot>
 
     @php
@@ -32,27 +32,24 @@
     @endif
 
     <div class="main-container-admin w-full mt-10" style="overflow: auto">
-        <form method="POST" class="w-full" enctype="multipart/form-data" action="{{ route('admin.partner.add.done') }}">
+        <form method="POST" class="w-full" enctype="multipart/form-data" action="{{ route('admin.conference.add.done') }}">
 
             @csrf
 
-            <!-- Partner Name -->
+            <!-- Conference Name -->
             <div class="flex flex-col">
-                <label for="partner_name" class="sm:text-xl text-base my-3">Ime Partnera ({{ $lang }}) :</label>
-                <input class="input-style {{ $errors->has('partner_name') ? 'border-error mb-1' : 'mb-3' }}"
-                    name="partner_name" type="text" id="partner_name">
-                <p class="{{ $errors->has('partner_name') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
-                    {{ $errors->first('partner_name') }}</p>
+                <label for="conference_name" class="sm:text-xl text-base my-3">Ime Konferencije ({{ $lang }}) :</label>
+                <input class="input-style {{ $errors->has('conference_name') ? 'border-error mb-1' : 'mb-3' }}"
+                    name="conference_name" type="text" id="conference_name">
+                <p class="{{ $errors->has('conference_name') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
+                    {{ $errors->first('conference_name') }}</p>
             </div>
 
-            <!-- Partner Slug -->
-            <div class="flex flex-col">
-                <label for="partner_slug" class="sm:text-xl text-base my-3">Link Partnera ({{ $lang }})
-                    :</label>
-                <input class="input-style {{ $errors->has('partner_slug') ? 'border-error mb-1' : 'mb-3' }}"
-                    name="partner_slug" type="text" id="partner_slug">
-                <p class="{{ $errors->has('partner_slug') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
-                    {{ $errors->first('partner_slug') }}</p>
+            <!-- Conference content -->
+            <div class="mt-5">
+                <label for="content" class="sm:text-xl text-base my-3">{{ __('app.admin.content') }} ({{ $lang }}) :</label>
+                <textarea id="content" name="content">
+                </textarea>
             </div>
 
             <!-- Order -->
@@ -108,6 +105,14 @@
             image.src = URL.createObjectURL(curFiles[0]);
             image.style.opacity = 1;
         }
+
+        tinymce.init({
+            selector: 'textarea#content',
+            height: 500,
+            plugins: 'advlist anchor autolink autosave charmap code codesample directionality emoticons fullscreen help hr image insertdatetime link lists media nonbreaking pagebreak preview print quickbars save searchreplace table template visualblocks visualchars wordcount',
+            toolbar: 'undo redo | fontselect fontsizeselect formatselect | bold italic underline strikethrough forecolor backcolor removeformat | alignleft aligncenter alignright alignjustify | outdent indent | bullist numlist | preview | code |',
+            menubar: 'file edit view format tools',
+        });
     </script>
 
     <style>

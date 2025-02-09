@@ -2,7 +2,7 @@
 
 namespace App\Helpers;
 
-use App\Models\{Admin, Tracker, Sections, Category, Worker, Slider, HomePageContent, Partners};
+use App\Models\{Admin, Tracker, Sections, Category, Worker, Slider, HomePageContent, Partners, Conferences};
 
 class Helper
 {
@@ -17,5 +17,10 @@ class Helper
     public function getPartnerImages() {
         $partners = Partners::all();
         return $partners;
+    }
+
+    public function getConferences() {
+        $conferences = Conferences::all();
+        return $conferences;
     }
 }

@@ -65,6 +65,11 @@
                             {{ request()->routeIs('admin.partner.create') ? 'closed-icon-active' : '' }}">
                             <i class="ri-team-line"></i>
                         </a>
+                        <a href="{{ route('admin.conference.create') }}"
+                            class="icons 
+                            {{ request()->routeIs('admin.conference.create') ? 'closed-icon-active' : '' }}">
+                            <i class="ri-bank-line"></i>
+                        </a>
                         <form method="POST" id="log-out-form" action="{{ route('admin.logout') }}"
                             class="admin-logout icons">
                             @csrf
@@ -89,6 +94,9 @@
                         </a>
                         <a href="{{ route('admin.partner.create') }}" class="link">
                             {{ __('app.admin.partner') }}
+                        </a>
+                        <a href="{{ route('admin.conference.create') }}" class="link">
+                            {{ __('app.admin.conference') }}
                         </a>
                         <a onclick="logOut()" class="link cursor-pointer">
                             {{ __('app.profile.log-out') }}

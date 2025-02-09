@@ -5,7 +5,7 @@
     <x-slot name="header">
         {{ __('app.admin.sections') }} - {{ strip_tags($section[0]->title) }}
     </x-slot>
-    <div class="main-container w-full mt-10" style="overflow: auto">
+    <div class="w-full mt-10" style="overflow: auto">
         <form method="POST" class="w-full" action="{{ route('admin.section.edit.done', ['id' => request()->id]) }}">
             @csrf
 

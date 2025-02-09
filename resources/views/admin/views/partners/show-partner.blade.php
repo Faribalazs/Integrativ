@@ -31,7 +31,7 @@
 
     <div class="w-full mt-10" style="overflow: auto">
         <div class="flex justify-end mb-10">
-            <a href="{{ route('admin.slider.add') }}" class="add-new-btn no-underline">
+            <a href="{{ route('admin.partner.add') }}" class="add-new-btn no-underline">
                 <i class="ri-add-line"></i>
                 Dodaj novi partner
             </a>
@@ -48,12 +48,12 @@
             </thead>
             <tbody>
             @foreach ($partners as $partner)
-                <tr>
+                <tr>1
                     <td>{{$partner->id}}</td>
                     <td>{{$partner->name}}</td>
                     <td>{{$partner->order}}</td>
                     <td>
-                        <a href="{{ route('admin.home.edit', $partner->id) }}" class="modositas-btn mr-1">
+                        <a href="{{ route('admin.partner.edit', $partner->id) }}" class="modositas-btn mr-1">
                             <i class="ri-edit-2-line"></i>
                         </a>
                     </td>
