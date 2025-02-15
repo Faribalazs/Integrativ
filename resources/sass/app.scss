@@ -2341,6 +2341,16 @@ body {
     object-fit: cover;
 }
 
+.title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    @media (max-width: 650px) {
+        font-size: 2.5rem !important;
+        font-weight: 600 !important;
+    }
+}
+
 .nav-icon {
     width: 400px;
     @media (max-width: 650px) {
@@ -2370,16 +2380,28 @@ body {
 .contact-number {
     font-size: 2.5rem;
     font-weight: 600;
+    @media (max-width: 650px) {
+        font-size: 2rem;
+        font-weight: 500;
+    }
 }
 
 .contact-address {
     font-size: 1.5rem;
     font-weight: 500;
+    @media (max-width: 650px) {
+        font-size: 1.2rem;
+        font-weight: 400;
+    }
 }
 
 .contact-mail {
     font-size: 1.5rem;
     font-weight: 500;
+    @media (max-width: 650px) {
+        font-size: 1.2rem;
+        font-weight: 400;
+    }
 }
 
 /* Home page design end */

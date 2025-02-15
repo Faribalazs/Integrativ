@@ -23,6 +23,8 @@ Route::middleware(['guest'])->group(function () {
 
 Route::get('/', [DashboardController::class, 'home'])->name('home');
 
+Route::post('/save/contact', [DashboardController::class, 'saveContact'])->name('save.contact.info');
+
 Route::get('/about-us', [DashboardController::class, 'aboutUs'])->name('about.us');
 
 //auth route for both 

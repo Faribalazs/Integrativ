@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Sections, Slider, HomePageContent};
+use App\Models\{Sections, Slider, HomePageContent, Contact};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -44,5 +44,34 @@ class DashboardController extends Controller
          };
       };
       return false;
+  }
+
+  public function saveContact(Request $request) {
+   try {
+      // Validate the incoming request
+      $data = $request->validate([
+         'name' => 'nullable|string',
+         'email' => 'email|required',
+         'phone' => 'nullable',
+         'message' => 'required',
+     ]);
+
+      // Create the contact
+      $contact = Contact::create([
+         'name' => $data['name'],
+         'email' => $data['email'],
+         'phone' => $data['phone'],
+         'message' => $data['message'],
+      ]);
+
+      return redirect()
+          ->route('home')
+          ->with('success', 'Poruka je poslata!');
+      } catch (\Illuminate\Validation\ValidationException $e) {
+          return back()->withErrors($e->validator)->withInput();
+      } catch (\Exception $e) {
+          return back()->with('error', $e->getMessage());
+    }
+
   }
 }

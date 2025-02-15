@@ -121,4 +121,14 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
     Route::delete('/conference/delete', [AdminController::class, 'conferenceDelete'])
         ->name('conference.delete');
 
+    //Contact routes
+    Route::get('/contacts', [AdminController::class, 'contactCreate'])
+        ->name('contact.create');
+
+    Route::get('/contact/show/{id}', [AdminController::class, 'contactShow'])
+        ->name('contact.show');
+
+    Route::delete('/contact/delete', [AdminController::class, 'contactDelete'])
+        ->name('contact.delete');
+
 });

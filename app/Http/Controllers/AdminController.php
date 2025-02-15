@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Admin, Tracker, Sections, Category, Worker, Slider, HomePageContent, Partners, Conferences};
+use App\Models\{Admin, Tracker, Sections, Category, Worker, Slider, HomePageContent, Partners, Conferences, Contact};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
@@ -808,6 +808,27 @@ class AdminController extends Controller
   public function conferenceDelete(Request $request){
     Partners::where('id', $request->input('id'))->delete();
     return redirect()->back();
+  }
+
+  public function contactCreate()
+  {
+    $contacts = Contact::paginate(15);
+
+    return view('admin.views.contacts.show-contacts', ['contacts' => $contacts]);
+  }
+
+  public function contactShow($id)
+  {
+    $contact = Contact::findOrFail($id);
+
+    return view('admin.views.contacts.view-contact', ['contact' => $contact]);
+  }
+
+  public function contactDelete(Request $request){
+
+    Contact::where('id', $request->input('id'))->delete();
+
+    return redirect()->back()->with('success', 'Kontakt je izbrisen!');;
   }
 
 }

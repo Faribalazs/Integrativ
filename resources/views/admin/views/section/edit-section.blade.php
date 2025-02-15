@@ -96,12 +96,13 @@
         tinymce.init({
             selector: 'textarea#content',
             height: 500,
-            plugins: 'advlist anchor autolink autosave charmap code codesample directionality emoticons fullscreen help hr image insertdatetime link lists media nonbreaking pagebreak preview print quickbars save searchreplace table template visualblocks visualchars wordcount',
-            toolbar: 'undo redo | fontselect fontsizeselect formatselect | bold italic underline strikethrough forecolor backcolor removeformat | alignleft aligncenter alignright alignjustify | outdent indent | bullist numlist | link image media table codesample | hr pagebreak blockquote | subscript superscript charmap emoticons | fullscreen preview print | visualblocks visualchars | insertdatetime searchreplace | help',
-            menubar: 'file edit view insert format tools table',
-            branding: false,
-            quickbars_insert_toolbar: 'quickimage quicktable',
-            quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote',
+            width: "100%",
+            plugins: 'wordcount save fullscreen code table lists link hr',
+            toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor alignleft aligncenter alignright alignjustify | link hr | numlist bullist outdent indent  | removeformat | code',
+            image_advtab: false,
+            valid_elements: '*[*]',
+            extended_valid_elements: 'span[*],div[*],i[*],svg[*],path[*],button[*]',
+            forced_root_block: false,
         });
       </script>
 </x-admin-app-layout>

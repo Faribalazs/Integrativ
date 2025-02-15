@@ -1,9 +1,9 @@
 <x-admin-app-layout>
     <x-slot name="pageTitle">
-        Partner
+        Contacts
     </x-slot>
     <x-slot name="header">
-        Partner
+        Contacts
     </x-slot>
     @php
         $locale = app()->getLocale();
@@ -30,53 +30,48 @@
     @endif
 
     <div class="w-full mt-10" style="overflow: auto">
-        <div class="flex justify-end mb-10">
-            <a href="{{ route('admin.partner.add') }}" class="add-new-btn no-underline">
-                <i class="ri-add-line"></i>
-                Dodaj novi partner
-            </a>
-        </div>
         <table class="table text-center">
             <thead>
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Naziv sekcije</th>
-                <th scope="col">Pozicija</th>
-                <th scope="col">Izmeni</th>
+                <th scope="col">Ime i prezime</th>
+                <th scope="col">Email</th>
+                <th scope="col">Pogledaj</th>
                 <th scope="col">Izbrisi</th>
             </tr>
             </thead>
             <tbody>
-            @foreach ($partners as $partner)
-                <tr>1
-                    <td>{{$partner->id}}</td>
-                    <td>{{$partner->name}}</td>
-                    <td>{{$partner->order}}</td>
-                    <td>
-                        <a href="{{ route('admin.partner.edit', $partner->id) }}" class="modositas-btn mr-1">
-                            <i class="ri-edit-2-line"></i>
-                        </a>
-                    </td>
-                    <td onclick="deleteSwall('{{ $partner->id }}', '{{ $partner->name }}')">
-                        <button class="torles-btn ml-1">
-                            <i class="ri-delete-bin-line text-xl"></i>
-                        </button>
-                    </td>
-                </tr>
-            @endforeach
+                @foreach ($contacts as $contact)
+                    <tr>
+                        <td>{{$contact->id}}</td>
+                        <td>{{$contact->name}}</td>
+                        <td>{{$contact->email}}</td>
+                        <td>
+                            <a href="{{ route('admin.contact.show', $contact->id) }}" class="modositas-btn mr-1 no-underline text-black">
+                                <i class="ri-eye-line text-xl"></i>
+                            </a>
+                        </td>
+                        <td onclick="deleteSwall('{{ $contact->id }}', '{{ $contact->name }}')">
+                            <button class="torles-btn ml-1">
+                                <i class="ri-delete-bin-line text-xl text-xl"></i>
+                            </button>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
         <div class="d-flex justify-content-center">
-            {{ $partners->links('pagination::bootstrap-5') }}
+            {{ $contacts->links('pagination::bootstrap-5') }}
         </div>
     </div>
+
     <script>
         function deleteSwall(id, name) {
             Swal.fire({
                 title: 'Da li želite da izbrišete slider '+name+'?',
                 icon: 'question',
                 html: 
-                    '<form method="POST" id="formDelete" action="{{ route('admin.partner.delete') }}">' +
+                    '<form method="POST" id="formDelete" action="{{ route('admin.contact.delete') }}">' +
                     '@csrf' +
                     '@method("delete")' +
                     '<input class="mt-3 swal-input" hidden type="text" name="id" value="'+id+'"/>' +

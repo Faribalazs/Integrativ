@@ -57,7 +57,7 @@
                     </td>
                     <td onclick="deleteSwall('{{ $category->id }}', '{{ $category->category_name }}')">
                         <button class="torles-btn ml-1">
-                            <i class="ri-delete-bin-line"></i>
+                            <i class="ri-delete-bin-line text-xl"></i>
                         </button>
                     </td>
                 </tr>

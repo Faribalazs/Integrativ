@@ -45,40 +45,42 @@
                     {{ $errors->first('order') }}</p>
             </div>
 
-            <!-- Category Image -->
-            <div class="mt-3 flex flex-col">
-                <label for="image" class="sm:text-xl text-base mb-2 mt-3">
-                    {{ __('app.admin.category.category-image') }}:
-                </label>
-            
-                <!-- Preview container for multiple images -->
-                <div id="preview-container" class="flex flex-wrap gap-2">
-                    @php
-                        $images = json_decode($home_page->section_image, true) ?? [];
-                    @endphp
-            
-                    @if (!empty($images))
-                        @foreach ($images as $image)
-                            <img src="{{ asset('storage/' . $image) }}" class="mt-2 w-40 h-40 object-cover rounded-md">
-                        @endforeach
-                    @else
-                        <img src="{{ asset('img/placeholder_image.jpg') }}" class="mt-2 w-40 h-40 object-cover rounded-md">
-                    @endif
-                </div>
-            
-                <div class="flex flex-col sm:flex-row mt-4">
-                    <label for="file-upload" class="image-upload-btn px-4 py-3 cursor-pointer text-center">
-                        {{ __('app.profile.choose-image') }}
+            @if (request()->id == 1)
+                <!-- Category Image -->
+                <div class="mt-3 flex flex-col">
+                    <label for="image" class="sm:text-xl text-base mb-2 mt-3">
+                        {{ __('app.admin.category.category-image') }}:
                     </label>
-                    <input id="file-upload" name="images[]" type="file" multiple style="display:none;">
-                    <input id="uploadFile" class="text-center sm:text-left sm:pl-3 pl-0 sm:mt-0 mt-2 max-w-full"
-                        placeholder="{{ __('app.profile.no-img-selected') }}" disabled="disabled" />
+                
+                    <!-- Preview container for multiple images -->
+                    <div id="preview-container" class="flex flex-wrap gap-2">
+                        @php
+                            $images = json_decode($home_page->section_image, true) ?? [];
+                        @endphp
+                
+                        @if (!empty($images))
+                            @foreach ($images as $image)
+                                <img src="{{ asset('storage/' . $image) }}" class="mt-2 w-40 h-40 object-cover rounded-md">
+                            @endforeach
+                        @else
+                            <img src="{{ asset('img/placeholder_image.jpg') }}" class="mt-2 w-40 h-40 object-cover rounded-md">
+                        @endif
+                    </div>
+                
+                    <div class="flex flex-col sm:flex-row mt-4">
+                        <label for="file-upload" class="image-upload-btn px-4 py-3 cursor-pointer text-center">
+                            {{ __('app.profile.choose-image') }}
+                        </label>
+                        <input id="file-upload" name="images[]" type="file" multiple style="display:none;">
+                        <input id="uploadFile" class="text-center sm:text-left sm:pl-3 pl-0 sm:mt-0 mt-2 max-w-full"
+                            placeholder="{{ __('app.profile.no-img-selected') }}" disabled="disabled" />
+                    </div>
+                
+                    <p class="{{ $errors->has('image') ? 'flex text-red mt-2 pl-1' : 'hidden' }}">
+                        {{ $errors->first('image') }}
+                    </p>
                 </div>
-            
-                <p class="{{ $errors->has('image') ? 'flex text-red mt-2 pl-1' : 'hidden' }}">
-                    {{ $errors->first('image') }}
-                </p>
-            </div>
+            @endif
             
 
             <div class="flex w-full justify-center mt-5 mb-20">
@@ -89,40 +91,44 @@
 
         </form>
     </div>
-    <script>
-        document.getElementById("file-upload").onchange = function() {
-            const input = document.getElementById("file-upload");
-            const previewContainer = document.getElementById("preview-container");
-            previewContainer.innerHTML = ""; // Clear previous previews
 
-            if (input.files.length > 0) {
-                document.getElementById("uploadFile").value = Array.from(input.files)
-                    .map(file => file.name)
-                    .join(", ");
+    @if (request()->id == 1)
+        <script>
+            document.getElementById("file-upload").onchange = function() {
+                const input = document.getElementById("file-upload");
+                const previewContainer = document.getElementById("preview-container");
+                previewContainer.innerHTML = ""; // Clear previous previews
 
-                for (const file of input.files) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        const img = document.createElement("img");
-                        img.src = e.target.result;
-                        img.classList.add("w-40", "h-40", "object-cover", "rounded-md", "mt-2");
-                        previewContainer.appendChild(img);
-                    };
-                    reader.readAsDataURL(file);
+                if (input.files.length > 0) {
+                    document.getElementById("uploadFile").value = Array.from(input.files)
+                        .map(file => file.name)
+                        .join(", ");
+
+                    for (const file of input.files) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            const img = document.createElement("img");
+                            img.src = e.target.result;
+                            img.classList.add("w-40", "h-40", "object-cover", "rounded-md", "mt-2");
+                            previewContainer.appendChild(img);
+                        };
+                        reader.readAsDataURL(file);
+                    }
                 }
-            }
-        };
+            };
+        </script>
+    @endif
 
+    <script>
         tinymce.init({
             selector: 'textarea#section_content',
             height: 500,
-            plugins: 'advlist anchor autolink autosave charmap code codesample directionality emoticons fullscreen help hr image insertdatetime link lists media nonbreaking pagebreak preview print quickbars save searchreplace table template visualblocks visualchars wordcount',
-            toolbar: 'undo redo | fontselect fontsizeselect formatselect | bold italic underline strikethrough forecolor backcolor removeformat | alignleft aligncenter alignright alignjustify | outdent indent | bullist numlist | preview | code |',
-            menubar: 'file edit view insert format tools table',
-            branding: false,
-            quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote',
+            width: "100%",
+            plugins: 'wordcount save fullscreen code table lists link hr',
+            toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor alignleft aligncenter alignright alignjustify | link hr | numlist bullist outdent indent  | removeformat | code',
+            image_advtab: false,
             valid_elements: '*[*]',
-            extended_valid_elements: '*[*]',
+            extended_valid_elements: 'span[*],div[*],i[*],svg[*],path[*],button[*]',
             forced_root_block: false,
         });
     </script>

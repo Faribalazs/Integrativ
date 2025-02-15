@@ -6,6 +6,27 @@
     </x-slot>
 
     <x-slot name="homePage">
+
+        @if (session('success'))
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: '{{ session('success') }}',
+                });
+            </script>
+        @endif
+
+        @if (session('error'))
+            <script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: '{{ session('error') }}',
+                });
+            </script>
+        @endif
+
         <div class="swiper homePageSwiper">
             <div class="swiper-wrapper">
                 @foreach ($sliderData as $sliderItem)
@@ -36,7 +57,7 @@
                 @if ($content->id == 1)
                     <div class="flex justify-center lg:flex-row flex-col lg:gap-10 gap-5">
                         <div class="lg:w-1/2 w-full">
-                            <h2 class="text-5xl font-bold mb-10">{{ $content->section_name }}</h2>
+                            <h2 class="title">{{ $content->section_name }}</h2>
                             <p class="text-center">{!! $content->section_content !!}</p>
                         </div>
                         <div class="lg:w-1/2 w-full">
@@ -44,36 +65,45 @@
                                 $images = json_decode($content->section_image, true) ?? [];
                             @endphp
                             @if (!empty($images))
-                                <img src="{{ asset('storage/' . $images[0]) }}" alt="{{ $content->section_name }}" class="w-full object-cover h-full" />
+                                <img src="{{ asset('storage/' . $images[0]) }}" alt="{{ $content->section_name }}"
+                                    class="w-full object-cover h-full" />
                             @endif
                         </div>
                     </div>
                 @endif
 
                 @if ($content->id == 4)
-                    <h2 class="text-5xl font-bold my-10">{{ $content->section_name }}</h2>
-                    <div class="flex justify-center lg:flex-row flex-col lg:gap-10 gap-5">
+                    <h2 class="title mt-10">{{ $content->section_name }}</h2>
+
+                    <form method="POST" class="flex justify-center lg:flex-row flex-col lg:gap-10 gap-10 2xl:m-20"
+                        enctype="multipart/form-data" action="{{ route('save.contact.info') }}">
+
+                        @csrf
+
                         <div class="lg:w-1/2 w-full">
-                            <input class="input-style mb-3 w-full" type="text" name="name" placeholder="Ime i prezime"/>
-                            <div class="w-full flex">
-                                <div class="w-1/2">
-                                    <input class="input-style mb-3 w-full" type="text" name="name" placeholder="Ime i prezime"/>
+                            <input class="input-style mb-5 w-full" type="text" name="name"
+                                placeholder="Ime i prezime" />
+                            <div class="w-full flex sm:flex-row flex-col sm:gap-5">
+                                <div class="sm:w-1/2 w-full">
+                                    <input class="input-style mb-5 w-full" type="text" name="email"
+                                        placeholder="Email" />
                                 </div>
-                                <div class="w-1/2">
-                                    <input class="input-style mb-3 w-full" type="text" name="name" placeholder="Ime i prezime"/>
+                                <div class="sm:w-1/2 w-full">
+                                    <input class="input-style mb-5 w-full" type="text" name="phone"
+                                        placeholder="Telefon" />
                                 </div>
                             </div>
-                            <textarea class="w-full" rows="10"></textarea>
-                            <div class="felx w-full">
+                            <textarea class="w-full input-style" rows="6" placeholder="Poruka" name="message"></textarea>
+                            <div class="felx w-full mt-5">
                                 <button class="main-btn w-full">
                                     Posaji poruku
                                 </button>
                             </div>
                         </div>
-                        <div class="lg:w-1/2 w-full">
+                        <div class="lg:w-1/2 w-full flex flex-col justify-center lg:items-start items-center lg:ml-10">
                             <p class="text-center">{!! $content->section_content !!}</p>
                         </div>
-                    </div>
+                    </form>
                 @endif
             @endforeach
         </div>

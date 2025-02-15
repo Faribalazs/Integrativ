@@ -109,9 +109,13 @@
         tinymce.init({
             selector: 'textarea#content',
             height: 500,
-            plugins: 'advlist anchor autolink autosave charmap code codesample directionality emoticons fullscreen help hr image insertdatetime link lists media nonbreaking pagebreak preview print quickbars save searchreplace table template visualblocks visualchars wordcount',
-            toolbar: 'undo redo | fontselect fontsizeselect formatselect | bold italic underline strikethrough forecolor backcolor removeformat | alignleft aligncenter alignright alignjustify | outdent indent | bullist numlist | preview | code |',
-            menubar: 'file edit view format tools',
+            width: "100%",
+            plugins: 'wordcount save fullscreen code table lists link hr',
+            toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor alignleft aligncenter alignright alignjustify | link hr | numlist bullist outdent indent  | removeformat | code',
+            image_advtab: false,
+            valid_elements: '*[*]',
+            extended_valid_elements: 'span[*],div[*],i[*],svg[*],path[*],button[*]',
+            forced_root_block: false,
         });
     </script>
 

@@ -31,11 +31,11 @@
 
         @if (isset($homePage) && $homePage != '')
             {{ $homePage }}
+        @else
+            <main class="page-padding px-4 py-3 sm:px-6 lg:px-12">
+                {{ $slot }}
+            </main>
         @endif
-
-        <main class="page-padding px-4 py-3 sm:px-6 lg:px-12">
-            {{ $slot }}
-        </main>
 
         <script>
             window.addEventListener("pageshow", function(event) {
@@ -48,7 +48,7 @@
                 }
             });
 
-            @if(session('buy_premium'))
+            @if (session('buy_premium'))
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
@@ -66,4 +66,5 @@
         {{ $import }}
     @endif
 </body>
+
 </html>
