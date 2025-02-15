@@ -75,6 +75,11 @@
                             {{ request()->routeIs('admin.contact.create') ? 'closed-icon-active' : '' }}">
                             <i class="ri-phone-line"></i>
                         </a>
+                        <a href="{{ route('admin.page.create') }}"
+                            class="icons 
+                            {{ request()->routeIs('admin.page.create') ? 'closed-icon-active' : '' }}">
+                            <i class="ri-pages-line"></i>
+                        </a>
                         <form method="POST" id="log-out-form" action="{{ route('admin.logout') }}"
                             class="admin-logout icons">
                             @csrf
@@ -105,6 +110,9 @@
                         </a>
                         <a href="{{ route('admin.contact.create') }}" class="link">
                             {{ __('app.admin.contact') }}
+                        </a>
+                        <a href="{{ route('admin.page.create') }}" class="link">
+                            {{ __('app.admin.page') }}
                         </a>
                         <a onclick="logOut()" class="link cursor-pointer">
                             {{ __('app.profile.log-out') }}

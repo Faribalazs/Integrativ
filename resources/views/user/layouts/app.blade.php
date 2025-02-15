@@ -14,6 +14,8 @@
 
 </head>
 
+@inject ('helper', '\App\Helpers\Helper')
+
 <body class="font-sans antialiased">
     <div class="content-height" id="app">
         @include('layouts.navigation')
@@ -32,7 +34,7 @@
         @if (isset($homePage) && $homePage != '')
             {{ $homePage }}
         @else
-            <main class="page-padding px-4 py-3 sm:px-6 lg:px-12">
+            <main>
                 {{ $slot }}
             </main>
         @endif
@@ -57,6 +59,15 @@
             @endif
         </script>
     </div>
+
+    @php
+        $footerContent = $helper->getTheFooter();
+        $footer = preg_replace('/<\/?p>/i', '', $footerContent->section_content);
+    @endphp
+
+    {!! $footer !!}
+
+
     {{-- @include('user.layouts.footer') --}}
     @include('sweetalert::alert')
     @php

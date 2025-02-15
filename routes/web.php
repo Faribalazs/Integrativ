@@ -25,17 +25,10 @@ Route::get('/', [DashboardController::class, 'home'])->name('home');
 
 Route::post('/save/contact', [DashboardController::class, 'saveContact'])->name('save.contact.info');
 
+// Pages routes
 Route::get('/about-us', [DashboardController::class, 'aboutUs'])->name('about.us');
 
-//auth route for both 
-Route::group(['middleware' => ['auth']], function() { 
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-});
-
-// for users
-Route::group(['middleware' => ['auth', 'role:user']], function() { 
-    Route::get('/profile', [DashboardController::class, 'profile'])->name('myprofile');
-});
+Route::get('/edukacija', [DashboardController::class, 'edukacija'])->name('edukacija');
 
 require __DIR__.'/auth.php';
 require __DIR__.'/adminauth.php';

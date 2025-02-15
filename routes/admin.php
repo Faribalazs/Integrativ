@@ -131,4 +131,17 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
     Route::delete('/contact/delete', [AdminController::class, 'contactDelete'])
         ->name('contact.delete');
 
+    //Pages routes
+    Route::get('/pages', [AdminController::class, 'pageCreate'])
+        ->name('page.create');
+
+    Route::get('/page/show/{id}', [AdminController::class, 'pageShow'])
+        ->name('page.show');
+
+    Route::get('/page/edit/{id}', [AdminController::class, 'pageEdit'])
+        ->name('page.edit');
+
+    Route::post('/page/edit/{id}', [AdminController::class, 'pageEditDone'])
+        ->name('page.edit.done');
+
 });

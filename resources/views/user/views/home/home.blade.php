@@ -108,16 +108,6 @@
                     </form>
                 </div>
             @endif
-
-            @if ($content->id == 5)
-                @if ($content->section_content)
-                    @php
-                        $include = preg_replace('/<\/?p>/i', '', $content->section_content);
-                    @endphp
-                @endif
-
-                {!! $content->section_content !!}
-            @endif
         @endforeach
 
         <script>

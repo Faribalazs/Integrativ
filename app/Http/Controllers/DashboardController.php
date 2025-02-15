@@ -10,17 +10,7 @@ class DashboardController extends Controller
 {
    public function index()
    {
-       if(Auth::user()->hasRole('user')){
-          return view('userdash');
-       } 
-       else {
-          return view('dashboard');
-     }
-   }
-
-   public function aboutUs()
-   {
-      return view('user.views.pages.about-us');
+      return view('dashboard');
    }
 
    public function profile()
@@ -44,34 +34,43 @@ class DashboardController extends Controller
          };
       };
       return false;
-  }
+   }
 
-  public function saveContact(Request $request) {
-   try {
-      // Validate the incoming request
-      $data = $request->validate([
-         'name' => 'nullable|string',
-         'email' => 'email|required',
-         'phone' => 'nullable',
-         'message' => 'required',
-     ]);
-
-      // Create the contact
-      $contact = Contact::create([
-         'name' => $data['name'],
-         'email' => $data['email'],
-         'phone' => $data['phone'],
-         'message' => $data['message'],
+   public function saveContact(Request $request) {
+      try {
+         // Validate the incoming request
+         $data = $request->validate([
+            'name' => 'nullable|string',
+            'email' => 'email|required',
+            'phone' => 'nullable',
+            'message' => 'required',
       ]);
 
-      return redirect()
-          ->route('home')
-          ->with('success', 'Poruka je poslata!');
-      } catch (\Illuminate\Validation\ValidationException $e) {
-          return back()->withErrors($e->validator)->withInput();
-      } catch (\Exception $e) {
-          return back()->with('error', $e->getMessage());
-    }
+         // Create the contact
+         $contact = Contact::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'phone' => $data['phone'],
+            'message' => $data['message'],
+         ]);
 
-  }
+         return redirect()
+            ->route('home')
+            ->with('success', 'Poruka je poslata!');
+         } catch (\Illuminate\Validation\ValidationException $e) {
+            return back()->withErrors($e->validator)->withInput();
+         } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+      }
+   }
+
+   public function aboutUs()
+   {
+      return view('user.views.pages.about-us');
+   }
+
+   public function edukacija()
+   {
+      return view('user.views.pages.edukacija');
+   }
 }

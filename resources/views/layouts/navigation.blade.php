@@ -25,7 +25,7 @@
     <div class="nav-links">
         <div class="flex flex-col lg:w-[450px] sm:w-[405px] w-full justify-center open-menu-bg items-center h-full">
             @foreach ($categories as $category)
-                <a href="#" class="link" onmouseover="setActiveMenu({{ $category->order }})" onmouseleave="setActiveMenu(null)">
+                <a href="/{{ $lang }}/{{ $category->slug }}" class="link" onmouseover="setActiveMenu({{ $category->order }})" onmouseleave="setActiveMenu(null)">
                     {{ $category->category_name }}
                 </a>
             @endforeach

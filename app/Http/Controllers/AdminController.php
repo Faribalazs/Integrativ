@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Admin, Tracker, Sections, Category, Worker, Slider, HomePageContent, Partners, Conferences, Contact};
+use App\Models\{Admin, Tracker, Sections, Category, Worker, Slider, HomePageContent, Partners, Conferences, Contact, Psychotherapists, Page, PageContent};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
@@ -829,6 +829,20 @@ class AdminController extends Controller
     Contact::where('id', $request->input('id'))->delete();
 
     return redirect()->back()->with('success', 'Kontakt je izbrisen!');;
+  }
+
+  public function pageCreate()
+  {
+    $pages = Page::paginate(15);
+
+    return view('admin.views.pages.show-page', ['pages' => $pages]);
+  }
+
+  public function pageShow($id)
+  {
+    $page_content = PageContent::where('page_id', $id)->get();
+
+    return view('admin.views.pages.view-page', ['page_content' => $page_content]);
   }
 
 }
