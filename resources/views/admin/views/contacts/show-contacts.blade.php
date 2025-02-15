@@ -53,7 +53,7 @@
                         </td>
                         <td onclick="deleteSwall('{{ $contact->id }}', '{{ $contact->name }}')">
                             <button class="torles-btn ml-1">
-                                <i class="ri-delete-bin-line text-xl text-xl"></i>
+                                <i class="ri-delete-bin-line text-xl"></i>
                             </button>
                         </td>
                     </tr>

@@ -20,7 +20,7 @@ class DashboardController extends Controller
 
    public function aboutUs()
    {
-      return view('user.views.home.about-us');
+      return view('user.views.pages.about-us');
    }
 
    public function profile()

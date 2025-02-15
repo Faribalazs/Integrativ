@@ -17,14 +17,18 @@
 
             @csrf
 
-            <!-- Section title -->
-            <div class="flex flex-col">
-                <label for="section_title" class="sm:text-xl text-base my-3">Ime Slidera ({{ $lang }}) :</label>
-                <input class="input-style {{ $errors->has('section_title') ? 'border-error mb-1' : 'mb-3' }}"
-                    name="section_title" type="text" id="section_title" value="{{ $home_page->section_title }}">
-                <p class="{{ $errors->has('section_title') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
-                    {{ $errors->first('section_title') }}</p>
-            </div>
+            @if (request()->id != 5)
+                <!-- Section title -->
+                <div class="flex flex-col">
+                    <label for="section_title" class="sm:text-xl text-base my-3">Ime Slidera ({{ $lang }}) :</label>
+                    <input class="input-style {{ $errors->has('section_title') ? 'border-error mb-1' : 'mb-3' }}"
+                        name="section_title" type="text" id="section_title" value="{{ $home_page->section_title }}">
+                    <p class="{{ $errors->has('section_title') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
+                        {{ $errors->first('section_title') }}</p>
+                </div>
+            @else
+                <input hidden value="" name="section_title" />
+            @endif
 
             <!-- Section content -->
             <div class="mt-5">

@@ -2404,6 +2404,30 @@ body {
     }
 }
 
+.footer-icon {
+    width: 250px;
+
+    @media (max-width: 650px) {
+        display: none;
+    }
+}
+
+.footer-icon-mobile {
+    width: 100px;
+    display: none;
+
+    @media (max-width: 650px) {
+        display: block !important;
+    }
+}
+
+.footer-link {
+    padding: 0rem 1.25rem;
+    color: #fff;
+    font-size: 1.25rem;
+    transition: all 400ms ease;
+}
+
 /* Home page design end */
 
 /* Admin design start */

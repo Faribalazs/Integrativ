@@ -43,18 +43,18 @@
             <div class="swiper-pagination"></div>
         </div>
 
-        <div class="main-container my-20">
-            @foreach ($homePageContent as $content)
-                @if ($content->id == 2 || $content->id == 3)
-                    @if ($content->section_content)
-                        @php
-                            $include = preg_replace('/<\/?p>/i', '', $content->section_content);
-                        @endphp
-                        {!! view()->make($include)->render() !!}
-                    @endif
+        @foreach ($homePageContent as $content)
+            @if ($content->id == 2 || $content->id == 3)
+                @if ($content->section_content)
+                    @php
+                        $include = preg_replace('/<\/?p>/i', '', $content->section_content);
+                    @endphp
+                    {!! view()->make($include)->render() !!}
                 @endif
+            @endif
 
-                @if ($content->id == 1)
+            @if ($content->id == 1)
+                <div class="main-container my-20">
                     <div class="flex justify-center lg:flex-row flex-col lg:gap-10 gap-5">
                         <div class="lg:w-1/2 w-full">
                             <h2 class="title">{{ $content->section_name }}</h2>
@@ -70,9 +70,11 @@
                             @endif
                         </div>
                     </div>
-                @endif
+                </div>
+            @endif
 
-                @if ($content->id == 4)
+            @if ($content->id == 4)
+                <div class="main-container my-20">
                     <h2 class="title mt-10">{{ $content->section_name }}</h2>
 
                     <form method="POST" class="flex justify-center lg:flex-row flex-col lg:gap-10 gap-10 2xl:m-20"
@@ -104,9 +106,19 @@
                             <p class="text-center">{!! $content->section_content !!}</p>
                         </div>
                     </form>
+                </div>
+            @endif
+
+            @if ($content->id == 5)
+                @if ($content->section_content)
+                    @php
+                        $include = preg_replace('/<\/?p>/i', '', $content->section_content);
+                    @endphp
                 @endif
-            @endforeach
-        </div>
+
+                {!! $content->section_content !!}
+            @endif
+        @endforeach
 
         <script>
             const swiper = new Swiper('.homePageSwiper', {

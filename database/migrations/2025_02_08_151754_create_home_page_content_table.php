@@ -183,6 +183,176 @@ return new class extends Migration
                 ]),
                 'order' => 4,
             ],
+
+            [
+                'section_name' => json_encode([
+                    'sr' => 'Footer',
+                    'en' => 'Footer',
+                    'hu' => 'Footer',
+                ]),
+                
+                'section_title' => null,
+
+                'section_content' => json_encode([
+                    'sr' => '<div class="footer-bg w-full">
+                                <div class="flex flex-col main-container">
+                                    <div class="flex flex-wrap flex-col lg:flex-row justify-center lg:mt-32 mt-20 gap-y-5">
+                                        <a href="/" class="lg:mr-5 flex justify-center lg:justify-start">
+                                            <img src="/img/integrativ-logo.svg" class="footer-icon no-underline">
+                                            <img src="/img/integrativ-logo.png" class="footer-icon-mobile no-underline">
+                                        </a>
+                                        <div class="flex lg:flex-row flex-col gap-7 lg:gap-0 mt-5 lg:mt-0">
+                                            <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                                Naslovna
+                                            </a>
+                                            <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                                O nama
+                                            </a>
+                                            <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                                Modaliteti
+                                            </a>
+                                            <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                                Konferencije
+                                            </a>
+                                            <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                                Edukacija
+                                            </a>
+                                            <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                                Aktivnosti
+                                            </a>
+                                            <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                                Psihoterapeuti
+                                            </a>
+                                            <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                                Kontakt
+                                            </a>
+                                        </div>
+
+                                        <hr class="text-white w-full my-10">
+
+                                        <div class="flex flex-wrap justify-center lg:mb-32 mb-20">
+                                            <div class="pt-1 flex justify-between media-align gap-5">
+                                                <div class="flex align-center">
+                                                    <i class="ri-facebook-circle-fill social-icon"></i>
+                                                </div>
+                                                <div class="flex align-center">
+                                                    <i class="ri-instagram-fill social-icon"></i>
+                                                </div>
+                                                <div class="flex align-center">
+                                                    <i class="ri-linkedin-box-fill social-icon"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>',
+                    'hu' => '<div class="footer-bg w-full">
+                        <div class="flex flex-col main-container">
+                            <div class="flex flex-wrap flex-col lg:flex-row justify-center lg:mt-32 mt-20 gap-y-5">
+                                <a href="/" class="lg:mr-5 flex justify-center lg:justify-start">
+                                    <img src="/img/integrativ-logo.svg" class="footer-icon no-underline">
+                                    <img src="/img/integrativ-logo.png" class="footer-icon-mobile no-underline">
+                                </a>
+                                <div class="flex lg:flex-row flex-col gap-7 lg:gap-0 mt-5 lg:mt-0">
+                                    <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                        Naslovna
+                                    </a>
+                                    <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                        O nama
+                                    </a>
+                                    <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                        Modaliteti
+                                    </a>
+                                    <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                        Konferencije
+                                    </a>
+                                    <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                        Edukacija
+                                    </a>
+                                    <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                        Aktivnosti
+                                    </a>
+                                    <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                        Psihoterapeuti
+                                    </a>
+                                    <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                        Kontakt
+                                    </a>
+                                </div>
+
+                                <hr class="text-white w-full my-10">
+
+                                <div class="flex flex-wrap justify-center lg:mb-32 mb-20">
+                                    <div class="pt-1 flex justify-between media-align gap-5">
+                                        <div class="flex align-center">
+                                            <i class="ri-facebook-circle-fill social-icon"></i>
+                                        </div>
+                                        <div class="flex align-center">
+                                            <i class="ri-instagram-fill social-icon"></i>
+                                        </div>
+                                        <div class="flex align-center">
+                                            <i class="ri-linkedin-box-fill social-icon"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>',
+                'en' => '<div class="footer-bg w-full">
+                    <div class="flex flex-col main-container">
+                        <div class="flex flex-wrap flex-col lg:flex-row justify-center lg:mt-32 mt-20 gap-y-5">
+                            <a href="/" class="lg:mr-5 flex justify-center lg:justify-start">
+                                <img src="/img/integrativ-logo.svg" class="footer-icon no-underline">
+                                <img src="/img/integrativ-logo.png" class="footer-icon-mobile no-underline">
+                            </a>
+                            <div class="flex lg:flex-row flex-col gap-7 lg:gap-0 mt-5 lg:mt-0">
+                                <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                    Naslovna
+                                </a>
+                                <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                    O nama
+                                </a>
+                                <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                    Modaliteti
+                                </a>
+                                <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                    Konferencije
+                                </a>
+                                <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                    Edukacija
+                                </a>
+                                <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                    Aktivnosti
+                                </a>
+                                <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                    Psihoterapeuti
+                                </a>
+                                <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                    Kontakt
+                                </a>
+                            </div>
+
+                            <hr class="text-white w-full my-10">
+
+                            <div class="flex flex-wrap justify-center lg:mb-32 mb-20">
+                                <div class="pt-1 flex justify-between media-align gap-5">
+                                    <div class="flex align-center">
+                                        <i class="ri-facebook-circle-fill social-icon"></i>
+                                    </div>
+                                    <div class="flex align-center">
+                                        <i class="ri-instagram-fill social-icon"></i>
+                                    </div>
+                                    <div class="flex align-center">
+                                        <i class="ri-linkedin-box-fill social-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>',
+                ]),
+                'order' => 5,
+            ],
         ]);
     }
 
