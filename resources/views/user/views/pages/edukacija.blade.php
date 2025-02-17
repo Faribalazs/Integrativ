@@ -14,17 +14,70 @@
         $content = $helper->getPageContent($slug);
     @endphp
 
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('success') }}',
+            });
+        </script>
+    @endif
+
+    @if (session('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: '{{ session('error') }}',
+            });
+        </script>
+    @endif
+
+    @if ($errors->any())
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Validation Errors',
+                html: '{!! implode('<br>', $errors->all()) !!}',
+            });
+        </script>
+    @endif
+
+
     <div class="flex w-full relative">
-        <img class="page-header-image" src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->category_name }}"/>
+        <img class="page-header-image" src="{{ asset('storage/' . $category->image) }}"
+            alt="{{ $category->category_name }}" />
         <span class="page-header-name">
             {{ $category->category_name }}
         </span>
     </div>
 
-    @foreach($content as $item)
+    @foreach ($content as $item)
         @if ($item->custom_design == 1)
-            <div class="main-container my-10">
-                {!! $item->content !!}
+            {!! $item->content !!}
+        @elseif ($item->form == 1)
+            @php
+                $view = preg_replace('/<\/?p>/i', '', $item->content);
+            @endphp
+
+            <div class="main-container my-20">
+                <h2 class="title my-10 text-center">{{ $item->title }}</h2>
+                {!! view()->make($view)->render() !!}
+            </div>
+        @elseif ($item->image != null)
+            <div class="main-container mt-10 mb-20">
+                <h2 class="title text-center">
+                    {{ $item->title }}
+                </h2>
+            </div>
+            <div class="flex 2xl:flex-row flex-col">
+                <div class="2xl:w-1/2  w-full flex 2xl:px-40 sm:px-20 px-16 2xl:py-20 pb-10">
+                    {!! $item->content !!}
+                </div>
+                <div class="2xl:w-1/2 w-full flex">
+                    <img class="object-cover w-full sm:px-20 px-16 2xl:p-0" src="{{ asset('storage/' . $item->image) }}" />
+                </div>
             </div>
         @else
             <div class="main-container my-10">
@@ -37,5 +90,18 @@
             </div>
         @endif
     @endforeach
+
+    <style>
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        li {
+            padding-bottom: 5px;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+    </style>
 
 </x-app-worker-layout>

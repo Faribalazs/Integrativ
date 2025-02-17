@@ -18,7 +18,8 @@ class PageContent extends Model
         'image',
         'content',
         'order',
-        'custom_design'
+        'custom_design',
+        'form'
     ];
 
     public $translatable = ['title', 'content'];

@@ -23,7 +23,10 @@ Route::middleware(['guest'])->group(function () {
 
 Route::get('/', [DashboardController::class, 'home'])->name('home');
 
+// Form submit routes
 Route::post('/save/contact', [DashboardController::class, 'saveContact'])->name('save.contact.info');
+
+Route::post('/save/education', [DashboardController::class, 'storeEducationSignUp'])->name('save.education.sign-up');
 
 // Pages routes
 Route::get('/about-us', [DashboardController::class, 'aboutUs'])->name('about.us');

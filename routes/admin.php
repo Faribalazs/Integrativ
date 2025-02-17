@@ -138,10 +138,20 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
     Route::get('/page/show/{id}', [AdminController::class, 'pageShow'])
         ->name('page.show');
 
-    Route::get('/page/edit/{id}', [AdminController::class, 'pageEdit'])
+    Route::get('/page/edit/{id}', [AdminController::class, 'pageContentEdit'])
         ->name('page.edit');
 
-    Route::post('/page/edit/{id}', [AdminController::class, 'pageEditDone'])
+    Route::post('/page/edit/{id}', [AdminController::class, 'pageContentEditDone'])
         ->name('page.edit.done');
+
+    //Educations routes
+    Route::get('/educations', [AdminController::class, 'educationCreate'])
+        ->name('education.create');
+
+    Route::get('/education/show/{id}', [AdminController::class, 'educationShow'])
+        ->name('education.show');
+
+    Route::delete('/education/delete', [AdminController::class, 'educationDelete'])
+        ->name('education.delete');
 
 });

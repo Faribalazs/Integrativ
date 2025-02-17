@@ -73,12 +73,17 @@
                         <a href="{{ route('admin.contact.create') }}"
                             class="icons 
                             {{ request()->routeIs('admin.contact.create') ? 'closed-icon-active' : '' }}">
-                            <i class="ri-phone-line"></i>
+                            <i class="ri-message-2-line"></i>
                         </a>
                         <a href="{{ route('admin.page.create') }}"
                             class="icons 
                             {{ request()->routeIs('admin.page.create') ? 'closed-icon-active' : '' }}">
                             <i class="ri-pages-line"></i>
+                        </a>
+                        <a href="{{ route('admin.education.create') }}"
+                            class="icons 
+                            {{ request()->routeIs('admin.education.create') ? 'closed-icon-active' : '' }}">
+                            <i class="ri-speak-line"></i>
                         </a>
                         <form method="POST" id="log-out-form" action="{{ route('admin.logout') }}"
                             class="admin-logout icons">
@@ -113,6 +118,9 @@
                         </a>
                         <a href="{{ route('admin.page.create') }}" class="link">
                             {{ __('app.admin.page') }}
+                        </a>
+                        <a href="{{ route('admin.education.create') }}" class="link">
+                            {{ __('app.admin.education') }}
                         </a>
                         <a onclick="logOut()" class="link cursor-pointer">
                             {{ __('app.profile.log-out') }}

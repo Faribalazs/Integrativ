@@ -36,7 +36,6 @@
                 <th scope="col">ID</th>
                 <th scope="col">Naziv stranice</th>
                 <th scope="col">Pogledaj</th>
-                <th scope="col">Izmeni</th>
             </tr>
             </thead>
             <tbody>
@@ -47,11 +46,6 @@
                         <td>
                             <a href="{{ route('admin.page.show', $page->id) }}" class="modositas-btn mr-1 no-underline text-black">
                                 <i class="ri-eye-line text-xl"></i>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="{{ route('admin.page.edit', $page->id) }}" class="modositas-btn mr-1 no-underline text-black">
-                                <i class="ri-edit-2-line"></i>
                             </a>
                         </td>
                     </tr>

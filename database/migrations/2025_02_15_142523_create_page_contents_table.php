@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('order')->nullable();
             $table->string('image')->nullable();
             $table->integer('custom_design')->nullable();
+            $table->integer('form')->nullable();
             $table->timestamps();
         });
     }

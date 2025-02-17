@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Admin, Tracker, Sections, Category, Worker, Slider, HomePageContent, Partners, Conferences, Contact, Psychotherapists, Page, PageContent};
+use App\Models\{Admin, Tracker, Sections, Category, Worker, Slider, HomePageContent, Partners, Conferences, Contact, Psychotherapists, Page, PageContent, Education};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
@@ -843,6 +843,95 @@ class AdminController extends Controller
     $page_content = PageContent::where('page_id', $id)->get();
 
     return view('admin.views.pages.view-page', ['page_content' => $page_content]);
+  }
+
+  public function pageContentEdit($id)
+  {
+    $page = PageContent::findOrFail($id);
+
+    return view('admin.views.pages.edit-page-content', ['page' => $page]);
+  }
+
+  public function pageContentEditDone($id, Request $request) {
+    try {
+
+      $page = PageContent::findOrFail($id);
+      
+      // Validate the incoming request
+      $data = $request->validate([
+        'title' => 'nullable|string|max:255',
+        'content' => 'nullable',
+        'order' => 'nullable|integer',
+        'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'custom_design' => 'nullable',
+        'form' => 'nullable',
+      ]);
+      
+      // Handle image upload
+      $path = null;
+
+      // Handle image upload
+      if ($request->hasFile('image')) {
+          $image = Image::make($request->file('image'))->encode('webp', 90);
+          $name = uniqid() . '.webp';
+          $path = 'page/temp/' . $name;
+
+          // Store the image temporarily
+          Storage::disk('public')->put($path, (string) $image->stream());
+      }
+
+      $finalData = [
+        'title' => $data['title'],
+        'content' => $data['content'],
+        'order' => $data['order'],
+        'image' => $path ?? null,
+        'custom_design' => $data['custom_design'],
+        'form' => $data['form'],
+      ];
+
+      $page->update($finalData);
+
+      $page->save();
+
+      if ($path) {
+          $newPath = 'page/' . $page->id . '/image/' . $name;
+          Storage::disk('public')->move($path, $newPath);
+          $page->update(['image' => $newPath]);
+      }
+
+      // Success message
+      return redirect()
+          ->route('admin.page.create')
+          ->with('success', 'Starnica updated successfully!');
+    } catch (\Illuminate\Validation\ValidationException $e) {
+        // Handle validation errors
+        alert()->error($e->validator)->showCloseButton()->showConfirmButton(__('app.basic.close'));
+        return back()->withErrors($e->validator)->withInput();
+    } catch (\Exception $e) {
+        // Generic error handling
+        alert()->error($e)->showCloseButton()->showConfirmButton(__('app.basic.close'));
+    }
+  }
+
+  public function educationCreate()
+  {
+    $allAplly = Education::paginate(15);
+
+    return view('admin.views.education.show-education', ['allAplly' => $allAplly]);
+  }
+
+  public function educationShow($id)
+  {
+    $apply = Education::findOrFail($id);
+
+    return view('admin.views.education.view-education', ['apply' => $apply]);
+  }
+
+  public function educationDelete(Request $request){
+
+    Contact::where('id', $request->input('id'))->delete();
+
+    return redirect()->back()->with('success', 'Kontakt je izbrisen!');;
   }
 
 }
