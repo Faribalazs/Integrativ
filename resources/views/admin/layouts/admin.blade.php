@@ -85,6 +85,11 @@
                             {{ request()->routeIs('admin.education.create') ? 'closed-icon-active' : '' }}">
                             <i class="ri-speak-line"></i>
                         </a>
+                        <a href="{{ route('admin.sing-up-conference.create') }}"
+                            class="icons 
+                        {{ request()->routeIs('admin.sing-up-conference.create') ? 'closed-icon-active' : '' }}">
+                            <i class="ri-briefcase-4-line"></i>
+                        </a>
                         <form method="POST" id="log-out-form" action="{{ route('admin.logout') }}"
                             class="admin-logout icons">
                             @csrf
@@ -122,6 +127,9 @@
                         <a href="{{ route('admin.education.create') }}" class="link">
                             {{ __('app.admin.education') }}
                         </a>
+                        <a href="{{ route('admin.sing-up-conference.create') }}" class="link">
+                            {{ __('app.admin.sing-up-conference') }}
+                        </a>
                         <a onclick="logOut()" class="link cursor-pointer">
                             {{ __('app.profile.log-out') }}
                         </a>
@@ -134,11 +142,11 @@
                             class="flex items-center justify-center sm:text-xl pr-3 text-lg">
                             <i class="ri-earth-line sm:text-3xl pr-3 text-2xl"></i>
 
-                            @if ( strtoupper($lang) == "SR")
+                            @if (strtoupper($lang) == 'SR')
                                 <b>Srpski</b>
-                            @elseif (strtoupper($lang) == "HU")
+                            @elseif (strtoupper($lang) == 'HU')
                                 <b>Magyar</b>
-                            @elseif (strtoupper($lang) == "EN")
+                            @elseif (strtoupper($lang) == 'EN')
                                 <b>English</b>
                             @endif
 

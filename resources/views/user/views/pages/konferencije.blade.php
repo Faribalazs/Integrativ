@@ -7,6 +7,36 @@
     <x-slot name="header">
     </x-slot>
 
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('success') }}',
+            });
+        </script>
+    @endif
+
+    @if (session('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: '{{ session('error') }}',
+            });
+        </script>
+    @endif
+
+    @if ($errors->any())
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Validation Errors',
+                html: '{!! implode('<br>', $errors->all()) !!}',
+            });
+        </script>
+    @endif
+
     @php
         $slug = request()->segment(2);
         $category = $helper->getCategoryFromSlug($slug);
@@ -31,13 +61,21 @@
                 {!! $lastConference->content !!}
             </div>
             <div class="xl:w-2/3 w-full flex">
-                <img class="object-cover w-full sm:px-20 2xl:px-0 px-0" src="{{ asset('storage/' . $lastConference->image) }}" />
+                <img class="object-cover w-full sm:px-20 2xl:px-0 px-0"
+                    src="{{ asset('storage/' . $lastConference->image) }}" />
             </div>
         </div>
     @endif
 
     @foreach ($content as $item)
-        @if ($item->custom_design == 1)
+        @if ($item->id == 10)
+            <div class="main-container mt-10 mb-20">
+                <h2 class="title text-center">
+                    {{ $item->title }}
+                </h2>
+            </div>
+            @include('user.views.forms.sign-up-for-conference', ['data' => $item->content])
+        @elseif ($item->custom_design == 1)
             {!! $item->content !!}
         @elseif ($item->load_view == 1)
             @php
@@ -45,7 +83,6 @@
             @endphp
 
             {!! view()->make($view)->render() !!}
-            
         @elseif ($item->image != null)
             <div class="main-container mt-10 mb-20">
                 <h2 class="title text-center">
@@ -57,7 +94,8 @@
                     {!! $item->content !!}
                 </div>
                 <div class="2xl:w-1/2 w-full flex">
-                    <img class="object-cover w-full sm:px-20 px-16 2xl:p-0" src="{{ asset('storage/' . $item->image) }}" />
+                    <img class="object-cover w-full sm:px-20 px-16 2xl:p-0"
+                        src="{{ asset('storage/' . $item->image) }}" />
                 </div>
             </div>
         @else

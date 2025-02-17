@@ -920,6 +920,134 @@ class DataSeeder extends Seeder
       'custom_design' => 0,
       'load_view' => 1
     ]);
+
+    DB::table('page_content')->insert([
+      'page_id' => 2,
+      'title' => json_encode([
+          'en' => 'Conference Registration',
+          'hu' => 'Konferencia jelentkezés',
+          'sr' => 'Prijava za konferenciju'
+      ]),
+      'content' => json_encode([
+          'en' => "
+              <p class=\"text-center\">
+                  Fill out the form below to register for the conference no later than 10 days before it starts!
+              </p>
+              <p class=\"text-justify\">
+                  <b>Registration Fee</b>
+                  <br>
+                  All participants must pay a registration fee.
+                  <b>Payment Methods:</b>
+                  <br>
+                  1. Personal payment at the Conference.<br>
+                  2. Personal payment via bank transfer: The payment should be made with a receipt to the bank account of the Association for Integrative Child Psychotherapy (details at the end of this form).
+                  <b>If your institution or company is paying for you:</b>
+                  <br>
+                  If the institution pays based on a pro forma invoice provided by the conference organizer, the following information is required for the pro forma invoice:
+              </p>
+              <p class=\"text-justify\">
+                  <b>Payment details for local payments in RSD to the bank account: Association for Integrative Child Psychotherapy</b>
+                  <br>
+                  Address: Josipa Kraša 2/23, 24000 Subotica, Serbia
+                  <br>
+                  <b>Account number: 325950060003973461</b><br>
+                  <b>Vojvodjanska banka AD, Novi Sad</b><br>
+                  Association registration number: 08878986<br>
+                  VAT number: 105303977<br>
+                  Association activity: 9499 – other organizations based on membership
+                  <br><br>
+                  <b>Payment details for international payments (in EUR) to the Association for Integrative Child Psychotherapy</b><br>
+                  <b>Address: Josipa Kraša 2/23., 24000 Subotica, Serbia</b><br>
+                  <b>Vojvodjanska banka AD, Novi Sad, RS</b><br>
+                  <b>IBAN Number: RS35325960160000589208</b><br>
+                  <b>SWIFT CODE: VOTPVRS22</b><br>
+                  Association registration number: 08878986<br>
+                  VAT number: 105303977<br>
+                  Association activity: 9499 – other organizations based on membership
+              </p>
+          ",
+          'hu' => "
+              <p class=\"text-center\">
+                  Töltse ki az alábbi űrlapot a konferenciára való regisztrációhoz legkésőbb 10 nappal a kezdete előtt!
+              </p>
+              <p class=\"text-justify\">
+                  <b>Regisztrációs díj</b>
+                  <br>
+                  Minden résztvevőnek regisztrációs díjat kell fizetnie.
+                  <b>Fizetési módok:</b>
+                  <br>
+                  1. Személyes fizetés a konferencián.<br>
+                  2. Személyes fizetés banki átutalással: A fizetés a befizetési elismervény alapján történik az Integratív Gyermek Pszichoterápia Egyesület banki számlájára (adatok a űrlap végén).
+                  <b>Ha az intézmény vagy vállalat fizet helyetted:</b>
+                  <br>
+                  Ha az intézmény előzetes számla alapján fizet, a következő adatokat kell megadni az előzetes számla kiállításához:
+              </p>
+              <p class=\"text-justify\">
+                  <b>Fizetési adatok helyi banki átutalásra RSD-ben: Integratív Gyermek Pszichoterápia Egyesület</b>
+                  <br>
+                  Cím: Josipa Kraša 2/23, 24000 Subotica, Szerbia
+                  <br>
+                  <b>Számlaszám: 325950060003973461</b><br>
+                  <b>Vojvodjanska banka AD, Novi Sad</b><br>
+                  Egyesület nyilvántartási szám: 08878986<br>
+                  ÁFA szám: 105303977<br>
+                  Egyesület tevékenysége: 9499 – egyesületek egyéb tevékenysége
+                  <br><br>
+                  <b>Nemzetközi átutalás adatai (EUR-ban) az Integratív Gyermek Pszichoterápia Egyesület számára</b><br>
+                  <b>Cím: Josipa Kraša 2/23., 24000 Subotica, Szerbia</b><br>
+                  <b>Vojvodjanska banka AD, Novi Sad, RS</b><br>
+                  <b>IBAN szám: RS35325960160000589208</b><br>
+                  <b>SWIFT kód: VOTPVRS22</b><br>
+                  Egyesület nyilvántartási szám: 08878986<br>
+                  ÁFA szám: 105303977<br>
+                  Egyesület tevékenysége: 9499 – egyesületek egyéb tevékenysége
+              </p>
+          ",
+          'sr' => '
+              <p class="text-center">
+                  Popunite donji obrazac da biste se prijavili za konferenciju najkasnije 10 dana pre njenog početka!
+              </p>
+              <p class="text-justify">
+                  <b>Kotizacija</b>
+                  <br>
+                  Svi učesnici plaćaju kotizaciju.
+                  <b>Način plaćanja:</b>
+                  <br>
+                  1. Lična uplata na samoj Konferenciji.<br>
+                  2. Lična uplata putem žiro računa: Uplata se vrši putem priznanice na žiro račun Udruženja za Inregrativnu
+                  dečiju psihoterapiju (podaci su na kraju ovog obrasca).
+                  <b>Ako za vas plaća ustanova ili preduzeće:</b>
+                  <br>
+                  Ako ustanova plaća na osnovu dostavljenog predračuna od strane organizatora kongresa, za predračun je potrebno
+                  dostaviti sledeće podatke:
+              </p>
+              <p class="text-justify">
+                  <b>Podaci za uplatu u dinarima putem žiro računa: Udruženje za Integrativnu dečiju psihoterapiju</b>
+                  <br>
+                  Adresa: Josipa Kraša 2/23. 24000 Subotica, Srbija
+                  <br>
+                  <b>Broj žiro računa: 325950060003973461</b><br>
+                  <b>Vojvodjanska banka AD, Novi Sad</b><br>
+                  Matični broj udruženja: 08878986<br>
+                  PIB: 105303977<br>
+                  Delatnost udruženja: 9499 – delatnost ostalih organizacija na bazi učlanjenja
+                  <br><br>
+                  <b>Podaci za uplate iz inostranstva (u EUR) Udruženje za Integrativnu dečiju psihoterapiju</b><br>
+                  <b>Adresa: Josipa Kraša 2/23., 24000 Subotica, Srbija</b><br>
+                  <b>Vojvodjanska banka AD, Novi Sad, RS</b><br>
+                  <b>IBAN Number: RS35325960160000589208</b><br>
+                  <b>SWIFT CODE: VOTPVRS22</b><br>
+                  Matični broj udruženja: 08878986<br>
+                  PIB: 105303977<br>
+                  Delatnost udruženja: 9499 – delatnost ostalih organizacija na bazi učlanjenja
+              </p>
+          ',
+      ]),
+      'order' => 3,
+      'custom_design' => 0,
+      'load_view' => 0
+    ]);
+  
   
   }
 }

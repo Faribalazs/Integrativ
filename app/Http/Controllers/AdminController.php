@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Admin, Tracker, Sections, Category, Worker, Slider, HomePageContent, Partners, Conferences, Contact, Psychotherapists, Page, PageContent, Education};
+use App\Models\{Admin, Tracker, Sections, Category, Worker, Slider, HomePageContent, Partners, Conferences, Contact, Psychotherapists, Page, PageContent, Education, SignUpConference};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
@@ -928,6 +928,27 @@ class AdminController extends Controller
   public function educationDelete(Request $request){
 
     Contact::where('id', $request->input('id'))->delete();
+
+    return redirect()->back()->with('success', 'Kontakt je izbrisen!');;
+  }
+
+  public function signUpConferenceCreate()
+  {
+    $allAplly = SignUpConference::paginate(15);
+
+    return view('admin.views.sign_up_conferences.show-apply-conference', ['allAplly' => $allAplly]);
+  }
+
+  public function signUpConferenceShow($id)
+  {
+    $apply = SignUpConference::findOrFail($id);
+
+    return view('admin.views.sign_up_conferences.view-apply-conference', ['apply' => $apply]);
+  }
+
+  public function signUpConferenceDelete(Request $request){
+
+    SignUpConference::where('id', $request->input('id'))->delete();
 
     return redirect()->back()->with('success', 'Kontakt je izbrisen!');;
   }

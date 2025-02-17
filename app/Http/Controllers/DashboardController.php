@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Sections, Slider, HomePageContent, Contact, Education};
+use App\Models\{Sections, Slider, HomePageContent, Contact, Education, SignUpConference, Conferences};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
@@ -119,4 +119,40 @@ class DashboardController extends Controller
    {
       return view('user.views.pages.konferencije');
    }
+
+   public function storeConferenceSignUp(Request $request)
+   {
+      try {
+         $data = $request->validate([
+               'name' => 'required|string|max:255',
+               'address' => 'required|string|max:255',
+               'occupation' => 'required|string|max:255',
+               'email' => 'required|email|max:255',
+               'phone' => 'required|string|max:20',
+               'institution_or_company_name' => 'required|string|max:255',
+               'pib' => 'required|string|max:50',
+               'city' => 'required|string|max:100',
+               'postcode' => 'required|string|max:20',
+               'contact_phone' => 'required|string|max:20',
+               'institution_email' => 'required|email|max:255',
+         ]);
+
+         $signUp = new SignUpConference($data);
+         $signUp->save();
+
+         return redirect()->back()->with('success', 'Your application has been submitted successfully!');
+      } catch (ValidationException $e) {
+         return redirect()->back()->withErrors($e->validator)->withInput();
+      } catch (Exception $e) {
+         return redirect()->back()->with('error', 'An unexpected error occurred. Please try again.');
+      }
+   }
+
+   public function konferencijeShowOne($id) {
+
+      $conference = Conferences::findOrFail($id);
+
+      return view('user.views.pages.konferencija-show', ['conference' => $conference]);
+   }
+
 }

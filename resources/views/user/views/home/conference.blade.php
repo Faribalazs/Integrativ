@@ -2,13 +2,15 @@
 
 @php
     $conferences = $helper->getConferences();
+
+    $lang = app()->getLocale();
 @endphp
 
 <div class="swiper conferenceSlider md:my-16">
     <div class="swiper-wrapper conference-slider-wrapper">
         @foreach ($conferences as $conference)
             <div class="swiper-slide relative">
-                <a target="blank" href="#">
+                <a target="blank" href="/{{ $lang }}/konferencije/show/{{ $conference->id }}">
                     <img class="conference-image" src="{{ asset('storage/' . $conference->image) }}" />
                 </a>
             </div>

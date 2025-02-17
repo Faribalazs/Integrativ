@@ -28,12 +28,16 @@ Route::post('/save/contact', [DashboardController::class, 'saveContact'])->name(
 
 Route::post('/save/education', [DashboardController::class, 'storeEducationSignUp'])->name('save.education.sign-up');
 
+Route::post('/save/conference', [DashboardController::class, 'storeConferenceSignUp'])->name('save.conference.sign-up');
+
 // Pages routes
 Route::get('/about-us', [DashboardController::class, 'aboutUs'])->name('about.us');
 
 Route::get('/edukacija', [DashboardController::class, 'edukacija'])->name('edukacija');
 
 Route::get('/konferencije', [DashboardController::class, 'konferencije'])->name('konferencije');
+
+Route::get('/konferencije/show/{id}', [DashboardController::class, 'konferencijeShowOne'])->name('konferencije.show');
 
 require __DIR__.'/auth.php';
 require __DIR__.'/adminauth.php';

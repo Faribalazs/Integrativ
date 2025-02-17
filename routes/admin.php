@@ -154,4 +154,14 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
     Route::delete('/education/delete', [AdminController::class, 'educationDelete'])
         ->name('education.delete');
 
+    //Sign up for conferences routes
+    Route::get('/conference-apply', [AdminController::class, 'signUpConferenceCreate'])
+    ->name('sing-up-conference.create');
+
+    Route::get('/conference-apply/show/{id}', [AdminController::class, 'signUpConferenceShow'])
+        ->name('sing-up-conference.show');
+
+    Route::delete('/conference-apply/delete', [AdminController::class, 'signUpConferenceDelete'])
+        ->name('sing-up-conference.delete');
+
 });
