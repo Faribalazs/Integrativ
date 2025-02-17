@@ -215,7 +215,7 @@ class AdminController extends Controller
         return back()->withErrors($e->validator)->withInput();
     } catch (\Exception $e) {
         // Generic error handling
-        alert()->error($e)->showCloseButton()->showConfirmButton(__('app.basic.close'));
+        return back()->withErrors($e->getMessage())->withInput();
     }
   }
 
@@ -355,7 +355,7 @@ class AdminController extends Controller
         return back()->withErrors($e->validator)->withInput();
     } catch (\Exception $e) {
         // Generic error handling
-        alert()->error($e)->showCloseButton()->showConfirmButton(__('app.basic.close'));
+        return back()->withErrors($e->getMessage())->withInput();
     }
 
   }
@@ -534,8 +534,7 @@ class AdminController extends Controller
           return back()->withErrors($e->validator)->withInput();
       } catch (\Exception $e) {
           // Generic error handling
-          alert()->error($e->getMessage())->showCloseButton()->showConfirmButton(__('app.basic.close'));
-          return back()->withInput();
+          return back()->withErrors($e->getMessage())->withInput();
       }
   }
 
@@ -662,7 +661,7 @@ class AdminController extends Controller
         return back()->withErrors($e->validator)->withInput();
     } catch (\Exception $e) {
         // Generic error handling
-        alert()->error($e)->showCloseButton()->showConfirmButton(__('app.basic.close'));
+        return back()->withErrors($e->getMessage())->withInput();
     }
 
   }
@@ -800,7 +799,7 @@ class AdminController extends Controller
         return back()->withErrors($e->validator)->withInput();
     } catch (\Exception $e) {
         // Generic error handling
-        alert()->error($e)->showCloseButton()->showConfirmButton(__('app.basic.close'));
+        return back()->withErrors($e->getMessage())->withInput();
     }
 
   }
@@ -864,7 +863,7 @@ class AdminController extends Controller
         'order' => 'nullable|integer',
         'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
         'custom_design' => 'nullable',
-        'form' => 'nullable',
+        'load_view' => 'nullable',
       ]);
       
       // Handle image upload
@@ -886,7 +885,7 @@ class AdminController extends Controller
         'order' => $data['order'],
         'image' => $path ?? null,
         'custom_design' => $data['custom_design'],
-        'form' => $data['form'],
+        'load_view' => $data['load_view'],
       ];
 
       $page->update($finalData);
@@ -905,11 +904,10 @@ class AdminController extends Controller
           ->with('success', 'Starnica updated successfully!');
     } catch (\Illuminate\Validation\ValidationException $e) {
         // Handle validation errors
-        alert()->error($e->validator)->showCloseButton()->showConfirmButton(__('app.basic.close'));
         return back()->withErrors($e->validator)->withInput();
     } catch (\Exception $e) {
         // Generic error handling
-        alert()->error($e)->showCloseButton()->showConfirmButton(__('app.basic.close'));
+        return back()->withErrors($e->getMessage())->withInput();
     }
   }
 

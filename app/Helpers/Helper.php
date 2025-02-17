@@ -49,4 +49,11 @@ class Helper
 
         return $content;
     }
+
+    public function getLetestConferences() {
+
+        $lastConference = Conferences::orderBy('order', 'desc')->first();
+
+        return $lastConference;
+    }
 }

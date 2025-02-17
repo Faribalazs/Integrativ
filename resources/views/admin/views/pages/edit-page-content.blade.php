@@ -11,6 +11,36 @@
         $lang = App::currentLocale();
     @endphp
 
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('success') }}',
+            });
+        </script>
+    @endif
+
+    @if (session('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: '{{ session('error') }}',
+            });
+        </script>
+    @endif
+
+    @if ($errors->any())
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Validation Errors',
+                html: '{!! implode('<br>', $errors->all()) !!}',
+            });
+        </script>
+    @endif
+
     <div class="main-container-admin w-full mt-10" style="overflow: auto">
         <form method="POST" class="w-full" enctype="multipart/form-data"
             action="{{ route('admin.page.edit.done', ['id' => request()->id]) }}">
@@ -80,13 +110,13 @@
                 </select>
             </div>
 
-            <!-- Form -->
+            <!-- Load view -->
             <div class="mt-5 flex flex-col">
-                <label for="form" class="sm:text-xl text-base my-3">{{ __('app.admin.slider.form') }}
+                <label for="load_view" class="sm:text-xl text-base my-3">{{ __('app.admin.slider.form') }}
                     :</label>
-                <select name="form" id="form" class="input-style">
-                    <option value="0" {{ $page->form == 0 ? 'selected' : '' }}>Ne</option>
-                    <option value="1" {{ $page->form == 1 ? 'selected' : '' }}>Da</option>
+                <select name="load_view" id="load_view" class="input-style">
+                    <option value="0" {{ $page->load_view == 0 ? 'selected' : '' }}>Ne</option>
+                    <option value="1" {{ $page->load_view == 1 ? 'selected' : '' }}>Da</option>
                 </select>
             </div>
 

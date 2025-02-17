@@ -113,7 +113,11 @@ return new class extends Migration
                     'hu' => 'Konferenciák',
                 ]),
                 'section_title' => null,
-                'section_content' => null,
+                'section_content' => json_encode([
+                    'sr' => "user.views.home.conference",
+                    'en' => "user.views.home.conference",
+                    'hu' => "user.views.home.conference",
+                ]),
                 'order' => 3,
             ],
 

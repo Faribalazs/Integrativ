@@ -150,11 +150,11 @@ class DataSeeder extends Seeder
   
     DB::table('pages')->insert([
       'name' => json_encode([
-        'en' => 'Conference',
-        'hu' => 'Konferencia',
-        'sr' => 'Konferencija'
+        'en' => 'Conferences',
+        'hu' => 'Konferenciák',
+        'sr' => 'Konferencije'
       ]),
-      'slug' => 'konferencija',
+      'slug' => 'konferencije',
     ]);
     
     DB::table('pages')->insert([
@@ -223,7 +223,7 @@ class DataSeeder extends Seeder
       ]),
       'order' => 1,
       'custom_design' => 0,
-      'form' => 0
+      'load_view' => 0
     ]);
 
     DB::table('page_content')->insert([
@@ -250,7 +250,7 @@ class DataSeeder extends Seeder
                           Education in Integrative Child Psychotherapy
                       </p>
                       <p class="text-base font-normal text-white text-justify">
-                          Completed studies in humanities or social sciences (psychologists, psychiatrists, doctors, special educators, and related professions). The candidate should be at least 25 years old. Education lasts 4 years. The Educational Board, in agreement with the supervisor, may propose an extension of the education period. The primary goal of the education is personal development, acquiring knowledge and skills in the field of child psychotherapy applicable to children of different ages, and adopting specific modalities of the therapeutic setting of Integrative Child Psychotherapy. It does not imply the inclusion of individuals who require constant psychotherapeutic support. Education participants should submit a CV with information about their professional qualifications and experience in working with children or in human resources.
+                          Completed studies in humanities or social sciences (psychologists, psychiatrists, doctors, special educators, and related professions). The candidate should be at least 25 years old. Education lasts 4 years. The Educational Board, in agreement with the supervisor, may propose an extension of the education period. The primary goal of the education is personal development, acquiring knowledge and skills in the field of child psychotherapy applicable to children of different ages, and adopting specific modalities of the therapeutic setting of Integrative Child Psychotherapy. It does not imply the inclusion of individuals who require constant psychotherapeutic support. Education participants should submit a CV with inload_viewation about their professional qualifications and experience in working with children or in human resources.
                       </p>
                   </div>
               </div>
@@ -307,7 +307,7 @@ class DataSeeder extends Seeder
       ]),
       'order' => 2,
       'custom_design' => 1,
-      'form' => 0
+      'load_view' => 0
     ]);
 
     DB::table('page_content')->insert([
@@ -330,7 +330,7 @@ class DataSeeder extends Seeder
       ]),
       'order' => 3,
       'custom_design' => 0,
-      'form' => 0
+      'load_view' => 0
     ]);
 
     DB::table('page_content')->insert([
@@ -695,7 +695,7 @@ class DataSeeder extends Seeder
       ]),
       'order' => 4,
       'custom_design' => 1,
-      'form' => 0
+      'load_view' => 0
     ]);
 
     DB::table('page_content')->insert([
@@ -761,7 +761,7 @@ class DataSeeder extends Seeder
                       Grupna supervizija i individualna supervizija.
                   </p>
                   <p class="text-base font-normal text-white text-justify">
-                      Tokom edukacije obezbeđena je konstantna susperviziju polaznika. Izlaganjem isksutava o psihoterapijskoj praksi o radu sa dečjim grupama i terapijskom procesa u individualnim tehnikama polaznici stiču snažnu povratnu informaciju i kritičku refleksiju o psihoterapijskom rada. Supervizija prati proces učenja, olakšava integraciju teorijskog razumevanja, ličnog razvoja i kliničke prakse te omogućava evaluaciju interakcije sa klijentima.
+                      Tokom edukacije obezbeđena je konstantna susperviziju polaznika. Izlaganjem isksutava o psihoterapijskoj praksi o radu sa dečjim grupama i terapijskom procesa u individualnim tehnikama polaznici stiču snažnu povratnu inload_viewaciju i kritičku refleksiju o psihoterapijskom rada. Supervizija prati proces učenja, olakšava integraciju teorijskog razumevanja, ličnog razvoja i kliničke prakse te omogućava evaluaciju interakcije sa klijentima.
                   </p>
               </div>
             </div>
@@ -769,7 +769,7 @@ class DataSeeder extends Seeder
       ]),
       'order' => 5,
       'custom_design' => 1,
-      'form' => 0
+      'load_view' => 0
     ]);
 
     DB::table('page_content')->insert([
@@ -780,13 +780,13 @@ class DataSeeder extends Seeder
           'sr' => 'Prijava za edukaciju'
       ]),
       'content' => json_encode([
-          'en' => 'user.views.forms.sign-up-for-education',
-          'hu' => 'user.views.forms.sign-up-for-education',
-          'sr' => 'user.views.forms.sign-up-for-education'
+          'en' => 'user.views.load_views.sign-up-for-education',
+          'hu' => 'user.views.load_views.sign-up-for-education',
+          'sr' => 'user.views.load_views.sign-up-for-education'
       ]),
       'order' => 6,
       'custom_design' => 0,
-      'form' => 1
+      'load_view' => 1
     ]);
 
     DB::table('page_content')->insert([
@@ -872,7 +872,53 @@ class DataSeeder extends Seeder
       ]),
       'order' => 7,
       'custom_design' => 0,
-      'form' => 0
+      'load_view' => 0
+    ]);
+
+    DB::table('page_content')->insert([
+      'page_id' => 2,
+      'title' => json_encode([
+          'en' => 'Previous Conferences',
+          'hu' => 'Előző konferenciák',
+          'sr' => 'Prethodne konferencije'
+      ]),
+      'content' => json_encode([
+          'en' => '
+              <p class="text-justify">
+                  The Children\'s Psychodrama Conference with international participation is organized with the aim of gathering integrative child psychotherapists, child and adult psychodramatists, school psychologists, and educators to discuss topics in the field of theory and practice of child psychotherapy and child psychodrama. The conference is held annually in August, starting from 2014, with a specific theme chosen each year.
+              </p>
+          ',
+          'hu' => '
+              <p class="text-justify">
+                  A nemzetközi részvétellel megrendezett Gyermekpszichodráma Konferencia célja az integratív gyermekpszichoterapeuták, gyermek- és felnőtt pszichodramatisták, iskolai pszichológusok és pedagógusok összegyűjtése, hogy a gyermekpszichoterápia és a gyermekpszichodráma elméleti és gyakorlati témáit tárgyalják. A konferencia évente, augusztusban kerül megrendezésre, 2014-től kezdődően, és minden évben egy specifikus témát emelnek ki.
+              </p>
+          ',
+          'sr' => '
+              <p class="text-justify">
+                  Konferencija iz Dečje psihodrame sa međunarodnim učešćem se organizuje sa ciljem okupljanja integrativnih dečjih psihoterapeuta, dečjih i adultnih psihodramatičara, školskih psihologa i pedagoga kako bi se obradile teme iz područja teorije i prakse dečje psihoterapije i dečje psihodrame. Konferencija se održava jednom godišnje u avgustu počevši od 2014. godine, a svake godine kao ideju vodilju ističe neku specifičnu temu.
+              </p>
+          '
+      ]),
+      'order' => 1,
+      'custom_design' => 0,
+      'load_view' => 0
+    ]);
+
+    DB::table('page_content')->insert([
+      'page_id' => 2,
+      'title' => json_encode([
+        'en' => 'Conferences',
+        'hu' => 'Konferenciák',
+        'sr' => 'Konferencije'
+      ]),
+      'content' => json_encode([
+          'sr' => "user.views.home.conference",
+          'en' => "user.views.home.conference",
+          'hu' => "user.views.home.conference",
+      ]),
+      'order' => 2,
+      'custom_design' => 0,
+      'load_view' => 1
     ]);
   
   }

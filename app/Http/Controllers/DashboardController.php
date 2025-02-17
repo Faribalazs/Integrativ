@@ -114,4 +114,9 @@ class DashboardController extends Controller
          return redirect()->back()->with('error', 'An unexpected error occurred. Please try again.');
       }
    }
+
+   public function konferencije()
+   {
+      return view('user.views.pages.konferencije');
+   }
 }

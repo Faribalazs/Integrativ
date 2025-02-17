@@ -392,16 +392,28 @@ pre {
     }
 }
 
-.swiper-pagination-bullet {
+.swiper-pagination .swiper-pagination-bullet {
     border: 0.125rem solid var(--white) !important;
     background: var(--white) !important;
     width: 1.25rem !important;
     height: 1.25rem !important;
 }
 
-.swiper-pagination-bullet-active {
+.swiper-pagination .swiper-pagination-bullet-active {
     border: 0.125rem solid var(--white) !important;
     background: var(--white) !important;
+}
+
+.conference-swiper-pagination .swiper-pagination-bullet {
+    border: 0.125rem solid var(--black) !important;
+    background: var(--white) !important;
+    width: 1rem !important;
+    height: 1rem !important;
+}
+
+.conference-swiper-pagination .swiper-pagination-bullet-active {
+    border: 0.125rem solid var(--black) !important;
+    background: var(--black) !important;
 }
 
 .gradient {

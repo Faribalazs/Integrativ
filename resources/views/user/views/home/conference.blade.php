@@ -4,7 +4,7 @@
     $conferences = $helper->getConferences();
 @endphp
 
-<div class="swiper conferenceSlider my-16">
+<div class="swiper conferenceSlider md:my-16">
     <div class="swiper-wrapper conference-slider-wrapper">
         @foreach ($conferences as $conference)
             <div class="swiper-slide relative">
@@ -14,6 +14,7 @@
             </div>
         @endforeach
     </div>
+    <div class="conference-swiper-pagination flex w-full md:justify-end justify-center mt-2 pr-2"></div>
 </div>
 
 <script>
@@ -22,12 +23,16 @@
         spaceBetween:50,
         breakpoints: {
             300: { slidesPerView: 1 },
-            640: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 }
+            850: { slidesPerView: 2 },
+            1350: { slidesPerView: 3 }
+        },
+        pagination: {
+            el: '.conference-swiper-pagination',
+            clickable: true,
         },
         autoplay: {
-            delay: 2000,
-            disableOnInteraction: false,
+            delay: 4000,
+            disableOnInteraction: true,
         },
     });
 </script>

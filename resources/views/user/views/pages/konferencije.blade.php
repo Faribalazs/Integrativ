@@ -2,7 +2,7 @@
 
 <x-app-worker-layout>
     <x-slot name="pageTitle">
-        Edukacija
+        Konferencije
     </x-slot>
     <x-slot name="header">
     </x-slot>
@@ -12,38 +12,9 @@
         $category = $helper->getCategoryFromSlug($slug);
 
         $content = $helper->getPageContent($slug);
+
+        $lastConference = $helper->getLetestConferences();
     @endphp
-
-    @if (session('success'))
-        <script>
-            Swal.fire({
-                icon: 'success',
-                title: 'Success',
-                text: '{{ session('success') }}',
-            });
-        </script>
-    @endif
-
-    @if (session('error'))
-        <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: '{{ session('error') }}',
-            });
-        </script>
-    @endif
-
-    @if ($errors->any())
-        <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Validation Errors',
-                html: '{!! implode('<br>', $errors->all()) !!}',
-            });
-        </script>
-    @endif
-
 
     <div class="flex w-full relative">
         <img class="page-header-image" src="{{ asset('storage/' . $category->image) }}"
@@ -53,6 +24,18 @@
         </span>
     </div>
 
+    @if ($lastConference)
+        <div class="mb-20 mt-10 2xl:mt-20 flex xl:flex-row flex-col">
+            <div class="xl:w-1/3 w-full flex flex-col 2xl:px-40 sm:px-20 px-16 2xl:py-20 pb-10">
+                <h2 class="title my-10 text-center">{{ $lastConference->name }}</h2>
+                {!! $lastConference->content !!}
+            </div>
+            <div class="xl:w-2/3 w-full flex">
+                <img class="object-cover w-full sm:px-20 2xl:px-0 px-0" src="{{ asset('storage/' . $lastConference->image) }}" />
+            </div>
+        </div>
+    @endif
+
     @foreach ($content as $item)
         @if ($item->custom_design == 1)
             {!! $item->content !!}
@@ -61,10 +44,8 @@
                 $view = preg_replace('/<\/?p>/i', '', $item->content);
             @endphp
 
-            <div class="main-container my-20">
-                <h2 class="title my-10 text-center">{{ $item->title }}</h2>
-                {!! view()->make($view)->render() !!}
-            </div>
+            {!! view()->make($view)->render() !!}
+            
         @elseif ($item->image != null)
             <div class="main-container mt-10 mb-20">
                 <h2 class="title text-center">
@@ -90,18 +71,5 @@
             </div>
         @endif
     @endforeach
-
-    <style>
-        ul {
-            list-style-type: disc;
-            margin-left: 20px;
-        }
-
-        li {
-            padding-bottom: 5px;
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-    </style>
 
 </x-app-worker-layout>

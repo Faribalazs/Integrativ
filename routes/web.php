@@ -33,6 +33,8 @@ Route::get('/about-us', [DashboardController::class, 'aboutUs'])->name('about.us
 
 Route::get('/edukacija', [DashboardController::class, 'edukacija'])->name('edukacija');
 
+Route::get('/konferencije', [DashboardController::class, 'konferencije'])->name('konferencije');
+
 require __DIR__.'/auth.php';
 require __DIR__.'/adminauth.php';
 require __DIR__.'/workerauth.php';
