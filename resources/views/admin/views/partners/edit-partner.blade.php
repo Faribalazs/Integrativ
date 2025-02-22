@@ -11,6 +11,36 @@
         $lang = App::currentLocale();
     @endphp
 
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('success') }}',
+            });
+        </script>
+    @endif
+
+    @if (session('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: '{{ session('error') }}',
+            });
+        </script>
+    @endif
+
+    @if ($errors->any())
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Validation Errors',
+                html: '{!! implode('<br>', $errors->all()) !!}',
+            });
+        </script>
+    @endif
+
     <div class="main-container-admin w-full mt-10" style="overflow: auto">
         <form method="POST" class="w-full" enctype="multipart/form-data"
             action="{{ route('admin.home.edit.done', ['id' => request()->id]) }}">
@@ -50,22 +80,23 @@
                 <label for="image" class="sm:text-xl text-base mb-2 mt-3">
                     {{ __('app.admin.category.category-image') }}:
                 </label>
-            
+
                 <!-- Preview container for multiple images -->
                 <div id="preview-container" class="flex flex-wrap gap-2">
                     @php
                         $images = json_decode($home_page->section_image, true) ?? [];
                     @endphp
-            
+
                     @if (!empty($images))
                         @foreach ($images as $image)
                             <img src="{{ asset('storage/' . $image) }}" class="mt-2 w-40 h-40 object-cover rounded-md">
                         @endforeach
                     @else
-                        <img src="{{ asset('img/placeholder_image.jpg') }}" class="mt-2 w-40 h-40 object-cover rounded-md">
+                        <img src="{{ asset('img/placeholder_image.jpg') }}"
+                            class="mt-2 w-40 h-40 object-cover rounded-md">
                     @endif
                 </div>
-            
+
                 <div class="flex flex-col sm:flex-row mt-4">
                     <label for="file-upload" class="image-upload-btn px-4 py-3 cursor-pointer text-center">
                         {{ __('app.profile.choose-image') }}
@@ -74,12 +105,12 @@
                     <input id="uploadFile" class="text-center sm:text-left sm:pl-3 pl-0 sm:mt-0 mt-2 max-w-full"
                         placeholder="{{ __('app.profile.no-img-selected') }}" disabled="disabled" />
                 </div>
-            
+
                 <p class="{{ $errors->has('image') ? 'flex text-red mt-2 pl-1' : 'hidden' }}">
                     {{ $errors->first('image') }}
                 </p>
             </div>
-            
+
 
             <div class="flex w-full justify-center mt-5 mb-20">
                 <button class="confirm-btn w-1/2">

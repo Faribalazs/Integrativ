@@ -90,6 +90,11 @@
                         {{ request()->routeIs('admin.sing-up-conference.create') ? 'closed-icon-active' : '' }}">
                             <i class="ri-briefcase-4-line"></i>
                         </a>
+                        <a href="{{ route('admin.psychotherapist.create') }}"
+                            class="icons 
+                        {{ request()->routeIs('admin.psychotherapist.create') ? 'closed-icon-active' : '' }}">
+                        <i class="ri-user-2-line"></i>
+                        </a>
                         <form method="POST" id="log-out-form" action="{{ route('admin.logout') }}"
                             class="admin-logout icons">
                             @csrf
@@ -129,6 +134,9 @@
                         </a>
                         <a href="{{ route('admin.sing-up-conference.create') }}" class="link">
                             {{ __('app.admin.sing-up-conference') }}
+                        </a>
+                        <a href="{{ route('admin.psychotherapist.create') }}" class="link">
+                            {{ __('app.admin.psychotherapists') }}
                         </a>
                         <a onclick="logOut()" class="link cursor-pointer">
                             {{ __('app.profile.log-out') }}

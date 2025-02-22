@@ -1451,8 +1451,399 @@ class DataSeeder extends Seeder
       'custom_design' => 1,
       'load_view' => 0
     ]);
+
+    DB::table('page_content')->insert([
+      'page_id' => 4,
+      'title' => json_encode([
+          'en' => 'About the Association',
+          'hu' => 'A szövetségről',
+          'sr' => 'O udruženju'
+      ]),
+      'content' => json_encode([
+          'sr' => '
+              <p class="text-justify">
+                Udruženje za Integrativnu dečju psihoterapiju® je osnovano 2007. godine u Subotici. Ideja o osnivanju je nastala na osnovu međunarodnog metodološko teorijskog "projekata" definisanoj zajedničkim terapijskim stavovima različitih psihoterapijskih pravaca. Udruženje za Integrativnu dečju psihoterapiju je osnovano sa ciljem obrazovanja stručnjaka iz oblasti mentalnog zdravlja za primenu dečje psihoterapije kako u terapijske svrhe tako i za davanje podrške deci i roditeljima u rastu i razvoj ličnosti u različitim oblastima dečje zaštite, promocije, razvijanja i unapređenja teorije i prakse dečje psihoterapije. Udruženje za Integrativnu dečju psihoterapiju je punopravni član Saveza društava psihoteraputa Srbije i Evropske asocijacije za Integrativnu psihoterapiju.
+              </p>',
+          'en' => '
+              <p class="text-justify">
+                The Association for Integrative Child Psychotherapy® was founded in 2007 in Subotica. The idea of its establishment arose from an international methodological-theoretical "project" defined by the shared therapeutic views of different psychotherapeutic approaches. The Association for Integrative Child Psychotherapy was founded with the goal of educating mental health professionals in the application of child psychotherapy, both for therapeutic purposes and for providing support to children and parents in the growth and development of personality in various areas of child protection, promotion, and the development and improvement of theory and practice in child psychotherapy. The Association for Integrative Child Psychotherapy is a full member of the Serbian Association of Psychotherapists and the European Association for Integrative Psychotherapy.
+              </p>
+            ',
+          'hu' => '
+              <p class="text-justify">
+                Az Integratív Gyermekképző Pszichoterápiás Egyesület® 2007-ben alakult Szabadkán. Az alapítás ötlete egy nemzetközi metodológiai-elméleti "projektből" származott, amelyet különböző pszichoterápiás irányzatok közös terápiás nézetei határoztak meg. Az Integratív Gyermekképző Pszichoterápiás Egyesületet azzal a céllal alapították, hogy szakembereket képezzenek ki a gyermekpszichoterápia alkalmazására, mind terápiás célokra, mind pedig a gyermekek és szülők támogatására a személyiség fejlődésében a gyermekvédelmi, promotív, fejlődési és fejlesztési területeken, valamint a gyermekpszichoterápia elméletének és gyakorlatának fejlesztésére és javítására. Az Integratív Gyermekképző Pszichoterápiás Egyesület a Szerb Pszichoterapeuták Szövetségének és az Európai Integratív Pszichoterápiás Szövetség teljes jogú tagja.
+              </p>
+            ',
+      ]),
+      'order' => 1,
+      'custom_design' => 0,
+      'load_view' => 0
+    ]);
+
+    DB::table('page_content')->insert([
+      'page_id' => 4,
+      'title' => json_encode([
+        'sr' => 'Partneri',
+        'en' => 'Partners',
+        'hu' => 'Partnerek',
+      ]),
+      'content' => json_encode([
+        'sr' => "user.views.home.partners",
+        'en' => "user.views.home.partners",
+        'hu' => "user.views.home.partners",
+      ]),
+      'order' => 2,
+      'custom_design' => 0,
+      'load_view' => 1
+    ]);
   
+    DB::table('page_content')->insert([
+      'page_id' => 4,
+      'title' => json_encode([
+          'sr' => 'Integrativna dečja psihoterapija',
+          'en' => 'Integrative Child Psychotherapy',
+          'hu' => 'Integratív gyermekpszichoterápia',
+      ]),
+      'content' => json_encode([
+        'sr' => '
+          <div class="main-container my-10">
+              <h2 class="title text-center">
+                  Integrativna dečja psihoterapija
+              </h2>
+              <div class="flex w-full lg:flex-row flex-col my-20 lg:gap-20 gap-10">
+                <div class="flex lg:w-1/2 w-full lg:p-12 p-8 flex-col bg-red rounded-lg">
+                    <p class="text-base font-normal text-white text-justify mb-5">
+                      Integrativna dečja psihoterapija ® proizilazi iz dva psihoterapijska modela – integrativne psihoterapije utemeljene i opisane od strane renomiranih autora kao što su (Richard G. Erskine. (1997); Erskine & Moursand. (1988); (Erskine & Trautmann. 1997); (Erskine, Moursund & Trautmann. 1999); (Erskine & Moursund, 2011) i projekta “Integrativna terapija za decu“ razvijene od strane Hilarion G. Petzolda i saradnika šesdestih godina minulog stoleća. (Hilarion G. Petzold, Ramin,1986).
+                    </p>
+                    <p class="text-base font-normal text-white text-justify mb-5">
+                      Ovi modeli psihoterapije pružaju adekvatnu teorijsku i praktičnu osnovu za konceptualizaciju mnogim pitanjima unutar Integrativne dečje psihoterpije. Adaptacija principa Integrativne psihoterapije i trapeutskih tehnika “Integrativne terapije za decu” u dečju psihoterapiju predstavlja adekvatnu kohezivnu kreaciju za многе uloge integrativnom dečjem psihoterapeutu.
+                    </p>
+                    <p class="text-base font-normal text-white text-justify mb-5">
+                      Program Integrativne dečje psihoterapije uključuje i inkorporira teorijske i praktične postulate različitih psihoterapijskih škola izgrađene na temelju četri teorije i terapijske tradicije: humanističke orijentacije (klijentom usmerana psihoterapija Carl Rogersa), expresivno-akcione (sand-tray play terapija, dečja psihodrama), kognitivno – bihevioralne i psihodinamske (intersubjektivni pristup, objektni odnosi, self psihologija, teorije atačmenta i mentalizacije) perspektive integrišući ih u objedinjeni pristup čoveku kao osnov za razumevanje psihičkog razvoja. Afirmišući važnost objedinjenog pristupa čoveku zastupa važan stav u psihoterapijskoj praksi da prilikom razmatranja pozadine bilo kog momenta dečjeg funkcionisanja ili uzroka nastanka konflikta pored psihodinamske pozadine bitno je i priznanje međuzavisnosti misli, osećanja i ponašanja nastalih u interpersonalnom i društvenom prostoru.
+                    </p>
+                    <p class="text-base font-normal text-white text-justify mb-5">
+                      Integrativna dečja psihoterapija prihvata i podržava relaciono-razvojni pristup psihoterapiji. Smatrajući da je ishod psihoterapije najefikasniji kada psihoterapeut stavlja poseban akcenat na formiranje, održavanje i jačanje kvalitetnog terapijskog odnosa sa klijentom. Potvrđuje važnost podržavajućeg okruženja u kome rast, razvoj i pozitivne promene dobijaju mesto u intersubjektivnom prostoru koji je ko-kreiran od strane terapeuta i klijenta.
+                    </p>
+                    <p class="text-base font-normal text-white text-justify mb-5">
+                      Analize teorijskih pretpostavki modela promena tokom terapije otkrivaju strategije koja predstavljaju zajedničke činioce u različitim terapijskom perspektivama i u tom smislu mogu predstavljati i osnove integrativnog pristup o psihoterapiji.
+                    </p>
+                    <p class="text-base font-normal text-white text-justify mb-5">
+                      Zajednički faktori u Integrativnoj dečjoj psihoterapiji su nezaobilazni: odnose se на terapijski odnos između klijenta i terapeuta, na razvojno utemeljeni okvir rada, srdačnost, brižnost, bliskost, uzamajno poštovanja i poverenje, na veru da su deca sposobna da učestvuju u rešenju svojih teškoće i da donesu potrebne odluke. Prihvatanje pozitivne pretpostavke delotvornosti terapije i ohrabrivanje dece da iskažu i ispolje svoja osećanja (ovo dozvola naravno ne podrazumeva i odobrenje za ispoljenje bilo kog ponašanja). Podrška novim korektivnim emocionalnim doživljajima omogućavaju detetu da teškoće doživi u novom, drugačijem svetlu u prihvatljivijem obliku. Terapijski rad baziran na temelju zajedničkih faktora otvara mogućnost za primenu specifičnih terapeutskih intervencija bez bojaznosti da bi bili ograničeni diktatom ili nepremostivim preporukama određenog pravca intelektualnog okvira. Spoj zajedničkih i specifičnih faktora utemeljenih u terapeutske tehnikeintegrativne dečje psihoterapije čine ove intervencije primenljivim i efikasnim u širokom spektru psihičkih teškoća i poremećaja.
+                    </p>
+                    <p class="text-base font-normal text-white text-justify mb-5">
+                      Terapeutovi odgovori i odnos prema dečjem ponašanju, mislima i emocijam ostvaruje се preko metafore igre ili prihvatanjem igre uloga. Promocija “kao da” uslova sa jedne strane obezbeđujući snagu kreativnom procesu olakšava put izmenama, rastu, razvoju i ozdravljenju са druge strane nedvosmisleno potvrđuje važnost povoljnog kontakta organizovanog oko centralnogpitanja terapijskog procesa odnosa terapeuta sa klijentom. Cilj ovih terapijskih aktivnosti је produbljivanje procesa sa površnog nivoa rituala i uobičajene manipulacije sa predmetima prema igri sa dubokim značenjem, sa simbolično reflektivnim kpacitetom.
+                    </p>
+                    <p class="text-base font-normal text-white text-justify mb-5">
+                      Susret dečjeg terapeuta i deteta može da preraste u “prostor” u kojem unutrašnji maladptivni modeli deteta mogu se modifikovati u adaptivnije objektne odnose. U ovom kontekstu odrasla osoba postaje jedna vrsta mobilnog “intermedijarnog objekta” i ispoljava miroring poziciju prema detetu. Pri tome uvek treba da bude spreman da preuzme ulogu odgovorne odrasle osobe, da u slučaju potrebe ispolji odlučnost i autoritet, da postavlja zahteve, da zabrani, da pokaže potrebno samopouzdanje. Dete u tom procesu takođe može da isproba različite uloge, da je snažan, jak, samostalan ili pak krho, slabo, da je ljut ili uvređen, da traži zaštitu, da preko identifikacije sa simbiličnim ulogama gradi nove kompetencije a da pri томе doživi mogućnost eksperimentisanja sa drugim, novim ulogama, da gradi nove interne objekte, da doživi da se mogu prevazići okviri rigidnih uloga.
+                    </p>
+                    <p class="text-base font-normal text-white text-justify mb-5">
+                      “Integracija” u ovom značenju u okviru Integrativne dečje psihoterapije je prvi aspekat integracije i odgovara integraciji ličnosti. (Erskine R. 2004.) Predstavlja napore u pružanju pomoći detetu, adolescentu ili roditelju u asimilaciji i harmonizaciji sadržaja ego stanja, u relaksaciji odbranbenih mehanizma, u promeni ili odbacivanju skripta i ponovnog uspostavljanja kontakta sa svetom oko sebe.
+                    </p>
+                </div>
+                <div class="flex lg:w-1/2 w-full lg:p-12 p-8 flex-col bg-red rounded-lg">
+                    <p class="text-base font-normal text-white text-justify mb-5">
+                      Drugi aspekat izraza “integracija“ odnosi se na integraciju klijenta. Značajna razlika u radu sa decom u odnosu na adultnu psihoterapiju da deca teško verbalizuju svoje probleme i teškoće. Ali sva deca se igraju i igra predstavlja začajan deo dečjeg razvoja. Deca igrajući obogaćuju svoje znanje o selfu, o drugima i o fizičkim karakteristikama okruženja u kojem bivstvuju. Integrativna dečja psihoterapija je inkluzivnija u odnosu na tradicionalne forme psihoterapije u kojima kljent zauzima manje aktivnu ulogu u terapiji.
+                    </p>
+                    <p class="text-base font-normal text-white text-justify mb-5">
+                      Terapijski odnos je pomognut i podržan činjenicom da terapeut učestvuje u igri kao ravnopravan partner i koristi “jezik” koji je specifičan i razumljiv za decu. Ovaj konceptualni okvir pronalazi zajedničku osnovu u tradicionalnim perspektivama klijentom upravljenom i psihodinamskim pristupom, naime: zajedničkom igrom ostvareni terapijski odnos otvara komunkacijski prostor “bezbednog i sigurnog mesta” neophodnog za polaznu osnovu potrebnim izmenama.
+                    </p>
+                    <p class="text-base font-normal text-white text-justify mb-5">
+                      Treći aspekat termina “integrativnost” se odnosi na integraciju psihoterapeuta, savetnika, edukatora ili suspervizora. Efikasna dečja psihoterapija najčešće zahteva da terapeut bude svestran i fleksibilan, da bi mogao uspešena da izađe u susret promenljivim potrebama deteta kao i prema potrebama važnih osoba iz detetovog okruženja. Može da se desi da je terapeut u jednom trenutku intenzivno uključen u igru reflektujući na interne procese i napetosti deteta, a u sledećem momentu treba da savetuje roditelja u vezi detetovih teškoća ili da obavi razgovor i savetovanje sa školskim psihologom ili učiteljem.
+                    </p>
+                    <p class="text-base font-normal text-white text-justify mb-5">
+                      Terapeut treba da izgradi visoko senzitivan stav, da ispolji maksimalan respekt prema deci, traba da omogući da predstave sebe jezikom koji je njima najbliži ili najprihvatljiviji (npr. korišćenjem terapijskih tehnika Integrativne dečje psihoterapije). Ovim aktivnostima terapeut podstiče klijenta na expresivnu komukaciju a samim tim otvara mogućnost za produbljivanjem istraživanja selfa.
+                    </p>
+                    <p class="text-base font-normal text-white text-justify mb-5">
+                      Profesionalna integracija u okviru Integrativne psihoterapije podrazumeva i ličnu integraciju psihoterapeuta u odnosu na teorijske okvire (teorija, metologija i filozofske osnove.) kontakta sa doživljaljima iz detinjstva i sadašnjosti i sa iskustvima iz pozicije stručnjaka. Profesionalan i lični razvoj u ovom kontekstu je usko povezan sa procesom integracije ličnosti psihoterapeuta, i predstavlja celoživotni proces.
+                    </p>
+                    <p class="text-base font-normal text-white text-justify mb-5">
+                      Četvrti aspekt pojma “integracija” se odnosi na emocionalnu integraciju deteta, adolescenta u primarnu porodicu. Integrativni dečji psihoterapeut od samog početka nastoji da bude sanzitivan prema subjektivnim doživljajima dece i roditelja, uključujući otvorenost prema prepoznavanju potreba u zavisnosti od stepena razvoja i modifikacije odnosa ukoliko se za to pokaže potreba. Integrativna dečja psihoterapija predstavlja intenzivan vid terapija, uključuje sve članove porodice; oba roditelja, dete ili svu decu, sa namerom da poboljša odnos između roditelja i dece, da povrati funkcionalnost i celovitost porodice ukoliko je ona zbog nekog razloga narušena. Ako je to moguće terepeut posvećuje posebnu pažnju i pomaže roditelju u nameri da adaptira svoj odnos promenjenim dečjim potrebama, jačajući tako resurse roditelja i efikasnost terapije. Konačno i promene u detetu vode do pozitivnih promena u celoj porodici. Ukoliko riditelji ili drugi članovi porodice ispoljavaju dodatne simptoma terapeut može da zatraži dodatne intevencije.
+                    </p>
+                    <p class="text-base font-normal text-white text-justify mb-5">
+                      U završnoj fazi pishoterapije integrativni dečji psihoterapeut nudi mogućnost za rad sa gubitkom i osećanjem separacije. Dečje emocije i iskustva u vezi gubitka predstavljaju važan segment dečje terapije i obično se ljavljaju ili se reaktiviraju u ovoj fazi terapije. Moguće je da će i roditeljima ili starteljima biti potrebna pomoć prilikom zaključivanju terapije zbog doživljaja u vezi gubitka podrške terapeuta. Da bi se uspešno odnosio prema ovoj pojavi, terapeut pored toga što obraća neophodnu pažnju na realna osećanja nastalih u ovoj fazi terapije ne isključuje ni mogućnost reaktivacije doživljaja iz ranijeg perioda života. Na kraju terapijskog procesa i sam terapeut treba da osvesti i da vodi brigu o sopstvenim kontartransfernim osećanjima u vezi zaključivanja terapije i treba da ih adresira na odgovarajući način.
+                    </p>
+                    <p class="text-base font-normal text-white text-justify mb-5">
+                      Razvojna realaciona perspektiva integrativne dečje psihoterapije stavljajući u središtu psihoterapijskog procesa odnos dete – terapeut predstavlja konstantno traganje za decu i adolescente prihvatljiv i razumljiv načine komuniciranja. Integrativni dečji psihoterapeut kreativno konstruktivnim aktivnostima kao što su: dečja psihodrama, plej terapija „Moj svet”., Vinikotove škrabalice., savetovanje sa elementima individualne psihodrame ., vođena imaginacija i Cooping cat programa. stvara za dete prirodno, prihvatljivo i razumljivo okruženje u kojem može da se poveri, da organizuje ili da reorganizuje vlastito iksutvo i da nauči kako da se njime služi u kontaktu sa sobom i sa drugima. Mogućnosti primene zavise od postavljenog terapijskog cilja, stepene dečjeg razvoja, dobi i od vrste teškoća.
+                    </p>
+                </div>
+              </div>
+            </div>
+        ',
+        'en' => '
+        <div class="main-container my-10">
+            <h2 class="title text-center">
+              Integrative Child Psychotherapy
+            </h2>
+          <div class="flex w-full lg:flex-row flex-col my-20 lg:gap-20 gap-10">
+            <div class="flex lg:w-1/2 w-full lg:p-12 p-8 flex-col bg-red rounded-lg">
+              <p class="text-base font-normal text-white text-justify mb-5">
+                Integrative child psychotherapy ® arises from two psychotherapeutic models – integrative psychotherapy, based on and described by renowned authors such as Richard G. Erskine (1997); Erskine & Moursand (1988); Erskine & Trautmann (1997); Erskine, Moursund & Trautmann (1999); Erskine & Moursund (2011), and the project “Integrative therapy for children,” developed by Hilarion G. Petzold and collaborators in the 1960s (Hilarion G. Petzold, Ramin, 1986).
+              </p>
+              <p class="text-base font-normal text-white text-justify mb-5">
+                These psychotherapy models provide an adequate theoretical and practical foundation for conceptualizing many issues within Integrative child psychotherapy. The adaptation of the principles of Integrative psychotherapy and the therapeutic techniques of “Integrative therapy for children” into child psychotherapy represents an adequate cohesive creation for many roles of the integrative child psychotherapist.
+              </p>
+              <p class="text-base font-normal text-white text-justify mb-5">
+                The Integrative child psychotherapy program includes and incorporates theoretical and practical postulates from various psychotherapeutic schools, built upon four theories and therapeutic traditions: humanistic orientation (client-centered therapy by Carl Rogers), expressive-action (sand-tray play therapy, child psychodrama), cognitive-behavioral, and psychodynamic (intersubjective approach, object relations, self-psychology, attachment theory, and mentalization) perspectives, integrating them into a unified approach to understanding psychological development. Affirming the importance of a unified approach to the person, it supports the significant position in psychotherapy that, when considering the background of any moment in child functioning or the cause of a conflict, it is essential to recognize the interdependence of thoughts, feelings, and behaviors arising in the interpersonal and social space, in addition to the psychodynamic background.
+              </p>
+              <p class="text-base font-normal text-white text-justify mb-5">
+                Integrative child psychotherapy embraces and supports the relational-developmental approach to psychotherapy. Believing that the outcome of psychotherapy is most effective when the psychotherapist emphasizes the formation, maintenance, and strengthening of a quality therapeutic relationship with the client. It affirms the importance of a supportive environment where growth, development, and positive change find a place in the intersubjective space co-created by the therapist and client.
+              </p>
+              <p class="text-base font-normal text-white text-justify mb-5">
+                Analyzing the theoretical assumptions of the model of change during therapy reveals strategies that represent common factors across different therapeutic perspectives and, in this sense, may form the foundation of the integrative approach to psychotherapy.
+              </p>
+              <p class="text-base font-normal text-white text-justify mb-5">
+                Common factors in Integrative child psychotherapy are unavoidable: they relate to the therapeutic relationship between the client and therapist, the developmentally-based work framework, warmth, care, closeness, mutual respect, and trust, as well as the belief that children are capable of participating in solving their difficulties and making necessary decisions. Acceptance of the positive assumption of therapy\'s effectiveness and encouragement for children to express and display their feelings (this allowance, of course, does not imply approval for the expression of any behavior). Support for new corrective emotional experiences enables the child to perceive difficulties in a new, more acceptable form. Therapeutic work based on the common factors opens the possibility for applying specific therapeutic interventions without fear of being constrained by the dictates or insurmountable recommendations of any particular intellectual framework. The combination of common and specific factors grounded in the therapeutic techniques of integrative child psychotherapy makes these interventions applicable and effective across a broad range of psychological difficulties and disorders.
+              </p>
+              <p class="text-base font-normal text-white text-justify mb-5">
+                The therapist\'s responses and attitude toward the child\'s behavior, thoughts, and emotions are realized through the metaphor of play or acceptance of role-playing. The promotion of "as if" conditions, on the one hand, ensures the strength of the creative process, easing the path of change, growth, development, and healing, while on the other hand, it unmistakably confirms the importance of favorable contact organized around the central issue of the therapeutic process – the relationship between the therapist and the client. The goal of these therapeutic activities is to deepen the process from a superficial level of ritual and usual manipulation with objects to play with deep meaning, with symbolic reflective capacity.
+              </p>
+              <p class="text-base font-normal text-white text-justify mb-5">
+                The encounter between the child therapist and the child may evolve into a “space” where the child\'s internal maladaptive models can be modified into more adaptive object relations. In this context, the adult becomes a kind of mobile "intermediary object" and mirrors the position toward the child. At the same time, they should always be ready to assume the role of a responsible adult, to demonstrate decisiveness and authority when necessary, to set boundaries, to forbid, and to show the necessary self-confidence. The child in this process can also experiment with different roles, be strong, self-sufficient, or fragile, weak, angry, or offended, seek protection, and through identification with symbolic roles, build new competencies, while experiencing the opportunity to experiment with new roles and internal objects, realizing that rigid role boundaries can be overcome.
+              </p>
+              <p class="text-base font-normal text-white text-justify mb-5">
+                "Integration" in this sense, within Integrative child psychotherapy, represents the first aspect of integration and corresponds to the integration of the personality (Erskine R. 2004). It represents the efforts to assist the child, adolescent, or parent in the assimilation and harmonization of ego state contents, relaxing defensive mechanisms, changing or discarding scripts, and reestablishing contact with the world around them.
+              </p>
+            </div>
+            <div class="flex lg:w-1/2 w-full lg:p-12 p-8 flex-col bg-red rounded-lg">
+              <p class="text-base font-normal text-white text-justify mb-5">
+                The second aspect of the term "integration" refers to the integration of the client. A significant difference in working with children, compared to adult psychotherapy, is that children struggle to verbalize their problems and difficulties. However, all children play, and play represents an important part of their development. Through play, children enrich their knowledge about the self, others, and the physical characteristics of their environment. Integrative child psychotherapy is more inclusive compared to traditional forms of psychotherapy, where the client plays a more passive role in therapy.
+              </p>
+              <p class="text-base font-normal text-white text-justify mb-5">
+                The therapeutic relationship is supported by the fact that the therapist participates in the play as an equal partner and uses a "language" that is specific and understandable to children. This conceptual framework finds common ground in traditional client-centered and psychodynamic approaches, namely: a therapeutic relationship achieved through joint play opens the communication space for a "safe and secure place" necessary for the basis of required changes.
+              </p>
+              <p class="text-base font-normal text-white text-justify mb-5">
+                The third aspect of the term "integration" refers to the integration of the psychotherapist, counselor, educator, or supervisor. Effective child psychotherapy often requires the therapist to be versatile and flexible to successfully address the changing needs of the child and the important people in the child\'s environment. It may happen that the therapist is intensely involved in the play at one moment, reflecting on the child\'s internal processes and tensions, and in the next moment needs to advise the parent about the child\'s difficulties or have a discussion with a school psychologist or teacher.
+              </p>
+              <p class="text-base font-normal text-white text-justify mb-5">
+                The therapist must build a highly sensitive attitude, show maximum respect toward the children, and enable them to represent themselves in the language that is closest or most acceptable to them (e.g., using therapeutic techniques of Integrative child psychotherapy). Through these activities, the therapist encourages the client to express themselves, thus opening the possibility for deeper self-exploration.
+              </p>
+              <p class="text-base font-normal text-white text-justify mb-5">
+                Professional integration within Integrative psychotherapy also implies the personal integration of the psychotherapist with respect to theoretical frameworks (theory, methodology, and philosophical foundations), contact with childhood experiences, and experiences as a professional. Professional and personal development in this context is closely related to the process of the psychotherapist\'s personality integration and represents a lifelong process.
+              </p>
+              <p class="text-base font-normal text-white text-justify mb-5">
+                The fourth aspect of the term "integration" refers to the emotional integration of the child or adolescent into the primary family. The integrative child psychotherapist seeks from the very beginning to be sensitive to the subjective experiences of the child and parent, including openness to recognizing needs based on developmental stages and modifying relationships if necessary. Integrative child psychotherapy represents an intense form of therapy, involving all family members – both parents, the child, or all children – with the intention of improving the relationship between parents and children, restoring functionality, and the integrity of the family if disrupted for any reason. If possible, the therapist gives special attention and helps the parent adapt their relationship to the child\'s changed needs, thus strengthening the parent\'s resources and the effectiveness of the therapy. Finally, changes in the child lead to positive changes in the entire family. If the parents or other family members exhibit additional symptoms, the therapist may request additional interventions.
+              </p>
+              <p class="text-base font-normal text-white text-justify mb-5">
+                In the final phase of psychotherapy, the integrative child psychotherapist offers the opportunity to work with loss and feelings of separation. The child\'s emotions and experiences related to loss represent an important segment of child therapy and are usually processed or reactivated in this phase of therapy. It is possible that the parents or caregivers may also need assistance when concluding therapy due to feelings related to the loss of the therapist\'s support. To successfully address this phenomenon, the therapist, in addition to paying necessary attention to the real feelings arising in this phase of therapy, does not exclude the possibility of reactivating experiences from earlier stages of life. At the end of the therapeutic process, the therapist should also be aware of and manage their own countertransference feelings related to the conclusion of therapy and address them appropriately.
+              </p>
+              <p class="text-base font-normal text-white text-justify mb-5">
+                The developmental relational perspective of integrative child psychotherapy, placing the child-therapist relationship at the center of the therapeutic process, represents a constant search for acceptable and understandable ways for children and adolescents to communicate. The integrative child psychotherapist, through creative constructive activities such as child psychodrama, play therapy "My World," Winnicott\'s scribbles, counseling with elements of individual psychodrama, guided imagination, and the Cooping Cat program, creates a natural, acceptable, and understandable environment for the child, where they can confide, organize or reorganize their own experiences, and learn how to use them in contact with themselves and others. The possibilities for application depend on the set therapeutic goal, the child\'s developmental stage, age, and the type of difficulties.
+              </p>
+            </div>
+          </div>
+        </div>
+        ',
+        'hu' => '
+          <div class="main-container my-10">
+            <h2 class="title text-center">
+              Integratív gyermekpszichoterápia
+            </h2>
+              <div class="flex w-full lg:flex-row flex-col my-20 lg:gap-20 gap-10">
+                <div class="flex lg:w-1/2 w-full lg:p-12 p-8 flex-col bg-red rounded-lg">
+                    <p class="text-base font-normal text-white text-justify mb-5">
+                      Az integratív gyermekpszichoterápia ® két pszichoterápiás modellből ered – az integratív pszichoterápiából, amelyet neves szerzők dolgoztak ki és írtak le, mint például (Richard G. Erskine. (1997); Erskine & Moursand. (1988); (Erskine & Trautmann. 1997); (Erskine, Moursund & Trautmann. 1999); (Erskine & Moursund, 2011), és az „Integratív terápia gyermekek számára” projekt, amelyet Hilarion G. Petzold és munkatársai dolgoztak ki az 1960-as években. (Hilarion G. Petzold, Ramin, 1986).
+                    </p>
+                    <p class="text-base font-normal text-white text-justify mb-5">
+                      Ezek a pszichoterápiás modellek megfelelő elméleti és gyakorlati alapot biztosítanak az integratív gyermekpszichoterápia különböző kérdéseinek konceptualizálásához. Az integratív pszichoterápia elveinek és a „Gyermekek számára alkalmazott integratív terápia” terapeutikus technikáinak adaptálása a gyermekpszichoterápiában megfelelő koherens megközelítést jelent a gyermekpszichoterapeuták számára.
+                    </p>
+                    <p class="text-base font-normal text-white text-justify mb-5">
+                      Az integratív gyermekpszichoterápia programja magában foglalja és integrálja különböző pszichoterápiás iskolák elméleti és gyakorlati alapelveit, amelyek négy elméleti és terapeutikus hagyomány alapján épülnek fel: humanisztikus orientáció (Carl Rogers kliensekkel orientált pszichoterápiája), expresszív-akciós (sand-tray play terápia, gyermekpszichodráma), kognitív – viselkedéses és pszichodinamikai (interszubjektív megközelítés, objektum kapcsolatok, self-pszichológia, kötődési és mentalizációs elméletek) perspektívák integrálásával egy összefogott megközelítést alkotva az emberről mint a pszichés fejlődés megértésének alapjáról. Az összefogott megközelítés fontosságát megerősítve a pszichoterápiás gyakorlatban azt az álláspontot képviseli, hogy amikor a gyermek működésének bármely pillanata vagy konfliktusának oka kerül megvitatásra, a pszichodinamikai háttér mellett fontos elismerni a gondolatok, érzések és viselkedések kölcsönös függőségét, amelyek az interperszonális és társadalmi térben alakultak ki.
+                    </p>
+                    <p class="text-base font-normal text-white text-justify mb-5">
+                      Az integratív gyermekpszichoterápia támogatja és elfogadja a kapcsolat-alapú fejlődési pszichoterápiás megközelítést. Úgy véli, hogy a pszichoterápia eredménye a leghatékonyabb, amikor a pszichoterapeuta különös hangsúlyt fektet a klienssel való terapeutikus kapcsolat kialakítására, fenntartására és megerősítésére. Megerősíti a támogató környezet fontosságát, amelyben a növekedés, fejlődés és pozitív változások helyet kapnak az interszubjektív térben, amelyet a terapeuta és a kliens közösen alakítanak ki.
+                    </p>
+                    <p class="text-base font-normal text-white text-justify mb-5">
+                      A terapeuta változásokkal kapcsolatos elméleti előfeltevések elemzése feltárja azokat a stratégiákat, amelyek közös tényezőként jelennek meg különböző terapeutikus perspektívákban, és ebben az értelemben az integratív pszichoterápiás megközelítések alapját képezhetik.
+                    </p>
+                    <p class="text-base font-normal text-white text-justify mb-5">
+                      Az integratív gyermekpszichoterápiában közös tényezők nélkülözhetetlenek: ezek a terapeuta és a kliens közötti terapeutikus kapcsolatra vonatkoznak, a fejlődésalapú munkakörnyezetre, a szívélyességre, gondoskodásra, közelségre, kölcsönös tiszteletre és bizalomra, arra a hitre, hogy a gyermekek képesek részt venni a saját nehézségeik megoldásában és meghozni a szükséges döntéseket. Az integratív pszichoterápiában a hatékonyságra vonatkozó pozitív előfeltevés elfogadása és a gyermekek érzelmeik kifejezésére való bátorítása (természetesen nem engedve bármely viselkedés kifejezését). Az új korrekciós érzelmi élmények támogatása lehetővé teszi a gyermek számára, hogy a nehézségeit új, más megvilágításban és elfogadhatóbb formában tapasztalja meg. A közös tényezők alapjain végzett terapeutikus munka lehetőséget ad arra, hogy alkalmazzuk a specifikus terapeutikus beavatkozásokat anélkül, hogy aggódnunk kellene amiatt, hogy egy adott intellektuális keret vagy irányelv szigorúan meghatározott határok közé szorítja azokat. Az integratív gyermekpszichoterápiás technikák által alapozott közös és specifikus tényezők kombinációja ezek a beavatkozások széles körű pszichikai nehézségek és zavarok kezelésére alkalmazhatóak és hatékonyak.
+                    </p>
+                    <p class="text-base font-normal text-white text-justify mb-5">
+                      A terapeuta válaszai és a gyermek viselkedéséhez, gondolataihoz és érzéseihez való viszonya a játék metaforáján keresztül valósul meg, vagy a szerepjátékok elfogadásával. A „mint ha” állapotok előmozdítása egyfelől lehetővé teszi a kreatív folyamat erősségét, másfelől egyértelműen megerősíti a terapeutikus kapcsolat fontosságát, amely központi szerepet játszik a terapeuta és a kliens közötti kapcsolati folyamatban. Ezen terapeutikus aktivitások célja a folyamat mélyítése, a tárgyakkal való szokásos manipuláció szintjéről a mélyebb jelentéssel bíró, szimbolikusan reflektáló játékra való áttérés.
+                    </p>
+                    <p class="text-base font-normal text-white text-justify mb-5">
+                      A gyermekterapeuta és a gyermek találkozása egy olyan „térbe” fejlődhet, ahol a gyermek maladaptív belső modelljei alkalmazkodóbb objektum kapcsolatokká módosulhatnak. Ebben az összefüggésben a felnőtt személy egyfajta mobil „közvetítő objektumként” jelenik meg, és tükröző szerepet játszik a gyermekkel szemben. Mindeközben mindig készen kell állnia arra, hogy felelősségteljes felnőtt személy szerepét vállalja, hogy szükség esetén döntést hozzon, autoritást gyakoroljon, hogy elvárásokat fogalmazzon meg, tiltson, és megfelelő önbizalmat mutasson. A gyermek a folyamat során különböző szerepeket is kipróbálhat, erősnek, önállónak, vagy éppen gyengének, dühösnek, sértődöttnek érezheti magát, védelmet kereshet, vagy a szimbolikus szerepekkel való azonosulás révén új kompetenciákat építhet, miközben új, más szerepekkel való kísérletezés lehetőségét éli át, új belső objektumokat alkothat, és felismerheti, hogy a rigid szerepeken túlléphet.
+                    </p>
+                    <p class="text-base font-normal text-white text-justify mb-5">
+                      Az „integráció” ebben az értelemben az integratív gyermekpszichoterápiában az integráció első aspektusát jelenti, amely megfelel a személyiség integrációjának. (Erskine R. 2004.) Segítségnyújtási törekvéseket jelent a gyermek, serdülő vagy szülő számára az ego állapotok tartalmának aszimilálásában és harmonizálásában, a védekező mechanizmusok ellazításában, a szkriptek megváltoztatásában vagy elutasításában, és a világgal való kapcsolatteremtés újraindításában.
+                    </p>
+                </div>
+                <div class="flex lg:w-1/2 w-full lg:p-12 p-8 flex-col bg-red rounded-lg">
+                    <p class="text-base font-normal text-white text-justify mb-5">
+                      Az „integráció” kifejezés második aspektusa a kliens integrációjára vonatkozik. A gyermekekkel való munka jelentős különbsége az adult pszichoterápiához képest, hogy a gyermekek nehezen verbalizálják problémáikat és nehézségeiket. De minden gyermek játszik, és a játék fontos része a gyermekek fejlődésének. A gyermekek a játékkal gazdagítják tudásukat önmagukról, másokról és a környezetük fizikai jellemzőiről, amiben élnek. Az integratív gyermekpszichoterápia inkluzívabb, mint a hagyományos pszichoterápiás formák, amelyekben a kliens kevésbé aktív szerepet vállal a terápiában.
+                    </p>
+                    <p class="text-base font-normal text-white text-justify mb-5">
+                      A terapeutikus kapcsolatot segíti és támogatja, hogy a terapeuta részt vesz a játékban egyenrangú partnerként, és olyan „nyelvet” használ, amely a gyermekek számára specifikus és érthető. Ez a konceptuális keret közös alapot talál a hagyományos, kliensekkel orientált és pszichodinamikai megközelítésekben: a közösen játszott terapeutikus kapcsolat megnyitja a kommunikációs teret, amely szükséges a változások alapjául szolgáló „biztonságos és védett hely” létrehozásához.
+                    </p>
+                    <p class="text-base font-normal text-white text-justify mb-5">
+                      Az „integrativitás” harmadik aspektusa a pszichoterapeuta, tanácsadó, pedagógus vagy szupervizor integrációjára vonatkozik. A hatékony gyermekpszichoterápia gyakran megköveteli, hogy a terapeuta sokoldalú és rugalmas legyen, hogy sikeresen reagálhasson a gyermek változó igényeire és a gyermek környezetében fontos szereplőkére. Előfordulhat, hogy a terapeuta egy adott pillanatban intenzíven részt vesz a játékban, tükrözve a gyermek belső folyamatait és feszültségeit, és a következő pillanatban a szülőt tanácsolja a gyermek nehézségeivel kapcsolatban, vagy beszélgetést folytat az iskolai pszichológussal vagy tanárral.
+                    </p>
+                    <p class="text-base font-normal text-white text-justify mb-5">
+                      A terapeuta magas szintű érzékenységet kell, hogy tanúsítson, maximális tisztelettel a gyermekek iránt, és lehetőséget biztosít arra, hogy magukat az általuk leginkább közel álló vagy elfogadott nyelven képviseljék (pl. az integratív gyermekpszichoterápia terapeutikus technikáinak alkalmazásával). Ezzel a tevékenységgel a terapeuta elősegíti a kliens expreszív kommunikációját, és ezzel megnyitja a lehetőséget az önmagunkkal való kapcsolat mélyebb kutatására.
+                    </p>
+                    <p class="text-base font-normal text-white text-justify mb-5">
+                      A professzionális integráció az integratív pszichoterápián belül magában foglalja a pszichoterapeuta személyes integrációját is az elméleti keretekhez (elmélet, metodológia és filozófiai alapok) képest, valamint a gyermekkori és jelenlegi élményekkel kapcsolatos tapasztalatokat szakemberként. A professzionális és személyes fejlődés ebben az összefüggésben szoros kapcsolatban áll a pszichoterapeuta személyiségének integrációs folyamatával, és élethosszig tartó folyamatot jelent.
+                    </p>
+                    <p class="text-base font-normal text-white text-justify mb-5">
+                      Az „integráció” fogalmának negyedik aspektusa a gyermek, serdülő emocionális integrációjára vonatkozik a közvetlen családjukban. Az integratív gyermekpszichoterapeuta már az elejétől fogva próbál érzékeny lenni a gyermekek és szülők szubjektív élményeire, beleértve a fejlődés fokától függő igények felismerésére, és ha szükséges, az kapcsolatok módosítására. Az integratív gyermekpszichoterápia intenzív terápiás formát jelent, amely minden családtagot érint; mindkét szülőt, a gyermeket vagy az összes gyermeket, azzal a céllal, hogy javítsa a szülők és gyermekek közötti érzelmi kapcsolódásokat.
+                    </p>
+                    <p class="text-base font-normal text-white text-justify mb-5">
+                      Az integratív gyermekpszichoterápia szoros kapcsolódása a családi terápia szupervíziós megközelítéséhez jellemzi, és lehetővé teszi a szülők pszichológiai támogatásának biztosítását a gyermekeikkel való együttműködésben és a szülő-gyermek kapcsolatok fejlesztésében.
+                    </p>
+                </div>
+              </div>
+        </div>
+        ',
+      ]),
+      'order' => 3,
+      'custom_design' => 1,
+      'load_view' => 0
+    ]);
   
+    DB::table('page_content')->insert([
+      'page_id' => 4,
+      'title' => json_encode([
+          'sr' => 'Integrativni dečji psihoterapeuti',
+          'en' => 'Integrative Child Psychotherapists',
+          'hu' => 'Integratív Gyermekpszichoterapeuták',
+      ]),
+      'content' => json_encode([
+        'sr' => "user.views.components.deciji-psihoterapeuti",
+        'en' => "user.views.components.deciji-psihoterapeuti",
+        'hu' => "user.views.components.deciji-psihoterapeuti",
+      ]),
+      'order' => 4,
+      'custom_design' => 0,
+      'load_view' => 1
+    ]);
+
+    DB::table('page_content')->insert([
+      'page_id' => 4,
+      'title' => json_encode([
+          'sr' => 'Voditelj integrativne dečje psihodrame',
+          'en' => 'Leader of Integrative Child Psychodrama',
+          'hu' => 'Integratív Gyermekpszichodráma Vezető',
+      ]),
+      'content' => json_encode([
+        'sr' => "user.views.components.deciji-psihoterapeuti-voditelji",
+        'en' => "user.views.components.deciji-psihoterapeuti-voditelji",
+        'hu' => "user.views.components.deciji-psihoterapeuti-voditelji",
+      ]),
+      'order' => 5,
+      'custom_design' => 0,
+      'load_view' => 1
+    ]);
+
+    DB::table('page_content')->insert([
+      'page_id' => 6,
+      'title' => json_encode([
+          'sr' => 'Saznajte više o nama!',
+          'en' => 'Learn more about us!',
+          'hu' => 'Tudjon meg többet rólunk!',
+      ]),
+      'content' => json_encode([
+        'sr' => '
+            <p class="text-justify">
+              Integrativna dečja psihoterapija ® predstavlja integraciju ključnih elemenata humanističkog pravca u psihologiji, psihodinamske i ekspresivno - akcione perspektive sa terapijskim tehnikama „Integrativne terapije” za decu. Podržava relaciono razvojni pristup psihoterapiji i predstavlja istraživački projekat o odnosima koji podstiču psihički rast, razvoj i poboljšavaju kvalitet odnosa dete – roditelj – socijalna sredina.
+            </p>
+        ',
+        'en' => '
+            <p class="text-justify">
+                Integrative Child Psychotherapy ® represents an integration of key elements from the humanistic approach in psychology, psychodynamic and expressive-action perspectives, combined with therapeutic techniques from "Integrative Therapy" for children. It supports a relational-developmental approach to psychotherapy and serves as a research project on relationships that foster psychological growth, development, and improve the quality of relationships between the child, parent, and social environment.
+            </p>
+        ',
+        'hu' => '
+            <p class="text-justify">
+                Az Integratív Gyermekpszichoterápia ® a pszichológia humanisztikus irányzatának kulcselemeit, a pszichodinamikai és expresszív-akciós perspektívákat, valamint a gyermekek számára kidolgozott „Integratív Terápia” terápiás technikáit ötvözi. Támogatja a kapcsolati-fejlődési megközelítést a pszichoterápiában, és egy kutatási projektként is szolgál azokról a kapcsolatokról, amelyek elősegítik a pszichés növekedést, a fejlődést, és javítják a gyermek, a szülő és a társadalmi környezet közötti kapcsolatok minőségét.
+            </p>
+        ',
+      ]),
+      'order' => 1,
+      'custom_design' => 0,
+      'load_view' => 0
+    ]);
+
+    DB::table('page_content')->insert([
+      'page_id' => 6,
+      'title' => json_encode([
+        'sr' => 'Partneri',
+        'en' => 'Partners',
+        'hu' => 'Partnerek',
+      ]),
+      'content' => json_encode([
+        'sr' => "user.views.home.partners",
+        'en' => "user.views.home.partners",
+        'hu' => "user.views.home.partners",
+      ]),
+      'order' => 2,
+      'custom_design' => 0,
+      'load_view' => 1
+    ]);
+
+    DB::table('page_content')->insert([
+      'page_id' => 6,
+      'title' => json_encode([
+        'sr' => 'Kontakt',
+        'en' => 'Contact',
+        'hu' => 'Kapcsolat',
+      ]),
+      'content' => json_encode([
+        'sr' => '<p>
+            <a class="contact-number" href="tel:+381643468620">+381/643468620</a>
+            </p>
+            <p class="mt-2">
+                <a class="contact-number" href="tel:+381642575758">+381/642575758</a>
+            </p>
+            <p class="mt-10 contact-address">
+                24300 Bačka Topola, Srbija
+            </p>
+            <p class="mt-2 contact-address">
+                Košut Lajoša 57.
+            </p>
+            <p class="mt-10">
+                <a href="mailto:info@integrativ.org.rs" class="contact-mail">
+                    info@integrativ.org.rs
+                </a>
+            </p>',
+        'hu' => '<p>
+                <a class="contact-number" href="tel:+381643468620">+381/643468620</a>
+            </p>
+            <p class="mt-2">
+                <a class="contact-number" href="tel:+381642575758">+381/642575758</a>
+            </p>
+            <p class="mt-10 contact-address">
+                24300 Bačka Topola, Srbija
+            </p>
+            <p class="mt-2 contact-address">
+                Košut Lajoša 57.
+            </p>
+            <p class="mt-10">
+                <a href="mailto:info@integrativ.org.rs" class="contact-mail">
+                    info@integrativ.org.rs
+                </a>
+            </p>',
+        'en' => '<p>
+                <a class="contact-number" href="tel:+381643468620">+381/643468620</a>
+            </p>
+            <p class="mt-2">
+                <a class="contact-number" href="tel:+381642575758">+381/642575758</a>
+            </p>
+            <p class="mt-10 contact-address">
+                24300 Bačka Topola, Srbija
+            </p>
+            <p class="mt-2 contact-address">
+                Košut Lajoša 57.
+            </p>
+            <p class="mt-10">
+                <a href="mailto:info@integrativ.org.rs" class="contact-mail">
+                    info@integrativ.org.rs
+                </a>
+            </p>',
+      ]),
+      'order' => 3,
+      'custom_design' => 1,
+      'load_view' => 0
+    ]);
   
   
   }

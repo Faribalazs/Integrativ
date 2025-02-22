@@ -5,6 +5,37 @@
     <x-slot name="header">
         {{ __('app.admin.sections') }} - {{ strip_tags($section[0]->title) }}
     </x-slot>
+
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('success') }}',
+            });
+        </script>
+    @endif
+
+    @if (session('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: '{{ session('error') }}',
+            });
+        </script>
+    @endif
+
+    @if ($errors->any())
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Validation Errors',
+                html: '{!! implode('<br>', $errors->all()) !!}',
+            });
+        </script>
+    @endif
+
     <div class="w-full mt-10" style="overflow: auto">
         <form method="POST" class="w-full" action="{{ route('admin.section.edit.done', ['id' => request()->id]) }}">
             @csrf
@@ -12,8 +43,8 @@
             <div class="flex flex-col">
                 <label for="page" class="sm:text-xl text-base my-3">{{ __('app.admin.sections-page') }}
                     :</label>
-                <input class="input-style {{ $errors->has('page') ? 'border-error mb-1' : 'mb-3' }}"
-                    name="page" type="text" value="{{ $section[0]->page }}" required>
+                <input class="input-style {{ $errors->has('page') ? 'border-error mb-1' : 'mb-3' }}" name="page"
+                    type="text" value="{{ $section[0]->page }}" required>
                 <p class="{{ $errors->has('page') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
                     {{ $errors->first('page') }}</p>
             </div>
@@ -55,8 +86,8 @@
             <div class="flex flex-col mt-5">
                 <label for="order" class="sm:text-xl text-base my-3">{{ __('app.admin.section-order') }}
                     :</label>
-                <input class="input-style {{ $errors->has('order') ? 'border-error mb-1' : 'mb-3' }}"
-                    name="order" type="text" value="{{ $section[0]->order }}" required>
+                <input class="input-style {{ $errors->has('order') ? 'border-error mb-1' : 'mb-3' }}" name="order"
+                    type="text" value="{{ $section[0]->order }}" required>
                 <p class="{{ $errors->has('order') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
                     {{ $errors->first('order') }}</p>
             </div>
@@ -104,5 +135,5 @@
             extended_valid_elements: 'span[*],div[*],i[*],svg[*],path[*],button[*]',
             forced_root_block: false,
         });
-      </script>
+    </script>
 </x-admin-app-layout>

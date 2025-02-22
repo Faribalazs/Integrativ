@@ -164,4 +164,23 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
     Route::delete('/conference-apply/delete', [AdminController::class, 'signUpConferenceDelete'])
         ->name('sing-up-conference.delete');
 
+    //Psychotherapists routes
+    Route::get('/psychotherapists', [AdminController::class, 'psychotherapistCreate'])
+        ->name('psychotherapist.create');
+
+    Route::get('/psychotherapist/create', [AdminController::class, 'psychotherapistAddNew'])
+        ->name('psychotherapist.add');
+
+    Route::post('/psychotherapist/create/save', [AdminController::class, 'psychotherapistAddNewDone'])
+        ->name('psychotherapist.add.done');
+
+    Route::get('/psychotherapist/edit/{id}', [AdminController::class, 'psychotherapistEdit'])
+        ->name('psychotherapist.edit');
+
+    Route::post('/psychotherapist/edit/{id}', [AdminController::class, 'psychotherapistEditDone'])
+        ->name('psychotherapist.edit.done');
+
+    Route::delete('/psychotherapist/delete', [AdminController::class, 'psychotherapistDelete'])
+        ->name('psychotherapist.delete');
+
 });

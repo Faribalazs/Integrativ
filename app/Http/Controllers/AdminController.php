@@ -953,4 +953,159 @@ class AdminController extends Controller
     return redirect()->back()->with('success', 'Kontakt je izbrisen!');;
   }
 
+  public function psychotherapistCreate()
+  {
+    $psychotherapists = Psychotherapists::paginate(15);
+
+    return view('admin.views.psychotherapists.show-psychotherapists', ['psychotherapists' => $psychotherapists]);
+  }
+
+  public function psychotherapistAddNew()
+  {
+    return view('admin.views.psychotherapists.create-psychotherapist');
+  }
+
+  public function psychotherapistAddNewDone(Request $request)
+  {
+      try {
+          // Validate the incoming request
+          $data = $request->validate([
+              'name' => 'required|string|max:255',
+              'position' => 'nullable|string|max:255',
+              'location' => 'nullable|string|max:255',
+              'email' => 'nullable|email|max:255',
+              'phone' => 'nullable|string|max:20',
+              'facebook' => 'nullable|url|max:255',
+              'instagram' => 'nullable|url|max:255',
+              'twitter' => 'nullable|url|max:255',
+              'linkedin' => 'nullable|url|max:255',
+              'lead' => 'nullable|boolean',
+              'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
+          ]);
+
+          // Default path for image
+          $path = null;
+
+          // Handle image upload
+          if ($request->hasFile('image')) {
+              $image = Image::make($request->file('image'))->encode('webp', 90);
+              $name = uniqid() . '.webp';
+
+              // Store the image temporarily
+              $tempPath = 'psychotherapists/temp/' . $name;
+              Storage::disk('public')->put($tempPath, (string) $image->stream());
+
+              // Set path (will be updated after creation)
+              $path = $tempPath;
+          }
+
+          // Create the psychotherapist record
+          $psychotherapist = Psychotherapists::create([
+              'name' => $data['name'],
+              'position' => $data['position'] ?? null,
+              'location' => $data['location'] ?? null,
+              'email' => $data['email'] ?? null,
+              'phone' => $data['phone'] ?? null,
+              'facebook' => $data['facebook'] ?? null,
+              'instagram' => $data['instagram'] ?? null,
+              'twitter' => $data['twitter'] ?? null,
+              'linkedin' => $data['linkedin'] ?? null,
+              'lead' => $data['lead'] ?? 0,
+              'image' => $path, // Temporary path
+          ]);
+
+          // Move the image to final path after creation
+          if ($path) {
+              $newPath = 'psychotherapists/' . $psychotherapist->id . '/image/' . $name;
+              Storage::disk('public')->move($path, $newPath);
+              $psychotherapist->update(['image' => $newPath]);
+          }
+
+          // Success message
+          return redirect()
+              ->route('admin.psychotherapist.create')
+              ->with('success', 'Psychotherapist added successfully!');
+      } catch (\Illuminate\Validation\ValidationException $e) {
+          return back()->withErrors($e->validator)->withInput();
+      } catch (\Exception $e) {
+          return back()->with('error', $e->getMessage());
+      }
+  }
+  
+  public function psychotherapistEdit($id)
+  {
+    $psychotherapist = Psychotherapists::where('id', $id)->first();
+
+    return view('admin.views.psychotherapists.edit-psychotherapist', ['psychotherapist' => $psychotherapist]);
+  }
+
+  public function psychotherapistEditDone($id, Request $request)
+  {
+      try {
+          $psychotherapist = Psychotherapists::findOrFail($id);
+          
+          // Validate the incoming request
+          $data = $request->validate([
+              'name' => 'required|string|max:255',
+              'position' => 'nullable|string|max:255',
+              'location' => 'nullable|string|max:255',
+              'email' => 'nullable|email|max:255',
+              'phone' => 'nullable|string|max:20',
+              'facebook' => 'nullable|url|max:255',
+              'instagram' => 'nullable|url|max:255',
+              'twitter' => 'nullable|url|max:255',
+              'linkedin' => 'nullable|url|max:255',
+              'lead' => 'nullable|boolean',
+              'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
+          ]);
+
+          // Handle image upload
+          $path = $psychotherapist->image;
+          
+          if ($request->hasFile('image')) {
+              $image = Image::make($request->file('image'))->encode('webp', 90);
+              $name = uniqid() . '.webp';
+              $tempPath = 'psychotherapists/temp/' . $name;
+              Storage::disk('public')->put($tempPath, (string) $image->stream());
+              $path = $tempPath;
+          }
+
+          // Update psychotherapist record
+          $psychotherapist->update([
+              'name' => $data['name'],
+              'position' => $data['position'] ?? null,
+              'location' => $data['location'] ?? null,
+              'email' => $data['email'] ?? null,
+              'phone' => $data['phone'] ?? null,
+              'facebook' => $data['facebook'] ?? null,
+              'instagram' => $data['instagram'] ?? null,
+              'twitter' => $data['twitter'] ?? null,
+              'linkedin' => $data['linkedin'] ?? null,
+              'lead' => $data['lead'] ?? 0,
+              'image' => $path,
+          ]);
+
+          // Move image to final path
+          if ($path !== $psychotherapist->image) {
+              $newPath = 'psychotherapists/' . $psychotherapist->id . '/image/' . $name;
+              Storage::disk('public')->move($path, $newPath);
+              $psychotherapist->update(['image' => $newPath]);
+          }
+
+          // Success message
+          return redirect()
+              ->route('admin.psychotherapist.create')
+              ->with('success', 'Psychotherapist updated successfully!');
+      } catch (\Illuminate\Validation\ValidationException $e) {
+          return back()->withErrors($e->validator)->withInput();
+      } catch (\Exception $e) {
+          return back()->with('error', $e->getMessage());
+      }
+  }
+
+  public function psychotherapistDelete(Request $request){
+    Psychotherapists::where('id', $request->input('id'))->delete();
+    return redirect()->back();
+  }
+
 }

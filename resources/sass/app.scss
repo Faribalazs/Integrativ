@@ -416,6 +416,30 @@ pre {
     background: var(--black) !important;
 }
 
+.psychotherapists-swiper-pagination .swiper-pagination-bullet {
+    border: 0.125rem solid var(--black) !important;
+    background: var(--white) !important;
+    width: 1rem !important;
+    height: 1rem !important;
+}
+
+.psychotherapists-swiper-pagination .swiper-pagination-bullet-active {
+    border: 0.125rem solid var(--black) !important;
+    background: var(--black) !important;
+}
+
+.lead-psychotherapists-swiper-pagination .swiper-pagination-bullet {
+    border: 0.125rem solid var(--black) !important;
+    background: var(--white) !important;
+    width: 1rem !important;
+    height: 1rem !important;
+}
+
+.lead-psychotherapists-swiper-pagination .swiper-pagination-bullet-active {
+    border: 0.125rem solid var(--black) !important;
+    background: var(--black) !important;
+}
+
 .gradient {
     position: absolute;
     top: 0px;
@@ -2483,6 +2507,25 @@ body {
     @media (max-width: 650px) {
         font-size: 2.5rem;
     }
+}
+
+.psychotherapist-card {
+    background-color: var(--main-color);
+    color: var(--white);
+    padding: 3rem;
+    border-radius: .5rem;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.psychotherapist-image {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 /* Page design end */

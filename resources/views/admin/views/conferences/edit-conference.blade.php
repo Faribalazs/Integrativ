@@ -11,6 +11,36 @@
         $lang = App::currentLocale();
     @endphp
 
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('success') }}',
+            });
+        </script>
+    @endif
+
+    @if (session('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: '{{ session('error') }}',
+            });
+        </script>
+    @endif
+
+    @if ($errors->any())
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Validation Errors',
+                html: '{!! implode('<br>', $errors->all()) !!}',
+            });
+        </script>
+    @endif
+
     <div class="main-container-admin w-full mt-10" style="overflow: auto">
         <form method="POST" class="w-full" enctype="multipart/form-data"
             action="{{ route('admin.conference.edit.done', ['id' => request()->id]) }}">

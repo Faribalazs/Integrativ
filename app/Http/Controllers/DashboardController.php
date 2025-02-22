@@ -160,4 +160,14 @@ class DashboardController extends Controller
       return view('user.views.pages.modaliteti');
    }
 
+   public function psihoterapeuti()
+   {
+      return view('user.views.pages.psihoterapeuti');
+   }
+
+   public function kontakt()
+   {
+      return view('user.views.pages.kontakt');
+   }
+
 }

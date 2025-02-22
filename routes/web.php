@@ -31,7 +31,7 @@ Route::post('/save/education', [DashboardController::class, 'storeEducationSignU
 Route::post('/save/conference', [DashboardController::class, 'storeConferenceSignUp'])->name('save.conference.sign-up');
 
 // Pages routes
-Route::get('/about-us', [DashboardController::class, 'aboutUs'])->name('about.us');
+Route::get('/o-nama', [DashboardController::class, 'aboutUs'])->name('about.us');
 
 Route::get('/edukacija', [DashboardController::class, 'edukacija'])->name('edukacija');
 
@@ -40,6 +40,10 @@ Route::get('/konferencije', [DashboardController::class, 'konferencije'])->name(
 Route::get('/konferencije/show/{id}', [DashboardController::class, 'konferencijeShowOne'])->name('konferencije.show');
 
 Route::get('/modaliteti', [DashboardController::class, 'modaliteti'])->name('modaliteti');
+
+Route::get('/psihoterapeuti', [DashboardController::class, 'psihoterapeuti'])->name('psihoterapeuti');
+
+Route::get('/kontakt', [DashboardController::class, 'kontakt'])->name('kontakt');
 
 require __DIR__.'/auth.php';
 require __DIR__.'/adminauth.php';

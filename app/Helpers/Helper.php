@@ -64,4 +64,18 @@ class Helper
 
         return $content;
     }
+
+    public function getPsychotherapists() {
+
+        $psychotherapists = Psychotherapists::where('lead', 0)->take(10)->get();
+
+        return $psychotherapists;
+    }
+
+    public function getLeadPsychotherapists() {
+
+        $psychotherapists = Psychotherapists::where('lead', 1)->take(10)->get();
+
+        return $psychotherapists;
+    }
 }
