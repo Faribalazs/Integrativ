@@ -155,4 +155,9 @@ class DashboardController extends Controller
       return view('user.views.pages.konferencija-show', ['conference' => $conference]);
    }
 
+   public function modaliteti()
+   {
+      return view('user.views.pages.modaliteti');
+   }
+
 }

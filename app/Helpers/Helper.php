@@ -56,4 +56,12 @@ class Helper
 
         return $lastConference;
     }
+
+    public function getCustomDesignPageContent($slug) {
+
+        $page = Page::where('slug', $slug)->first();
+        $content = PageContent::where('page_id', $page->id)->where('custom_design', 1)->orderBy('order', 'asc')->get();
+
+        return $content;
+    }
 }

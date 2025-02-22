@@ -110,14 +110,13 @@
     }
 
     nav {
-        overflow: hidden;
         position: fixed;
-        height: 240px;
-        width: 450px;
+        height: 0px;
+        width: 0px;
         transition: all 700ms cubic-bezier(0.8, 0, 0.33, 1);
         border-radius: 0% 0% 50% 100%;
         right: 0;
-        z-index: 100;
+        z-index: 10;
         transform: translateX(0px);
     }
 
@@ -209,8 +208,8 @@
         position: absolute;
         right: 0;
         top: 0;
-        width: 100vw;
-        height: 100%;
+        width: 0;
+        height: 0;
         display: flex;
         flex-direction: row-reverse;
         align-items: end;
@@ -225,6 +224,8 @@
 
     nav .nav-links.fade-in {
         opacity: 1;
+        width: 100vw;
+        height: 100%;
         transform: translateX(0px);
     }
 

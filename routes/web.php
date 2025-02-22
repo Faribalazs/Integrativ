@@ -39,6 +39,8 @@ Route::get('/konferencije', [DashboardController::class, 'konferencije'])->name(
 
 Route::get('/konferencije/show/{id}', [DashboardController::class, 'konferencijeShowOne'])->name('konferencije.show');
 
+Route::get('/modaliteti', [DashboardController::class, 'modaliteti'])->name('modaliteti');
+
 require __DIR__.'/auth.php';
 require __DIR__.'/adminauth.php';
 require __DIR__.'/workerauth.php';

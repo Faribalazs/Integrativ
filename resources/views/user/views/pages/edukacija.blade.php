@@ -1,18 +1,18 @@
 @inject ('helper', '\App\Helpers\Helper')
 
+@php
+    $slug = request()->segment(2);
+    $category = $helper->getCategoryFromSlug($slug);
+
+    $content = $helper->getPageContent($slug);
+@endphp
+
 <x-app-worker-layout>
     <x-slot name="pageTitle">
-        Edukacija
+        {{ $category->category_name }}
     </x-slot>
     <x-slot name="header">
     </x-slot>
-
-    @php
-        $slug = request()->segment(2);
-        $category = $helper->getCategoryFromSlug($slug);
-
-        $content = $helper->getPageContent($slug);
-    @endphp
 
     @if (session('success'))
         <script>
@@ -76,7 +76,8 @@
                     {!! $item->content !!}
                 </div>
                 <div class="2xl:w-1/2 w-full flex">
-                    <img class="object-cover w-full sm:px-20 px-16 2xl:p-0" src="{{ asset('storage/' . $item->image) }}" />
+                    <img class="object-cover w-full sm:px-20 px-16 2xl:p-0"
+                        src="{{ asset('storage/' . $item->image) }}" />
                 </div>
             </div>
         @else

@@ -1,8 +1,18 @@
 @inject ('helper', '\App\Helpers\Helper')
 
+@php
+    $slug = request()->segment(2);
+    $category = $helper->getCategoryFromSlug($slug);
+
+    $content = $helper->getPageContent($slug);
+
+    $lastConference = $helper->getLetestConferences();
+@endphp
+
+
 <x-app-worker-layout>
     <x-slot name="pageTitle">
-        Konferencije
+        {{ $category->category_name }}
     </x-slot>
     <x-slot name="header">
     </x-slot>
@@ -36,15 +46,6 @@
             });
         </script>
     @endif
-
-    @php
-        $slug = request()->segment(2);
-        $category = $helper->getCategoryFromSlug($slug);
-
-        $content = $helper->getPageContent($slug);
-
-        $lastConference = $helper->getLetestConferences();
-    @endphp
 
     <div class="flex w-full relative">
         <img class="page-header-image" src="{{ asset('storage/' . $category->image) }}"
