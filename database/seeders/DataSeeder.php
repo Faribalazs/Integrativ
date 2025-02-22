@@ -1845,6 +1845,21 @@ class DataSeeder extends Seeder
       'load_view' => 0
     ]);
   
-  
+    DB::table('page_content')->insert([
+      'page_id' => 7,
+      'title' => json_encode([
+          'en' => 'Association Activities',
+          'hu' => 'Egyesület tevékenységei',
+          'sr' => 'Aktivnosti udruženja'
+      ]),
+      'content' => json_encode([
+          'sr' => "user.views.components.activity-swiper",
+          'en' => "user.views.components.activity-swiper",
+          'hu' => "user.views.components.activity-swiper",
+      ]),
+      'order' => 1,
+      'custom_design' => 0,
+      'load_view' => 1
+    ]);
   }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Sections, Slider, HomePageContent, Contact, Education, SignUpConference, Conferences};
+use App\Models\{Sections, Slider, HomePageContent, Contact, Education, SignUpConference, Conferences, Activities};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
@@ -168,6 +168,18 @@ class DashboardController extends Controller
    public function kontakt()
    {
       return view('user.views.pages.kontakt');
+   }
+
+   public function aktivnosti()
+   {
+      return view('user.views.pages.aktivnosti');
+   }
+
+   public function aktivnostiShowOne($id) {
+
+      $activity = Activities::findOrFail($id);
+
+      return view('user.views.pages.aktivnosti-show', ['activity' => $activity]);
    }
 
 }

@@ -45,6 +45,10 @@ Route::get('/psihoterapeuti', [DashboardController::class, 'psihoterapeuti'])->n
 
 Route::get('/kontakt', [DashboardController::class, 'kontakt'])->name('kontakt');
 
+Route::get('/aktivnosti', [DashboardController::class, 'aktivnosti'])->name('aktivnosti');
+
+Route::get('/aktivnosti/show/{id}', [DashboardController::class, 'aktivnostiShowOne'])->name('aktivnosti.show');
+
 require __DIR__.'/auth.php';
 require __DIR__.'/adminauth.php';
 require __DIR__.'/workerauth.php';

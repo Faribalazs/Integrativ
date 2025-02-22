@@ -1,10 +1,10 @@
 <x-admin-app-layout>
     <x-slot name="pageTitle">
-        Edit Partner
+        Edit activity
     </x-slot>
 
     <x-slot name="header">
-        Edit Partner
+        Edit activity
     </x-slot>
 
     @php
@@ -43,100 +43,33 @@
 
     <div class="main-container-admin w-full mt-10" style="overflow: auto">
         <form method="POST" class="w-full" enctype="multipart/form-data"
-            action="{{ route('admin.psychotherapist.edit.done', ['id' => request()->id]) }}">
+            action="{{ route('admin.activity.edit.done', ['id' => request()->id]) }}">
 
             @csrf
 
             <!-- Name -->
             <div class="flex flex-col">
-                <label for="name" class="sm:text-xl text-base my-3">Ime i prezime ({{ $lang }})
-                    :</label>
+                <label for="name" class="sm:text-xl text-base my-3">Ime ({{ $lang }}) :</label>
                 <input class="input-style {{ $errors->has('name') ? 'border-error mb-1' : 'mb-3' }}" name="name"
-                    type="text" id="name" value="{{ $psychotherapist->name }}">
+                    type="text" id="name" value="{{ $activity->name }}">
                 <p class="{{ $errors->has('name') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
                     {{ $errors->first('name') }}</p>
             </div>
 
-            <!-- Position -->
-            <div class="flex flex-col">
-                <label for="position" class="sm:text-xl text-base my-3">Pozicija ({{ $lang }}) :</label>
-                <input class="input-style {{ $errors->has('position') ? 'border-error mb-1' : 'mb-3' }}" name="position"
-                    type="text" id="position" value="{{ $psychotherapist->position }}">
-                <p class="{{ $errors->has('position') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
-                    {{ $errors->first('position') }}</p>
+            <!-- Activity content -->
+            <div class="mt-5">
+                <label for="content" class="sm:text-xl text-base my-3">{{ __('app.admin.content') }}
+                    ({{ $lang }}) :</label>
+                <textarea id="content" name="content">{{ $activity->content }}</textarea>
             </div>
 
-            <!-- Location -->
+            <!-- Order -->
             <div class="flex flex-col">
-                <label for="location" class="sm:text-xl text-base my-3">Lokacija ({{ $lang }}) :</label>
-                <input class="input-style {{ $errors->has('location') ? 'border-error mb-1' : 'mb-3' }}"
-                    name="location" type="text" id="location" value="{{ $psychotherapist->location }}">
-                <p class="{{ $errors->has('location') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
-                    {{ $errors->first('location') }}</p>
-            </div>
-
-            <!-- Email -->
-            <div class="flex flex-col">
-                <label for="email" class="sm:text-xl text-base my-3">Email :</label>
-                <input class="input-style {{ $errors->has('email') ? 'border-error mb-1' : 'mb-3' }}" name="email"
-                    type="text" id="email" value="{{ $psychotherapist->email }}">
-                <p class="{{ $errors->has('email') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
-                    {{ $errors->first('email') }}</p>
-            </div>
-
-            <!-- Phone -->
-            <div class="flex flex-col">
-                <label for="phone" class="sm:text-xl text-base my-3">Telefon :</label>
-                <input class="input-style {{ $errors->has('phone') ? 'border-error mb-1' : 'mb-3' }}" name="phone"
-                    type="text" id="phone" value="{{ $psychotherapist->phone }}">
-                <p class="{{ $errors->has('phone') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
-                    {{ $errors->first('phone') }}</p>
-            </div>
-
-            <!-- Facebook -->
-            <div class="flex flex-col">
-                <label for="facebook" class="sm:text-xl text-base my-3">Facebook :</label>
-                <input class="input-style {{ $errors->has('facebook') ? 'border-error mb-1' : 'mb-3' }}"
-                    name="facebook" type="text" id="facebook" value="{{ $psychotherapist->facebook }}">
-                <p class="{{ $errors->has('facebook') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
-                    {{ $errors->first('facebook') }}</p>
-            </div>
-
-            <!-- Instagram -->
-            <div class="flex flex-col">
-                <label for="instagram" class="sm:text-xl text-base my-3">Instagram :</label>
-                <input class="input-style {{ $errors->has('instagram') ? 'border-error mb-1' : 'mb-3' }}"
-                    name="instagram" type="text" id="instagram" value="{{ $psychotherapist->instagram }}">
-                <p class="{{ $errors->has('instagram') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
-                    {{ $errors->first('instagram') }}</p>
-            </div>
-
-            <!-- Twitter -->
-            <div class="flex flex-col">
-                <label for="twitter" class="sm:text-xl text-base my-3">Twitter :</label>
-                <input class="input-style {{ $errors->has('twitter') ? 'border-error mb-1' : 'mb-3' }}" name="twitter"
-                    type="text" id="twitter" value="{{ $psychotherapist->twitter }}">
-                <p class="{{ $errors->has('twitter') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
-                    {{ $errors->first('twitter') }}</p>
-            </div>
-
-            <!-- LinkedIn -->
-            <div class="flex flex-col">
-                <label for="linkedin" class="sm:text-xl text-base my-3">Linked In :</label>
-                <input class="input-style {{ $errors->has('linkedin') ? 'border-error mb-1' : 'mb-3' }}"
-                    name="linkedin" type="text" id="linkedin" value="{{ $psychotherapist->linkedin }}">
-                <p class="{{ $errors->has('linkedin') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
-                    {{ $errors->first('linkedin') }}</p>
-            </div>
-
-            <!-- Lead -->
-            <div class="flex flex-col">
-                <label for="lead" class="sm:text-xl text-base my-3">Voditelj :</label>
-                <select name="lead" id="lead" class="input-style">
-                    <option selected></option>
-                    <option value="1" {{ $psychotherapist->lead == 1 ? 'selected' : '' }}>Da</option>
-                    <option value="0" {{ $psychotherapist->lead == 0 ? 'selected' : '' }}>Ne</option>
-                </select>
+                <label for="order" class="sm:text-xl text-base my-3">Redosled :</label>
+                <input class="input-style {{ $errors->has('order') ? 'border-error mb-1' : 'mb-3' }}" name="order"
+                    type="text" id="order" value="{{ $activity->order }}">
+                <p class="{{ $errors->has('order') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
+                    {{ $errors->first('order') }}</p>
             </div>
 
             <!-- Image -->
@@ -145,8 +78,8 @@
                     {{ __('app.admin.category.category-image') }}:
                 </label>
 
-                @if ($psychotherapist->image)
-                    <img src="{{ asset('storage/' . $psychotherapist->image) }}"
+                @if ($activity->image)
+                    <img src="{{ asset('storage/' . $activity->image) }}"
                         class="mt-2 profile-image profile-img">
                 @else
                     <img src="{{ asset('img/placeholder_image.jpg') }}" class="mt-2 profile-image profile-img">

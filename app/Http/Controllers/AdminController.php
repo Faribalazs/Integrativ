@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Admin, Tracker, Sections, Category, Worker, Slider, HomePageContent, Partners, Conferences, Contact, Psychotherapists, Page, PageContent, Education, SignUpConference};
+use App\Models\{Admin, Tracker, Sections, Category, Worker, Slider, HomePageContent, Partners, Conferences, Contact, Psychotherapists, Page, PageContent, Education, SignUpConference, Activities};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
@@ -1105,6 +1105,133 @@ class AdminController extends Controller
 
   public function psychotherapistDelete(Request $request){
     Psychotherapists::where('id', $request->input('id'))->delete();
+    return redirect()->back();
+  }
+
+  public function activityCreate()
+  {
+    $activities = Activities::paginate(15);
+
+    return view('admin.views.activities.show-activities', ['activities' => $activities]);
+  }
+
+  public function activityAddNew()
+  {
+    return view('admin.views.activities.create-activity');
+  }
+
+  public function activityAddNewDone(Request $request)
+  {
+      try {
+          // Validate the incoming request
+          $data = $request->validate([
+              'name' => 'required|string|max:255',
+              'content' => 'nullable|string',
+              'order' => 'nullable|integer',
+              'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
+          ]);
+  
+          // Default path for image
+          $path = null;
+  
+          // Handle image upload
+          if ($request->hasFile('image')) {
+              $image = Image::make($request->file('image'))->encode('webp', 90);
+              $name = uniqid() . '.webp';
+              
+              // Store the image temporarily
+              $tempPath = 'activities/temp/' . $name;
+              Storage::disk('public')->put($tempPath, (string) $image->stream());
+  
+              // Set path (will be updated after creation)
+              $path = $tempPath;
+          }
+  
+          // Create the activity record
+          $activity = Activities::create([
+              'name' => $data['name'],
+              'content' => $data['content'] ?? null,
+              'order' => $data['order'] ?? null,
+              'image' => $path, // Temporary path
+          ]);
+  
+          // Move the image to final path after creation
+          if ($path) {
+              $newPath = 'activities/' . $activity->id . '/image/' . $name;
+              Storage::disk('public')->move($path, $newPath);
+              $activity->update(['image' => $newPath]);
+          }
+  
+          // Success message
+          return redirect()
+              ->route('admin.activity.create')
+              ->with('success', 'Activity added successfully!');
+      } catch (\Illuminate\Validation\ValidationException $e) {
+          return back()->withErrors($e->validator)->withInput();
+      } catch (\Exception $e) {
+          return back()->with('error', $e->getMessage());
+      }
+  }
+
+  public function activityEdit($id)
+  {
+    $activity = Activities::where('id', $id)->first();
+
+    return view('admin.views.activities.edit-activity', ['activity' => $activity]);
+  }
+
+  public function activityEditDone($id, Request $request)
+  {
+      try {
+          $activity = Activities::findOrFail($id);
+          
+          // Validate the incoming request
+          $data = $request->validate([
+              'name' => 'required|string|max:255',
+              'content' => 'nullable|string',
+              'order' => 'nullable|integer',
+              'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
+          ]);
+  
+          // Handle image upload
+          $path = $activity->image;
+          
+          if ($request->hasFile('image')) {
+              $image = Image::make($request->file('image'))->encode('webp', 90);
+              $name = uniqid() . '.webp';
+              $tempPath = 'activities/temp/' . $name;
+              Storage::disk('public')->put($tempPath, (string) $image->stream());
+              $path = $tempPath;
+          }
+  
+          // Update activity record
+          $activity->update([
+              'name' => $data['name'],
+              'content' => $data['content'] ?? null,
+              'order' => $data['order'] ?? null,
+              'image' => $path,
+          ]);
+  
+          // Move image to final path
+          if ($path !== $activity->image) {
+              $newPath = 'activities/' . $activity->id . '/image/' . $name;
+              Storage::disk('public')->move($path, $newPath);
+              $activity->update(['image' => $newPath]);
+          }
+  
+          // Success message
+          return redirect()
+              ->route('admin.activity.create')
+              ->with('success', 'Activity updated successfully!');
+      } catch (\Illuminate\Validation\ValidationException $e) {
+          return back()->withErrors($e->validator)->withInput();
+      } catch (\Exception $e) {
+          return back()->with('error', $e->getMessage());
+      }
+  }  
+
+  public function activityDelete(Request $request){
+    Activities::where('id', $request->input('id'))->delete();
     return redirect()->back();
   }
 

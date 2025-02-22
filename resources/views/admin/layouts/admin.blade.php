@@ -87,13 +87,18 @@
                         </a>
                         <a href="{{ route('admin.sing-up-conference.create') }}"
                             class="icons 
-                        {{ request()->routeIs('admin.sing-up-conference.create') ? 'closed-icon-active' : '' }}">
+                            {{ request()->routeIs('admin.sing-up-conference.create') ? 'closed-icon-active' : '' }}">
                             <i class="ri-briefcase-4-line"></i>
                         </a>
                         <a href="{{ route('admin.psychotherapist.create') }}"
                             class="icons 
-                        {{ request()->routeIs('admin.psychotherapist.create') ? 'closed-icon-active' : '' }}">
-                        <i class="ri-user-2-line"></i>
+                            {{ request()->routeIs('admin.psychotherapist.create') ? 'closed-icon-active' : '' }}">
+                            <i class="ri-user-2-line"></i>
+                        </a>
+                        <a href="{{ route('admin.activity.create') }}"
+                            class="icons 
+                            {{ request()->routeIs('admin.activity.create') ? 'closed-icon-active' : '' }}">
+                            <i class="ri-star-line"></i>
                         </a>
                         <form method="POST" id="log-out-form" action="{{ route('admin.logout') }}"
                             class="admin-logout icons">
@@ -137,6 +142,9 @@
                         </a>
                         <a href="{{ route('admin.psychotherapist.create') }}" class="link">
                             {{ __('app.admin.psychotherapists') }}
+                        </a>
+                        <a href="{{ route('admin.activity.create') }}" class="link">
+                            {{ __('app.admin.activities') }}
                         </a>
                         <a onclick="logOut()" class="link cursor-pointer">
                             {{ __('app.profile.log-out') }}

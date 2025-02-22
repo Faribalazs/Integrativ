@@ -183,4 +183,23 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
     Route::delete('/psychotherapist/delete', [AdminController::class, 'psychotherapistDelete'])
         ->name('psychotherapist.delete');
 
+    // Activities routes
+    Route::get('/activities', [AdminController::class, 'activityCreate'])
+        ->name('activity.create');
+
+    Route::get('/activity/create', [AdminController::class, 'activityAddNew'])
+        ->name('activity.add');
+
+    Route::post('/activity/create/save', [AdminController::class, 'activityAddNewDone'])
+        ->name('activity.add.done');
+
+    Route::get('/activity/edit/{id}', [AdminController::class, 'activityEdit'])
+        ->name('activity.edit');
+
+    Route::post('/activity/edit/{id}', [AdminController::class, 'activityEditDone'])
+        ->name('activity.edit.done');
+
+    Route::delete('/activity/delete', [AdminController::class, 'activityDelete'])
+        ->name('activity.delete');
+
 });

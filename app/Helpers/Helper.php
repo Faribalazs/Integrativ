@@ -2,7 +2,7 @@
 
 namespace App\Helpers;
 
-use App\Models\{Admin, Tracker, Sections, Category, Worker, Slider, HomePageContent, Partners, Conferences, Contact, Psychotherapists, Page, PageContent};
+use App\Models\{Admin, Tracker, Sections, Category, Worker, Slider, HomePageContent, Partners, Conferences, Contact, Psychotherapists, Page, PageContent, Activities};
 
 class Helper
 {
@@ -77,5 +77,19 @@ class Helper
         $psychotherapists = Psychotherapists::where('lead', 1)->take(10)->get();
 
         return $psychotherapists;
+    }
+
+    public function getLastActivity() {
+
+        $lastActivity = Activities::orderBy('order', 'desc')->first();
+
+        return $lastActivity;
+    }
+
+    public function getActivities() {
+
+        $activities = Activities::all();
+
+        return $activities;
     }
 }
