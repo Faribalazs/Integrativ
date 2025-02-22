@@ -206,28 +206,28 @@ return new class extends Migration
                                             <img src="/img/integrativ-logo.png" class="footer-icon-mobile no-underline">
                                         </a>
                                         <div class="flex lg:flex-row flex-col gap-7 lg:gap-0 mt-5 lg:mt-0">
-                                            <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                            <a href="/" class="footer-link no-underline flex items-center justify-center">
                                                 Naslovna
                                             </a>
-                                            <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                            <a href="/sr/o-nama" class="footer-link no-underline flex items-center justify-center">
                                                 O nama
                                             </a>
-                                            <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                            <a href="/sr/modaliteti" class="footer-link no-underline flex items-center justify-center">
                                                 Modaliteti
                                             </a>
-                                            <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                            <a href="/sr/konferencije" class="footer-link no-underline flex items-center justify-center">
                                                 Konferencije
                                             </a>
-                                            <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                            <a href="/sr/edukacija" class="footer-link no-underline flex items-center justify-center">
                                                 Edukacija
                                             </a>
-                                            <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                            <a href="/sr/aktivnosti" class="footer-link no-underline flex items-center justify-center">
                                                 Aktivnosti
                                             </a>
-                                            <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                            <a href="/sr/psihoterapeuti" class="footer-link no-underline flex items-center justify-center">
                                                 Psihoterapeuti
                                             </a>
-                                            <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                            <a href="/sr/kontakt" class="footer-link no-underline flex items-center justify-center">
                                                 Kontakt
                                             </a>
                                         </div>
@@ -258,28 +258,28 @@ return new class extends Migration
                                     <img src="/img/integrativ-logo.png" class="footer-icon-mobile no-underline">
                                 </a>
                                 <div class="flex lg:flex-row flex-col gap-7 lg:gap-0 mt-5 lg:mt-0">
-                                    <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                    <a href="/" class="footer-link no-underline flex items-center justify-center">
                                         Naslovna
                                     </a>
-                                    <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                    <a href="/hu/o-nama" class="footer-link no-underline flex items-center justify-center">
                                         O nama
                                     </a>
-                                    <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                    <a href="/hu/modaliteti" class="footer-link no-underline flex items-center justify-center">
                                         Modaliteti
                                     </a>
-                                    <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                    <a href="/hu/konferencije" class="footer-link no-underline flex items-center justify-center">
                                         Konferencije
                                     </a>
-                                    <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                    <a href="/hu/edukacija" class="footer-link no-underline flex items-center justify-center">
                                         Edukacija
                                     </a>
-                                    <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                    <a href="/hu/aktivnosti" class="footer-link no-underline flex items-center justify-center">
                                         Aktivnosti
                                     </a>
-                                    <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                    <a href="/hu/psihoterapeuti" class="footer-link no-underline flex items-center justify-center">
                                         Psihoterapeuti
                                     </a>
-                                    <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                    <a href="/hu/kontakt" class="footer-link no-underline flex items-center justify-center">
                                         Kontakt
                                     </a>
                                 </div>
@@ -310,28 +310,28 @@ return new class extends Migration
                                 <img src="/img/integrativ-logo.png" class="footer-icon-mobile no-underline">
                             </a>
                             <div class="flex lg:flex-row flex-col gap-7 lg:gap-0 mt-5 lg:mt-0">
-                                <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                <a href="/" class="footer-link no-underline flex items-center justify-center">
                                     Naslovna
                                 </a>
-                                <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                <a href="/en/o-nama" class="footer-link no-underline flex items-center justify-center">
                                     O nama
                                 </a>
-                                <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                <a href="/en/modaliteti" class="footer-link no-underline flex items-center justify-center">
                                     Modaliteti
                                 </a>
-                                <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                <a href="/en/konferencije" class="footer-link no-underline flex items-center justify-center">
                                     Konferencije
                                 </a>
-                                <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                <a href="/en/edukacija" class="footer-link no-underline flex items-center justify-center">
                                     Edukacija
                                 </a>
-                                <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                <a href="/en/aktivnosti" class="footer-link no-underline flex items-center justify-center">
                                     Aktivnosti
                                 </a>
-                                <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                <a href="/en/psihoterapeuti" class="footer-link no-underline flex items-center justify-center">
                                     Psihoterapeuti
                                 </a>
-                                <a href="#" class="footer-link no-underline flex items-center justify-center">
+                                <a href="/en/kontakt" class="footer-link no-underline flex items-center justify-center">
                                     Kontakt
                                 </a>
                             </div>

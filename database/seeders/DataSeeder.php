@@ -780,9 +780,9 @@ class DataSeeder extends Seeder
           'sr' => 'Prijava za edukaciju'
       ]),
       'content' => json_encode([
-          'en' => 'user.views.load_views.sign-up-for-education',
-          'hu' => 'user.views.load_views.sign-up-for-education',
-          'sr' => 'user.views.load_views.sign-up-for-education'
+          'en' => 'user.views.forms.sign-up-for-education',
+          'hu' => 'user.views.forms.sign-up-for-education',
+          'sr' => 'user.views.forms.sign-up-for-education'
       ]),
       'order' => 6,
       'custom_design' => 0,
