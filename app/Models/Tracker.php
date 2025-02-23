@@ -12,7 +12,7 @@ class Tracker extends Model
 
     public $attributes = [ 'hits' => 0 ];
 
-    protected $fillable = [ 'ip', 'worker_id', 'date', 'device', 'browser'];
+    protected $fillable = [ 'ip', 'date', 'device', 'browser'];
 
     public $timestamps = false;
 
@@ -64,13 +64,12 @@ class Tracker extends Model
             
             static::firstOrCreate([
                 'ip' => request()->ip() ?? '0.0.0.0',
-                'worker_id' => auth('worker')->user()->id,
                 'visit_date' => date('Y-m-d'),
                 'device' => $deviceType,
                 'browser' => $browserType,
             ])->save();
-        } catch (\Exception) {
-            //should be empty
+        } catch (\Exception $e) {
+           dd($e->getMessage());
         }
     }
 

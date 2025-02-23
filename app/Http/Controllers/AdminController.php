@@ -14,9 +14,6 @@ class AdminController extends Controller
 {
   public function dashboard()
   {
-    $active = Tracker::where('visit_date', date('Y-m-d'))->where('visit_time', '>=', now()->subMinutes(5)->toTimeString())->distinct('worker_id')->count();
-    $workers = Tracker::where('visit_date', date('Y-m-d'))->distinct('worker_id')->count();
-    $workers_last_30_days = Tracker::where('visit_date', '>', now()->subDays(30)->endOfDay())->distinct('worker_id')->count();
     $max_visit = Tracker::where('visit_date', date('Y-m-d'))->orderByDesc('hits')->first();
     $overall_visit_today = Tracker::where('visit_date', date('Y-m-d'))->sum('hits');
     $overall_visit_last_30_days = Tracker::where('visit_date', '>', now()->subDays(30)->endOfDay())->sum('hits');
@@ -40,7 +37,7 @@ class AdminController extends Controller
     $tablet = $this->device('tablet');
     $bot = $this->device('bot');
 
-    return view('admin.views.admin-dash',compact(['active','workers','workers_last_30_days','max_visit',
+    return view('admin.views.admin-dash',compact(['max_visit',
           'overall_visit_today','overall_visit_last_30_days',
           'diff_ip','diff_ip_last_30_days',
           'browserType','deviceType',

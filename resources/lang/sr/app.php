@@ -11,13 +11,6 @@ return [
         'delete'                        => "Izbriši",
     ],
 
-    'nav' => [
-        'dashboard'                     => "Pocetna",
-        'new-ponuda'                    => "Nova ponuda",
-        'my-categories'                 => "Moje kategorije",
-        'archive'                       => "Moja arhiva",
-    ],
-
     'footer' => [
         'all-rights-reserved'           => "Sva prava zadržana",
         'social-media'                  => "Društveni mediji",
@@ -370,5 +363,21 @@ return [
         'section-order'                 => "Redosledni broj sekcije",
         'sections-btn-text'             => "Text na dugmetu",
         'sections-btn-link'             => "URL za dugme",
+
+        'nav' => [
+            'dashboard'                     => "Početna",
+            'slider'                        => "Slider",
+            'categories'                    => "Kategorije",
+            'home-page'                     => "Početna stranica",
+            'sections'                      => "Sekcije",
+            'partners'                      => "Partneri",
+            'conferences'                   => "Konferencije",
+            'contact'                       => "Kontakt",
+            'pages'                         => "Stranice",
+            'education'                     => "Edukacija",
+            'sign-up-for-conferences'       => "Prijave za konferencije",
+            'psyhoterapist'                 => "Psihoterapeuti",
+            'activities'                    => "Aktivnosti",
+        ],
     ],
 ];

@@ -107,48 +107,144 @@
                         </form>
                     </div>
                     <div class="nav-links">
-                        <a href="{{ route('admin.dashboard') }}" class="link">
-                            {{ __('app.admin.dashboard') }}
-                        </a>
-                        <a href="{{ route('admin.slider.create') }}" class="link">
-                            {{ __('app.admin.slider') }}
-                        </a>
-                        <a href="{{ route('admin.category.create') }}" class="link">
-                            {{ __('app.admin.category') }}
-                        </a>
-                        <a href="{{ route('admin.home.create') }}" class="link">
-                            {{ __('app.admin.home') }}
-                        </a>
-                        <a href="{{ route('admin.section.create') }}" class="link">
-                            {{ __('app.admin.sections') }}
-                        </a>
-                        <a href="{{ route('admin.partner.create') }}" class="link">
-                            {{ __('app.admin.partner') }}
-                        </a>
-                        <a href="{{ route('admin.conference.create') }}" class="link">
-                            {{ __('app.admin.conference') }}
-                        </a>
-                        <a href="{{ route('admin.contact.create') }}" class="link">
-                            {{ __('app.admin.contact') }}
-                        </a>
-                        <a href="{{ route('admin.page.create') }}" class="link">
-                            {{ __('app.admin.page') }}
-                        </a>
-                        <a href="{{ route('admin.education.create') }}" class="link">
-                            {{ __('app.admin.education') }}
-                        </a>
-                        <a href="{{ route('admin.sing-up-conference.create') }}" class="link">
-                            {{ __('app.admin.sing-up-conference') }}
-                        </a>
-                        <a href="{{ route('admin.psychotherapist.create') }}" class="link">
-                            {{ __('app.admin.psychotherapists') }}
-                        </a>
-                        <a href="{{ route('admin.activity.create') }}" class="link">
-                            {{ __('app.admin.activities') }}
-                        </a>
-                        <a onclick="logOut()" class="link cursor-pointer">
-                            {{ __('app.profile.log-out') }}
-                        </a>
+                        <div class="flex items-center border-b-2 border-white w-full justify-between">
+                            <a href="{{ route('admin.dashboard') }}" class="link">
+                                {{ __('app.admin.nav.dashboard') }}
+                            </a>
+                            <a href="{{ route('admin.dashboard') }}"
+                                class="icons
+                            {{ request()->routeIs('admin.dashboard') ? 'closed-icon-active' : '' }}">
+                                <i class="ri-home-4-line text-2xl"></i>
+                            </a>
+                        </div>
+                        <div class="flex items-center border-b-2 border-white w-full justify-between">
+                            <a href="{{ route('admin.slider.create') }}" class="link">
+                                {{ __('app.admin.nav.slider') }}
+                            </a>
+                            <a href="{{ route('admin.slider.create') }}"
+                                class="icons
+                            {{ request()->routeIs('admin.slider.create') ? 'closed-icon-active' : '' }}">
+                                <i class="ri-image-line text-2xl"></i>
+                            </a>
+                        </div>
+                        <div class="flex items-center border-b-2 border-white w-full justify-between">
+                            <a href="{{ route('admin.category.create') }}" class="link">
+                                {{ __('app.admin.nav.categories') }}
+                            </a>
+                            <a href="{{ route('admin.category.create') }}"
+                                class="icons
+                            {{ request()->routeIs('admin.category.create') ? 'closed-icon-active' : '' }}">
+                                <i class="ri-calendar-todo-line text-2xl"></i>
+                            </a>
+                        </div>
+                        <div class="flex items-center border-b-2 border-white w-full justify-between">
+                            <a href="{{ route('admin.home.create') }}" class="link">
+                                {{ __('app.admin.nav.home-page') }}
+                            </a>
+                            <a href="{{ route('admin.home.create') }}"
+                                class="icons
+                            {{ request()->routeIs('admin.home.create') ? 'closed-icon-active' : '' }}">
+                                <i class="ri-home-4-line text-2xl"></i>
+                            </a>
+                        </div>
+                        <div class="flex items-center border-b-2 border-white w-full justify-between">
+                            <a href="{{ route('admin.section.create') }}" class="link">
+                                {{ __('app.admin.nav.sections') }}
+                            </a>
+                            <a href="{{ route('admin.section.create') }}"
+                                class="icons
+                            {{ request()->routeIs('admin.section.create') ? 'closed-icon-active' : '' }}">
+                                <i class="ri-draft-line text-2xl"></i>
+                            </a>
+                        </div>
+                        <div class="flex items-center border-b-2 border-white w-full justify-between">
+                            <a href="{{ route('admin.partner.create') }}" class="link">
+                                {{ __('app.admin.nav.partners') }}
+                            </a>
+                            <a href="{{ route('admin.partner.create') }}"
+                                class="icons
+                            {{ request()->routeIs('admin.partner.create') ? 'closed-icon-active' : '' }}">
+                                <i class="ri-team-line text-2xl"></i>
+                            </a>
+                        </div>
+                        <div class="flex items-center border-b-2 border-white w-full justify-between">
+                            <a href="{{ route('admin.conference.create') }}" class="link">
+                                {{ __('app.admin.nav.conferences') }}
+                            </a>
+                            <a href="{{ route('admin.conference.create') }}"
+                                class="icons
+                            {{ request()->routeIs('admin.conference.create') ? 'closed-icon-active' : '' }}">
+                                <i class="ri-bank-line text-2xl"></i>
+                            </a>
+                        </div>
+                        <div class="flex items-center border-b-2 border-white w-full justify-between">
+                            <a href="{{ route('admin.contact.create') }}" class="link">
+                                {{ __('app.admin.nav.contact') }}
+                            </a>
+                            <a href="{{ route('admin.contact.create') }}"
+                                class="icons
+                            {{ request()->routeIs('admin.contact.create') ? 'closed-icon-active' : '' }}">
+                                <i class="ri-message-2-line text-2xl"></i>
+                            </a>
+                        </div>
+                        <div class="flex items-center border-b-2 border-white w-full justify-between">
+                            <a href="{{ route('admin.page.create') }}" class="link">
+                                {{ __('app.admin.nav.pages') }}
+                            </a>
+                            <a href="{{ route('admin.page.create') }}"
+                                class="icons
+                            {{ request()->routeIs('admin.page.create') ? 'closed-icon-active' : '' }}">
+                                <i class="ri-pages-line text-2xl"></i>
+                            </a>
+                        </div>
+                        <div class="flex items-center border-b-2 border-white w-full justify-between">
+                            <a href="{{ route('admin.education.create') }}" class="link">
+                                {{ __('app.admin.nav.education') }}
+                            </a>
+                            <a href="{{ route('admin.education.create') }}"
+                                class="icons
+                            {{ request()->routeIs('admin.education.create') ? 'closed-icon-active' : '' }}">
+                                <i class="ri-speak-line text-2xl"></i>
+                            </a>
+                        </div>
+                        <div class="flex items-center border-b-2 border-white w-full justify-between">
+                            <a href="{{ route('admin.sing-up-conference.create') }}" class="link">
+                                {{ __('app.admin.nav.sign-up-for-conferences') }}
+                            </a>
+                            <a href="{{ route('admin.sing-up-conference.create') }}"
+                                class="icons
+                            {{ request()->routeIs('admin.sing-up-conference.create') ? 'closed-icon-active' : '' }}">
+                                <i class="ri-briefcase-4-line text-2xl"></i>
+                            </a>
+                        </div>
+                        <div class="flex items-center border-b-2 border-white w-full justify-between">
+                            <a href="{{ route('admin.psychotherapist.create') }}" class="link">
+                                {{ __('app.admin.nav.psyhoterapist') }}
+                            </a>
+                            <a href="{{ route('admin.psychotherapist.create') }}"
+                                class="icons
+                            {{ request()->routeIs('admin.psychotherapist.create') ? 'closed-icon-active' : '' }}">
+                                <i class="ri-user-2-line text-2xl"></i>
+                            </a>
+                        </div>
+                        <div class="flex items-center border-b-2 border-white w-full justify-between">
+                            <a href="{{ route('admin.activity.create') }}" class="link">
+                                {{ __('app.admin.nav.activities') }}
+                            </a>
+                            <a href="{{ route('admin.activity.create') }}"
+                                class="icons
+                            {{ request()->routeIs('admin.activity.create') ? 'closed-icon-active' : '' }}">
+                                <i class="ri-star-line text-2xl"></i>
+                            </a>
+                        </div>
+                        <div class="flex items-center border-b-2 border-white w-full justify-between">
+                            <a onclick="logOut()" class="link cursor-pointer">
+                                {{ __('app.profile.log-out') }}
+                            </a>
+                            <a href="{{ route('admin.logout') }}" class="icons">
+                                <i class="ri-logout-box-r-line text-2xl"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="content-side">

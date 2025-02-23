@@ -6,23 +6,21 @@
         {{ __('app.admin.dashboard') }}
     </x-slot>
     <div class="flex mt-10 flex-col">
-        <div style="overflow: auto">
-            <br>Aktivni korisnici (poslednjih 5 minuta): {{ $active ?? 0}}<br><br>
-            Danas prijavljeni radnici: {{ $workers ?? 0 }}<br>
-            Radnici prijavljeni u poslednjih 30 dana: {{ $workers_last_30_days ?? 0 }}<br>
-            Najviše poseta radnika: @if(isset($max_visit->worker)){{ $max_visit->worker->first_name.' '.$max_visit->worker->last_name }}@else{{ 'null' }}@endif klikovi: {{ $max_visit->hits ?? 0 }}<br><br>
-            Ukupna poseta danas: {{ $overall_visit_today ?? 0 }}<br>
-            Ukupne posete u poslednjih 30 dana: {{ $overall_visit_last_30_days ?? 0 }}<br><br>
-            Danas prijavljeni nalozi sa različitim IP adresama: {{ $diff_ip ?? 0}}<br>
-            Različiti IP u poslednjih 30 dana: {{ $diff_ip_last_30_days ?? 0 }}<br><br>
+        <div>
+            <span class="text-xl">
+                Ukupna poseta danas: {{ $overall_visit_today ?? 0 }}<br>
+            </span>
+            <span class="text-xl">
+                Ukupne posete u poslednjih 30 dana: {{ $overall_visit_last_30_days ?? 0 }}<br>
+            </span>
             
             @if ($browserType + $deviceType)
-                <div class="container">
+                <div class="flex flex-wrap">
                     @if($browserType)
-                    <div id="pie-chart-browser" style="width: 900px; height: 500px"></div>
+                        <div id="pie-chart-browser" style="width: 900px; height: 500px"></div>
                     @endif
                     @if($deviceType)
-                    <div id="pie-chart-device" style="width: 900px; height: 500px"></div>
+                        <div id="pie-chart-device" style="width: 900px; height: 500px"></div>
                     @endif
                 </div>
                 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -46,7 +44,7 @@
                         ]);
             
                         var options = {
-                            title: 'Detalji pretraživača danas (radnici) - Ukupan broj pretraživača: {{ $browserType }}',
+                            title: 'Detalji pretraživača danas - Ukupan broj pretraživača: {{ $browserType }}',
                             is3D: true,
                         };
             
@@ -65,7 +63,7 @@
                         ]);
             
                         var options_device = {
-                            title: 'Detalji uređaja danas (radnici) - Ukupan broj uređaja: {{ $deviceType }}',
+                            title: 'Detalji uređaja danas - Ukupan broj uređaja: {{ $deviceType }}',
                             is3D: true,
                         };
 

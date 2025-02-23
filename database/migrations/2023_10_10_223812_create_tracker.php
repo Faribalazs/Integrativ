@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('worker_tracker', function (Blueprint $table) {
             $table->id();
             $table->ipAddress('ip');
-            $table->unsignedBigInteger('worker_id');
             $table->unsignedBigInteger('hits');
             $table->string('device');
             $table->string('browser');

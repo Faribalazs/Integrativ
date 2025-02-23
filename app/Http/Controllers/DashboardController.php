@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Sections, Slider, HomePageContent, Contact, Education, SignUpConference, Conferences, Activities};
+use App\Models\{Sections, Slider, HomePageContent, Contact, Education, SignUpConference, Conferences, Activities, Tracker};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
