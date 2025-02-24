@@ -1,10 +1,10 @@
 <x-admin-app-layout>
     <x-slot name="pageTitle">
-        Edit Home Page
+        {{ __('app.admin.home-page.edit-title') }}
     </x-slot>
 
     <x-slot name="header">
-        Edit Home Page
+        {{ __('app.admin.home-page.edit-title') }}
     </x-slot>
 
     @php
@@ -20,7 +20,7 @@
             @if (request()->id != 5)
                 <!-- Section title -->
                 <div class="flex flex-col">
-                    <label for="section_title" class="sm:text-xl text-base my-3">Ime Slidera ({{ $lang }}) :</label>
+                    <label for="section_title" class="sm:text-xl text-base my-3">{{ __('app.admin.home-page.name') }} ({{ $lang }}) :</label>
                     <input class="input-style {{ $errors->has('section_title') ? 'border-error mb-1' : 'mb-3' }}"
                         name="section_title" type="text" id="section_title" value="{{ $home_page->section_title }}">
                     <p class="{{ $errors->has('section_title') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
@@ -32,7 +32,7 @@
 
             <!-- Section content -->
             <div class="mt-5">
-                <label for="section_content" class="sm:text-xl text-base my-3">{{ __('app.admin.slider.slider-text') }}
+                <label for="section_content" class="sm:text-xl text-base my-3">{{ __('app.admin.home-page.text') }}
                     ({{ $lang }}) :</label>
                 <textarea id="section_content" name="section_content">
                     {{ $home_page->section_content }}
@@ -41,7 +41,7 @@
 
             <!-- Order -->
             <div class="mt-3 flex flex-col">
-                <label for="order" class="sm:text-xl text-base my-3">Redosled
+                <label for="order" class="sm:text-xl text-base my-3">{{ __('app.admin.home-page.order') }}
                     :</label>
                 <input class="input-style {{ $errors->has('order') ? 'border-error mb-1' : 'mb-3' }}" name="order"
                     type="number" id="order" value="{{ $home_page->order }}">
@@ -53,7 +53,7 @@
                 <!-- Category Image -->
                 <div class="mt-3 flex flex-col">
                     <label for="image" class="sm:text-xl text-base mb-2 mt-3">
-                        {{ __('app.admin.category.category-image') }}:
+                        {{ __('app.admin.home-page.image') }}:
                     </label>
                 
                     <!-- Preview container for multiple images -->
@@ -89,7 +89,7 @@
 
             <div class="flex w-full justify-center mt-5 mb-20">
                 <button class="confirm-btn w-1/2">
-                    {{ __('app.profile.change') }}
+                    {{ __('app.admin.save') }}
                 </button>
             </div>
 

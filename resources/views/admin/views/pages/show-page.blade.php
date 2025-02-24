@@ -13,7 +13,7 @@
         <script>
             Swal.fire({
                 icon: 'success',
-                title: 'Success',
+                title: "{{ __('app.admin.sucess') }}",
                 text: '{{ session('success') }}',
             });
         </script>
@@ -23,7 +23,7 @@
         <script>
             Swal.fire({
                 icon: 'error',
-                title: 'Error',
+                title: "{{ __('app.admin.error') }}",
                 text: '{{ session('error') }}',
             });
         </script>

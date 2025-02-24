@@ -1,10 +1,10 @@
 <x-admin-app-layout>
     <x-slot name="pageTitle">
-        Partner
+        {{ __('app.admin.partners.create-title') }}
     </x-slot>
 
     <x-slot name="header">
-        Partner
+        {{ __('app.admin.partners.create-title') }}
     </x-slot>
 
     @php
@@ -15,7 +15,7 @@
         <script>
             Swal.fire({
                 icon: 'success',
-                title: 'Success',
+                title: "{{ __('app.admin.sucess') }}",
                 text: '{{ session('success') }}',
             });
         </script>
@@ -25,7 +25,7 @@
         <script>
             Swal.fire({
                 icon: 'error',
-                title: 'Error',
+                title: "{{ __('app.admin.error') }}",
                 text: '{{ session('error') }}',
             });
         </script>
@@ -38,7 +38,7 @@
 
             <!-- Partner Name -->
             <div class="flex flex-col">
-                <label for="partner_name" class="sm:text-xl text-base my-3">Ime Partnera ({{ $lang }}) :</label>
+                <label for="partner_name" class="sm:text-xl text-base my-3">{{ __('app.admin.partners.name') }} ({{ $lang }}) :</label>
                 <input class="input-style {{ $errors->has('partner_name') ? 'border-error mb-1' : 'mb-3' }}"
                     name="partner_name" type="text" id="partner_name">
                 <p class="{{ $errors->has('partner_name') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
@@ -47,7 +47,7 @@
 
             <!-- Partner Slug -->
             <div class="flex flex-col">
-                <label for="partner_slug" class="sm:text-xl text-base my-3">Link Partnera ({{ $lang }})
+                <label for="partner_slug" class="sm:text-xl text-base my-3">{{ __('app.admin.partners.url') }}
                     :</label>
                 <input class="input-style {{ $errors->has('partner_slug') ? 'border-error mb-1' : 'mb-3' }}"
                     name="partner_slug" type="text" id="partner_slug">
@@ -57,8 +57,7 @@
 
             <!-- Order -->
             <div class="mt-3 flex flex-col">
-                <label for="order" class="sm:text-xl text-base my-3">Redosled
-                    :</label>
+                <label for="order" class="sm:text-xl text-base my-3">{{ __('app.admin.partners.order') }} :</label>
                 <input class="input-style {{ $errors->has('order') ? 'border-error mb-1' : 'mb-3' }}" name="order"
                     type="number" id="order">
                 <p class="{{ $errors->has('order') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
@@ -68,7 +67,7 @@
             <!-- Partner Image -->
             <div class="mt-3 flex flex-col">
                 <label for="image" class="sm:text-xl text-base mb-2 mt-3">
-                    {{ __('app.admin.category.category-image') }}:
+                    {{ __('app.admin.partners.image') }}:
                 </label>
 
                 <img src="{{ asset('img/placeholder_image.jpg') }}" class="mt-2 profile-image profile-img">
@@ -87,7 +86,7 @@
 
             <div class="flex w-full justify-center mt-5 mb-20">
                 <button class="confirm-btn w-1/2">
-                    {{ __('app.profile.change') }}
+                    {{ __('app.admin.save') }}
                 </button>
             </div>
         </form>

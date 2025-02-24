@@ -363,6 +363,9 @@ return [
         'section-order'                 => "Redosledni broj sekcije",
         'sections-btn-text'             => "Text na dugmetu",
         'sections-btn-link'             => "URL za dugme",
+        'save'                          => "Sačuvaj",
+        'success'                       => "Uspešno",
+        'error'                         => "Greška",
 
         'nav' => [
             'dashboard'                     => "Početna",
@@ -379,5 +382,63 @@ return [
             'psyhoterapist'                 => "Psihoterapeuti",
             'activities'                    => "Aktivnosti",
         ],
+
+        'table' => [
+            'id'                            => "ID",
+            'name'                          => "Naziv",
+            'position'                      => "Pozicija",
+            'edit'                          => "Izmeni",
+            'delete'                        => "Izbriši",
+            'confirm-delete'                => "Da li ste sigurni da želite da izbrišete",
+            'delete-text'                   => "Izbriši",
+            'status'                        => "Status",
+        ],
+
+        'slider' => [
+            'title'                         => "Slider",
+            'edit-title'                    => "Izmeni slider",
+            'create-title'                  => "Dodaj slider",
+            'add-new-slider'                => "Dodaj novi slider",
+            'slider-name'                   => "Naziv slidera",
+            'slider-text'                   => "Tekst slidera",
+            'vertical-position'             => "Vertikalni položaj",
+            'horizontal-position'           => "Horizontalni položaj",
+            'order'                         => "Redosled",
+            'slider-image'                  => "Slika slidera",
+        ],
+
+        'category' => [
+            'title'                         => "Kategorije",
+            'edit-title'                    => "Izmeni kategoriju",
+            'create-title'                  => "Dodaj kategoriju",
+            'add-new-category'              => "Dodaj novu kategoriju",
+            'name'                          => "Naziv kategorije",
+            'order'                         => "Redosled",
+            'url'                           => "URL kategorije",
+            'category-image'                => "Slika kategorije",
+        ],
+
+        'home-page' => [
+            'title'                         => "Početna stranica",
+            'edit-title'                    => "Izmeni početnu stranicu",
+            'create-title'                  => "Dodaj početnu stranicu",
+            'add-new-home-page'             => "Dodaj novu početnu stranicu",
+            'name'                          => "Naziv",
+            'text'                          => "Tekst",
+            'order'                         => "Redosled",
+            'image'                         => "Slika",
+        ],
+
+        'partners' => [
+            'title'                         => "Partneri",
+            'edit-title'                    => "Izmeni partnera",
+            'create-title'                  => "Dodaj partnera",
+            'add-new-partner'               => "Dodaj novog partnera",
+            'name'                          => "Naziv",
+            'url'                           => "Link za parnera",
+            'order'                         => "Redosled",
+            'image'                         => "Slika",
+        ],
+
     ],
 ];

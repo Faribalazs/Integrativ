@@ -1,9 +1,9 @@
 <x-admin-app-layout>
     <x-slot name="pageTitle">
-        Category
+        {{ __('app.admin.category.title') }}
     </x-slot>
     <x-slot name="header">
-        Category
+        {{ __('app.admin.category.title') }}
     </x-slot>
     @php
         $locale = app()->getLocale();
@@ -13,7 +13,7 @@
         <script>
             Swal.fire({
                 icon: 'success',
-                title: 'Success',
+                title: "{{ __('app.admin.sucess') }}",
                 text: '{{ session('success') }}',
             });
         </script>
@@ -23,7 +23,7 @@
         <script>
             Swal.fire({
                 icon: 'error',
-                title: 'Error',
+                title: "{{ __('app.admin.error') }}",
                 text: '{{ session('error') }}',
             });
         </script>
@@ -33,16 +33,16 @@
         <div class="flex justify-end mb-10">
             <a href="{{ route('admin.category.add') }}" class="add-new-btn no-underline">
                 <i class="ri-add-line"></i>
-                Dodaj novu kategorij
+                {{ __('app.admin.category.add-new-category') }}
             </a>
         </div>
         <table class="table text-center">
             <thead>
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Naziv kategorije</th>
-                <th scope="col">Izmeni</th>
-                <th scope="col">Izbrisi</th>
+                <th scope="col">{{ __('app.admin.table.id') }}</th>
+                <th scope="col">{{ __('app.admin.table.name') }}</th>
+                <th scope="col">{{ __('app.admin.table.edit') }}</th>
+                <th scope="col">{{ __('app.admin.table.delete') }}</th>
             </tr>
             </thead>
             <tbody>
@@ -71,14 +71,14 @@
     <script>
         function deleteSwall(id, name) {
             Swal.fire({
-                title: 'Da li želite da izbrišete kategoriju '+name+'?',
+                title: '{{ __('app.admin.table.confirm-delete') }} '+name+'?',
                 icon: 'question',
                 html: 
                     '<form method="POST" id="formDelete" action="{{ route('admin.category.delete') }}">' +
                     '@csrf' +
                     '@method("delete")' +
                     '<input class="mt-3 swal-input" hidden type="text" name="id" value="'+id+'"/>' +
-                    '<button type="submit" class="add-new-btn mt-3">Izbriši</button>' +
+                    '<button type="submit" class="add-new-btn mt-3">{{ __('app.admin.table.delete-text') }}</button>' +
                     '</form>',
                 showCancelButton: false,
                 showConfirmButton: false,

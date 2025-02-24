@@ -1,9 +1,9 @@
 <x-admin-app-layout>
     <x-slot name="pageTitle">
-        Home page
+        {{ __('app.admin.home-page.title') }}
     </x-slot>
     <x-slot name="header">
-        Home page
+        {{ __('app.admin.home-page.title') }}
     </x-slot>
     @php
         $locale = app()->getLocale();
@@ -13,7 +13,7 @@
         <script>
             Swal.fire({
                 icon: 'success',
-                title: 'Success',
+                title: "{{ __('app.admin.sucess') }}",
                 text: '{{ session('success') }}',
             });
         </script>
@@ -23,7 +23,7 @@
         <script>
             Swal.fire({
                 icon: 'error',
-                title: 'Error',
+                title: "{{ __('app.admin.error') }}",
                 text: '{{ session('error') }}',
             });
         </script>
@@ -39,10 +39,10 @@
         <table class="table text-center">
             <thead>
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Naziv sekcije</th>
-                <th scope="col">Pozicija</th>
-                <th scope="col">Izmeni</th>
+                <th scope="col">{{ __('app.admin.table.id') }}</th>
+                <th scope="col">{{ __('app.admin.table.name') }}</th>
+                <th scope="col">{{ __('app.admin.table.position') }}</th>
+                <th scope="col">{{ __('app.admin.table.edit') }}</th>
             </tr>
             </thead>
             <tbody>

@@ -1,26 +1,26 @@
 <x-admin-app-layout>
     <x-slot name="pageTitle">
-        {{ __('app.admin.sections') }}
+        {{ __('app.admin.sections.title') }}
     </x-slot>
     <x-slot name="header">
-        {{ __('app.admin.sections') }}
+        {{ __('app.admin.sections.title') }}
     </x-slot>
     <div class="w-full mt-10" style="overflow: auto">
         <div class="flex justify-end mb-10">
             <a href="{{ route('admin.section.add') }}" class="add-new-btn no-underline">
                 <i class="ri-add-line"></i>
-                Dodaj novu sekciju
+                {{ __('app.admin.sections.add-new-section') }}
             </a>
         </div>
         <table class="table text-center">
             <thead>
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Ime sekcije</th>
-                <th scope="col">Redosled</th>
-                <th scope="col">Status</th>
-                <th scope="col">Izmeni</th>
-                <th scope="col">Izbrisi</th>
+                <th scope="col">{{ __('app.admin.table.id') }}</th>
+                <th scope="col">{{ __('app.admin.table.name') }}</th>
+                <th scope="col">{{ __('app.admin.table.order') }}</th>
+                <th scope="col">{{ __('app.admin.table.status') }}</th>
+                <th scope="col">{{ __('app.admin.table.edit') }}</th>
+                <th scope="col">{{ __('app.admin.table.delete') }}</th>
             </tr>
             </thead>
             <tbody>
@@ -28,6 +28,7 @@
                 <tr>
                     <td>{{$section->id}}</td>
                     <td>{{$section->section_name}}</td>
+                    <td>{{$section->order}}</td>
                     <td>{{$section->status}}</td>
                     <td>
                         <a href="{{ route('admin.section.edit', $section->id) }}" class="modositas-btn mr-1">
@@ -50,14 +51,14 @@
     <script>
         function deleteSwall(id, name) {
             Swal.fire({
-                title: 'Da li želite da izbrišete sekciju '+name+'?',
+                title: '{{ __('app.admin.table.confirm-delete') }} '+name+'?',
                 icon: 'question',
                 html: 
                     '<form method="POST" id="formDelete" action="{{ route('admin.section.delete') }}">' +
                     '@csrf' +
                     '@method("delete")' +
                     '<input class="mt-3 swal-input" hidden type="text" name="id" value="'+id+'"/>' +
-                    '<button type="submit" class="add-new-btn mt-3">Izbriši</button>' +
+                    '<button type="submit" class="add-new-btn mt-3">{{ __('app.admin.table.delete-text') }}</button>' +
                     '</form>',
                 showCancelButton: false,
                 showConfirmButton: false,

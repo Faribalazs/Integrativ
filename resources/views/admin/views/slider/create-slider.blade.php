@@ -1,10 +1,10 @@
 <x-admin-app-layout>
     <x-slot name="pageTitle">
-        Slider
+        {{ __('app.admin.slider.create-title') }}
     </x-slot>
 
     <x-slot name="header">
-        Slider
+        {{ __('app.admin.slider.create-title') }}
     </x-slot>
 
     @php
@@ -18,7 +18,7 @@
 
             <!-- Category Name -->
             <div class="flex flex-col">
-                <label for="slider_name" class="sm:text-xl text-base my-3">Ime Slidera ({{ $lang }}) :</label>
+                <label for="slider_name" class="sm:text-xl text-base my-3">{{ __('app.admin.slider.slider-name') }} ({{ $lang }}) :</label>
                 <input class="input-style {{ $errors->has('slider_name') ? 'border-error mb-1' : 'mb-3' }}"
                     name="slider_name" type="text" id="slider_name">
                 <p class="{{ $errors->has('slider_name') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
@@ -54,7 +54,7 @@
 
              <!-- Order -->
              <div class="mt-3 flex flex-col">
-                <label for="order" class="sm:text-xl text-base my-3">Redosled
+                <label for="order" class="sm:text-xl text-base my-3">{{ __('app.admin.slider.order') }}
                     :</label>
                 <input class="input-style {{ $errors->has('order') ? 'border-error mb-1' : 'mb-3' }}"
                     name="order" type="number" id="order">
@@ -65,7 +65,7 @@
             <!-- Category Image -->
             <div class="mt-3 flex flex-col">
                 <label for="image" class="sm:text-xl text-base mb-2 mt-3">
-                    {{ __('app.admin.category.category-image') }}:
+                    {{ __('app.admin.slider.slider-image') }}:
                 </label>
 
                 <img src="{{ asset('img/placeholder_image.jpg') }}" class="mt-2 profile-image profile-img">
@@ -84,7 +84,7 @@
 
             <div class="flex w-full justify-center mt-5 mb-20">
                 <button class="confirm-btn w-1/2">
-                    {{ __('app.profile.change') }}
+                    {{ __('app.admin.save') }}
                 </button>
             </div>
         </form>

@@ -41,63 +41,51 @@
                             <i class="ri-home-4-line"></i>
                         </a>
                         <a href="{{ route('admin.slider.create') }}"
-                            class="icons 
-                            {{ request()->routeIs('admin.slider.create') ? 'closed-icon-active' : '' }}">
+                            class="icons {{ request()->routeIs('admin.slider.*') ? 'closed-icon-active' : '' }}">
                             <i class="ri-image-line"></i>
                         </a>
                         <a href="{{ route('admin.category.create') }}"
-                            class="icons 
-                            {{ request()->routeIs('admin.category.create') ? 'closed-icon-active' : '' }}">
+                            class="icons {{ request()->routeIs('admin.category.*') ? 'closed-icon-active' : '' }}">
                             <i class="ri-calendar-todo-line"></i>
                         </a>
                         <a href="{{ route('admin.home.create') }}"
-                            class="icons 
-                            {{ request()->routeIs('admin.home.create') ? 'closed-icon-active' : '' }}">
+                            class="icons {{ request()->routeIs('admin.home.*') ? 'closed-icon-active' : '' }}">
                             <i class="ri-home-4-line"></i>
                         </a>
-                        <a href="{{ route('admin.section.create') }}"
-                            class="icons 
-                            {{ request()->routeIs('admin.section.create') ? 'closed-icon-active' : '' }}">
+                        {{-- <a href="{{ route('admin.section.create') }}"
+                            class="icons {{ request()->routeIs('admin.section.*') ? 'closed-icon-active' : '' }}">
                             <i class="ri-draft-line"></i>
-                        </a>
+                        </a> --}}
                         <a href="{{ route('admin.partner.create') }}"
-                            class="icons 
-                            {{ request()->routeIs('admin.partner.create') ? 'closed-icon-active' : '' }}">
+                            class="icons {{ request()->routeIs('admin.partner.*') ? 'closed-icon-active' : '' }}">
                             <i class="ri-team-line"></i>
                         </a>
                         <a href="{{ route('admin.conference.create') }}"
-                            class="icons 
-                            {{ request()->routeIs('admin.conference.create') ? 'closed-icon-active' : '' }}">
+                            class="icons {{ request()->routeIs('admin.conference.*') ? 'closed-icon-active' : '' }}">
                             <i class="ri-bank-line"></i>
                         </a>
                         <a href="{{ route('admin.contact.create') }}"
-                            class="icons 
-                            {{ request()->routeIs('admin.contact.create') ? 'closed-icon-active' : '' }}">
+                            class="icons {{ request()->routeIs('admin.contact.*') ? 'closed-icon-active' : '' }}">
                             <i class="ri-message-2-line"></i>
                         </a>
                         <a href="{{ route('admin.page.create') }}"
-                            class="icons 
-                            {{ request()->routeIs('admin.page.create') ? 'closed-icon-active' : '' }}">
+                            class="icons {{ request()->routeIs('admin.page.*') ? 'closed-icon-active' : '' }}">
                             <i class="ri-pages-line"></i>
                         </a>
                         <a href="{{ route('admin.education.create') }}"
-                            class="icons 
-                            {{ request()->routeIs('admin.education.create') ? 'closed-icon-active' : '' }}">
+                            class="icons {{ request()->routeIs('admin.education.*') ? 'closed-icon-active' : '' }}">
                             <i class="ri-speak-line"></i>
                         </a>
                         <a href="{{ route('admin.sing-up-conference.create') }}"
-                            class="icons 
-                            {{ request()->routeIs('admin.sing-up-conference.create') ? 'closed-icon-active' : '' }}">
+                            class="icons {{ request()->routeIs('admin.sing-up-conference.*') ? 'closed-icon-active' : '' }}">
                             <i class="ri-briefcase-4-line"></i>
                         </a>
                         <a href="{{ route('admin.psychotherapist.create') }}"
-                            class="icons 
-                            {{ request()->routeIs('admin.psychotherapist.create') ? 'closed-icon-active' : '' }}">
+                            class="icons {{ request()->routeIs('admin.psychotherapist.*') ? 'closed-icon-active' : '' }}">
                             <i class="ri-user-2-line"></i>
                         </a>
                         <a href="{{ route('admin.activity.create') }}"
-                            class="icons 
-                            {{ request()->routeIs('admin.activity.create') ? 'closed-icon-active' : '' }}">
+                            class="icons {{ request()->routeIs('admin.activity.*') ? 'closed-icon-active' : '' }}">
                             <i class="ri-star-line"></i>
                         </a>
                         <form method="POST" id="log-out-form" action="{{ route('admin.logout') }}"
@@ -112,8 +100,7 @@
                                 {{ __('app.admin.nav.dashboard') }}
                             </a>
                             <a href="{{ route('admin.dashboard') }}"
-                                class="icons
-                            {{ request()->routeIs('admin.dashboard') ? 'closed-icon-active' : '' }}">
+                                class="icons {{ request()->routeIs('admin.dashboard') ? 'closed-icon-active' : '' }}">
                                 <i class="ri-home-4-line text-2xl"></i>
                             </a>
                         </div>
@@ -122,8 +109,7 @@
                                 {{ __('app.admin.nav.slider') }}
                             </a>
                             <a href="{{ route('admin.slider.create') }}"
-                                class="icons
-                            {{ request()->routeIs('admin.slider.create') ? 'closed-icon-active' : '' }}">
+                                class="icons {{ request()->routeIs('admin.slider.*') ? 'closed-icon-active' : '' }}">
                                 <i class="ri-image-line text-2xl"></i>
                             </a>
                         </div>
@@ -132,8 +118,7 @@
                                 {{ __('app.admin.nav.categories') }}
                             </a>
                             <a href="{{ route('admin.category.create') }}"
-                                class="icons
-                            {{ request()->routeIs('admin.category.create') ? 'closed-icon-active' : '' }}">
+                                class="icons {{ request()->routeIs('admin.category.*') ? 'closed-icon-active' : '' }}">
                                 <i class="ri-calendar-todo-line text-2xl"></i>
                             </a>
                         </div>
@@ -142,28 +127,25 @@
                                 {{ __('app.admin.nav.home-page') }}
                             </a>
                             <a href="{{ route('admin.home.create') }}"
-                                class="icons
-                            {{ request()->routeIs('admin.home.create') ? 'closed-icon-active' : '' }}">
+                                class="icons {{ request()->routeIs('admin.home.*') ? 'closed-icon-active' : '' }}">
                                 <i class="ri-home-4-line text-2xl"></i>
                             </a>
                         </div>
-                        <div class="flex items-center border-b-2 border-white w-full justify-between">
+                        {{-- <div class="flex items-center border-b-2 border-white w-full justify-between">
                             <a href="{{ route('admin.section.create') }}" class="link">
                                 {{ __('app.admin.nav.sections') }}
                             </a>
                             <a href="{{ route('admin.section.create') }}"
-                                class="icons
-                            {{ request()->routeIs('admin.section.create') ? 'closed-icon-active' : '' }}">
+                                class="icons {{ request()->routeIs('admin.section.*') ? 'closed-icon-active' : '' }}">
                                 <i class="ri-draft-line text-2xl"></i>
                             </a>
-                        </div>
+                        </div> --}}
                         <div class="flex items-center border-b-2 border-white w-full justify-between">
                             <a href="{{ route('admin.partner.create') }}" class="link">
                                 {{ __('app.admin.nav.partners') }}
                             </a>
                             <a href="{{ route('admin.partner.create') }}"
-                                class="icons
-                            {{ request()->routeIs('admin.partner.create') ? 'closed-icon-active' : '' }}">
+                                class="icons {{ request()->routeIs('admin.partner.*') ? 'closed-icon-active' : '' }}">
                                 <i class="ri-team-line text-2xl"></i>
                             </a>
                         </div>
@@ -172,8 +154,7 @@
                                 {{ __('app.admin.nav.conferences') }}
                             </a>
                             <a href="{{ route('admin.conference.create') }}"
-                                class="icons
-                            {{ request()->routeIs('admin.conference.create') ? 'closed-icon-active' : '' }}">
+                                class="icons {{ request()->routeIs('admin.conference.*') ? 'closed-icon-active' : '' }}">
                                 <i class="ri-bank-line text-2xl"></i>
                             </a>
                         </div>
@@ -182,8 +163,7 @@
                                 {{ __('app.admin.nav.contact') }}
                             </a>
                             <a href="{{ route('admin.contact.create') }}"
-                                class="icons
-                            {{ request()->routeIs('admin.contact.create') ? 'closed-icon-active' : '' }}">
+                                class="icons {{ request()->routeIs('admin.contact.*') ? 'closed-icon-active' : '' }}">
                                 <i class="ri-message-2-line text-2xl"></i>
                             </a>
                         </div>
@@ -192,8 +172,7 @@
                                 {{ __('app.admin.nav.pages') }}
                             </a>
                             <a href="{{ route('admin.page.create') }}"
-                                class="icons
-                            {{ request()->routeIs('admin.page.create') ? 'closed-icon-active' : '' }}">
+                                class="icons {{ request()->routeIs('admin.page.*') ? 'closed-icon-active' : '' }}">
                                 <i class="ri-pages-line text-2xl"></i>
                             </a>
                         </div>
@@ -202,8 +181,7 @@
                                 {{ __('app.admin.nav.education') }}
                             </a>
                             <a href="{{ route('admin.education.create') }}"
-                                class="icons
-                            {{ request()->routeIs('admin.education.create') ? 'closed-icon-active' : '' }}">
+                                class="icons {{ request()->routeIs('admin.education.*') ? 'closed-icon-active' : '' }}">
                                 <i class="ri-speak-line text-2xl"></i>
                             </a>
                         </div>
@@ -212,8 +190,7 @@
                                 {{ __('app.admin.nav.sign-up-for-conferences') }}
                             </a>
                             <a href="{{ route('admin.sing-up-conference.create') }}"
-                                class="icons
-                            {{ request()->routeIs('admin.sing-up-conference.create') ? 'closed-icon-active' : '' }}">
+                                class="icons {{ request()->routeIs('admin.sing-up-conference.*') ? 'closed-icon-active' : '' }}">
                                 <i class="ri-briefcase-4-line text-2xl"></i>
                             </a>
                         </div>
@@ -222,8 +199,7 @@
                                 {{ __('app.admin.nav.psyhoterapist') }}
                             </a>
                             <a href="{{ route('admin.psychotherapist.create') }}"
-                                class="icons
-                            {{ request()->routeIs('admin.psychotherapist.create') ? 'closed-icon-active' : '' }}">
+                                class="icons {{ request()->routeIs('admin.psychotherapist.*') ? 'closed-icon-active' : '' }}">
                                 <i class="ri-user-2-line text-2xl"></i>
                             </a>
                         </div>
@@ -232,8 +208,7 @@
                                 {{ __('app.admin.nav.activities') }}
                             </a>
                             <a href="{{ route('admin.activity.create') }}"
-                                class="icons
-                            {{ request()->routeIs('admin.activity.create') ? 'closed-icon-active' : '' }}">
+                                class="icons {{ request()->routeIs('admin.activity.*') ? 'closed-icon-active' : '' }}">
                                 <i class="ri-star-line text-2xl"></i>
                             </a>
                         </div>

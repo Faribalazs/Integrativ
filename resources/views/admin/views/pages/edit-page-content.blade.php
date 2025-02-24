@@ -15,7 +15,7 @@
         <script>
             Swal.fire({
                 icon: 'success',
-                title: 'Success',
+                title: "{{ __('app.admin.sucess') }}",
                 text: '{{ session('success') }}',
             });
         </script>
@@ -25,7 +25,7 @@
         <script>
             Swal.fire({
                 icon: 'error',
-                title: 'Error',
+                title: "{{ __('app.admin.error') }}",
                 text: '{{ session('error') }}',
             });
         </script>
@@ -122,7 +122,7 @@
 
             <div class="flex w-full justify-center mt-5 mb-20">
                 <button class="confirm-btn w-1/2">
-                    {{ __('app.profile.change') }}
+                    {{ __('app.admin.save') }}
                 </button>
             </div>
 

@@ -1,16 +1,16 @@
 <x-admin-app-layout>
     <x-slot name="pageTitle">
-        {{ __('app.admin.sections') }}
+        {{ __('app.admin.sections.edit-title') }}
     </x-slot>
     <x-slot name="header">
-        {{ __('app.admin.sections') }} - {{ strip_tags($section[0]->title) }}
+        {{ __('app.admin.sections.edit-title') }}
     </x-slot>
 
     @if (session('success'))
         <script>
             Swal.fire({
                 icon: 'success',
-                title: 'Success',
+                title: "{{ __('app.admin.sucess') }}",
                 text: '{{ session('success') }}',
             });
         </script>
@@ -20,7 +20,7 @@
         <script>
             Swal.fire({
                 icon: 'error',
-                title: 'Error',
+                title: "{{ __('app.admin.error') }}",
                 text: '{{ session('error') }}',
             });
         </script>
@@ -39,15 +39,6 @@
     <div class="w-full mt-10" style="overflow: auto">
         <form method="POST" class="w-full" action="{{ route('admin.section.edit.done', ['id' => request()->id]) }}">
             @csrf
-
-            <div class="flex flex-col">
-                <label for="page" class="sm:text-xl text-base my-3">{{ __('app.admin.sections-page') }}
-                    :</label>
-                <input class="input-style {{ $errors->has('page') ? 'border-error mb-1' : 'mb-3' }}" name="page"
-                    type="text" value="{{ $section[0]->page }}" required>
-                <p class="{{ $errors->has('page') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
-                    {{ $errors->first('page') }}</p>
-            </div>
 
             <div class="mt-5">
                 <label for="section_name" class="sm:text-xl text-base my-3">{{ __('app.admin.sections-name') }}
@@ -69,7 +60,7 @@
             <div class="mt-5">
                 <label for="content" class="sm:text-xl text-base my-3">{{ __('app.admin.sections-content') }}
                     :</label>
-                <textarea id="title" name="content">
+                <textarea id="content" name="content">
                     {{ $section[0]->content }}
                 </textarea>
             </div>
@@ -112,7 +103,7 @@
 
             <div class="flex w-full justify-center mt-5 mb-20">
                 <button class="confirm-btn w-1/2">
-                    {{ __('app.profile.change') }}
+                    {{ __('app.admin.save') }}
                 </button>
             </div>
         </form>
@@ -126,6 +117,18 @@
     <script>
         tinymce.init({
             selector: 'textarea#content',
+            height: 500,
+            width: "100%",
+            plugins: 'wordcount save fullscreen code table lists link hr',
+            toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor alignleft aligncenter alignright alignjustify | link hr | numlist bullist outdent indent  | removeformat | code',
+            image_advtab: false,
+            valid_elements: '*[*]',
+            extended_valid_elements: 'span[*],div[*],i[*],svg[*],path[*],button[*]',
+            forced_root_block: false,
+        });
+
+        tinymce.init({
+            selector: 'textarea#title',
             height: 500,
             width: "100%",
             plugins: 'wordcount save fullscreen code table lists link hr',

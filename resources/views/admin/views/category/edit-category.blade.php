@@ -1,10 +1,10 @@
 <x-admin-app-layout>
     <x-slot name="pageTitle">
-        Kategorija
+        {{ __('app.admin.category.edit-title') }}
     </x-slot>
 
     <x-slot name="header">
-        Kategorija
+        {{ __('app.admin.category.edit-title') }}
     </x-slot>
 
     @php
@@ -18,7 +18,7 @@
 
             <!-- Category Name -->
             <div class="flex flex-col">
-                <label for="category_name" class="sm:text-xl text-base my-3">Ime kategorije ({{ $lang }}) :</label>
+                <label for="category_name" class="sm:text-xl text-base my-3">{{ __('app.admin.category.name') }} ({{ $lang }}) :</label>
                 <input class="input-style {{ $errors->has('category_name') ? 'border-error mb-1' : 'mb-3' }}"
                     name="category_name" type="text" id="category_name" value="{{ $category->category_name }}" >
                 <p class="{{ $errors->has('category_name') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
@@ -27,7 +27,7 @@
 
              <!-- Order -->
              <div class="mt-3 flex flex-col">
-                <label for="order" class="sm:text-xl text-base my-3">Redosled
+                <label for="order" class="sm:text-xl text-base my-3">{{ __('app.admin.category.order') }}
                     :</label>
                 <input class="input-style {{ $errors->has('order') ? 'border-error mb-1' : 'mb-3' }}"
                     name="order" type="number" id="order" value="{{ $category->order }}">
@@ -37,7 +37,7 @@
 
             <!-- Category URL -->
             <div class="mt-3 flex flex-col">
-                <label for="slug" class="sm:text-xl text-base my-3">URL kategorije
+                <label for="slug" class="sm:text-xl text-base my-3">{{ __('app.admin.category.url') }}
                     :</label>
                 <input class="input-style-readonly {{ $errors->has('slug') ? 'border-error mb-1' : 'mb-3' }}"
                     name="slug" type="text" id="slug" value="{{ $category->slug }}" readonly>
@@ -71,7 +71,7 @@
 
             <div class="flex w-full justify-center mt-5 mb-20">
                 <button class="confirm-btn w-1/2">
-                    {{ __('app.profile.change') }}
+                    {{ __('app.admin.save') }}
                 </button>
             </div>
         </form>
