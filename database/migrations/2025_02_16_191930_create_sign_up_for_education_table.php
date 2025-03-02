@@ -19,22 +19,15 @@ return new class extends Migration
             $table->string('email');
             $table->string('phone');
             $table->string('basic_studies');
-            $table->string('name_and_seat_of_institution');
-            $table->string('education_level');
-            $table->integer('year_of_graduation');
             $table->string('occupation');
             $table->string('field_of_specialization');
-            $table->string('specialization_name_and_seat_of_institution');
             $table->string('job_position');
             $table->string('work_experience_with_children');
             $table->string('most_frequently_addressed_issues');
-            $table->string('institution_or_organization_work_with_children');
             $table->string('type_of_psychotherapy_modality');
             $table->string('achieved_level_of_education');
-            $table->string('name_and_seat_of_organization');
             $table->string('length_of_psychotherapy_experience');
             $table->string('psychotherapy_work_with_children');
-            $table->string('length_of_psychotherapy_work_with_children');
             $table->timestamps();
         });
     }

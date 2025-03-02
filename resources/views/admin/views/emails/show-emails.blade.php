@@ -1,9 +1,9 @@
 <x-admin-app-layout>
     <x-slot name="pageTitle">
-        Pages
+        {{ __('app.admin.emails.title') }}
     </x-slot>
     <x-slot name="header">
-        Pages
+        {{ __('app.admin.emails.title') }}
     </x-slot>
     @php
         $locale = app()->getLocale();
@@ -29,42 +29,28 @@
         </script>
     @endif
 
-    @if ($errors->any())
-        <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Validation Errors',
-                html: '{!! implode('<br>', $errors->all()) !!}',
-            });
-        </script>
-    @endif
-
     <div class="w-full mt-10" style="overflow: auto">
         <table class="table text-center">
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Naziv stranice</th>
-                    <th scope="col">Pogledaj</th>
+                    <th scope="col">{{ __('app.admin.table.id') }}</th>
+                    <th scope="col">{{ __('app.admin.table.email') }}</th>
+                    <th scope="col">{{ __('app.admin.table.edit') }}</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($pages as $page)
+                @foreach ($emails as $email)
                     <tr>
-                        <td>{{ $page->id }}</td>
-                        <td>{{ $page->name }}</td>
+                        <td>{{ $email->id }}</td>
+                        <td>{{ $email->email }}</td>
                         <td>
-                            <a href="{{ route('admin.page.show', $page->id) }}"
-                                class="modositas-btn mr-1 no-underline text-black">
-                                <i class="ri-eye-line text-xl"></i>
+                            <a href="{{ route('admin.email.edit', $email->id) }}" class="modositas-btn mr-1">
+                                <i class="ri-edit-2-line"></i>
                             </a>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
-        <div class="d-flex justify-content-center">
-            {{ $pages->links('pagination::bootstrap-5') }}
-        </div>
     </div>
 </x-admin-app-layout>

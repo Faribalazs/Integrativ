@@ -202,4 +202,14 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
     Route::delete('/activity/delete', [AdminController::class, 'activityDelete'])
         ->name('activity.delete');
 
+    // Emails routes
+    Route::get('/emails', [AdminController::class, 'emailsCreate'])
+        ->name('email.create');
+
+    Route::get('/emails/edit/{id}', [AdminController::class, 'emailEdit'])
+        ->name('email.edit');
+
+    Route::post('/emails/edit/{id}', [AdminController::class, 'emailsEditDone'])
+        ->name('email.edit.done');
+
 });

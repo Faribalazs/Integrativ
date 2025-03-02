@@ -39,12 +39,8 @@
 
         <!-- Email -->
         <div class="mt-3">
-            <p class="mb-2 font-semibold text-xl">
-                Email :
-            </p>
-            <a href="mailto:{{ $apply->email }}" class="text-lg">
-                {{ $apply->email }}
-            </a>
+            <p class="mb-2 font-semibold text-xl">Email :</p>
+            <a href="mailto:{{ $apply->email }}" class="text-lg">{{ $apply->email }}</a>
         </div>
 
         <!-- Phone -->
@@ -59,24 +55,6 @@
             <p class="text-lg">{{ $apply->basic_studies }}</p>
         </div>
 
-        <!-- Name and Seat of Institution -->
-        <div class="mt-3">
-            <p class="mb-2 font-semibold text-xl">Naziv i sedište institucije :</p>
-            <p class="text-lg">{{ $apply->name_and_seat_of_institution }}</p>
-        </div>
-
-        <!-- Education Level -->
-        <div class="mt-3">
-            <p class="mb-2 font-semibold text-xl">Nivo obrazovanja :</p>
-            <p class="text-lg">{{ $apply->education_level }}</p>
-        </div>
-
-        <!-- Year of Graduation -->
-        <div class="mt-3">
-            <p class="mb-2 font-semibold text-xl">Godina diplomiranja :</p>
-            <p class="text-lg">{{ $apply->year_of_graduation }}</p>
-        </div>
-
         <!-- Occupation -->
         <div class="mt-3">
             <p class="mb-2 font-semibold text-xl">Zanimanje :</p>
@@ -87,12 +65,6 @@
         <div class="mt-3">
             <p class="mb-2 font-semibold text-xl">Oblast specijalizacije :</p>
             <p class="text-lg">{{ $apply->field_of_specialization }}</p>
-        </div>
-
-        <!-- Specialization Name and Seat of Institution -->
-        <div class="mt-3">
-            <p class="mb-2 font-semibold text-xl">Specijalizacija - naziv i sedište institucije :</p>
-            <p class="text-lg">{{ $apply->specialization_name_and_seat_of_institution }}</p>
         </div>
 
         <!-- Job Position -->
@@ -113,12 +85,6 @@
             <p class="text-lg">{{ $apply->most_frequently_addressed_issues }}</p>
         </div>
 
-        <!-- Institution or Organization Work with Children -->
-        <div class="mt-3">
-            <p class="mb-2 font-semibold text-xl">Institucija ili organizacija u radu sa decom :</p>
-            <p class="text-lg">{{ $apply->institution_or_organization_work_with_children }}</p>
-        </div>
-
         <!-- Type of Psychotherapy Modality -->
         <div class="mt-3">
             <p class="mb-2 font-semibold text-xl">Vrsta psihoterapijske modalnosti :</p>
@@ -131,12 +97,6 @@
             <p class="text-lg">{{ $apply->achieved_level_of_education }}</p>
         </div>
 
-        <!-- Name and Seat of Organization -->
-        <div class="mt-3">
-            <p class="mb-2 font-semibold text-xl">Naziv i sedište organizacije :</p>
-            <p class="text-lg">{{ $apply->name_and_seat_of_organization }}</p>
-        </div>
-
         <!-- Length of Psychotherapy Experience -->
         <div class="mt-3">
             <p class="mb-2 font-semibold text-xl">Dužina psihoterapijskog iskustva :</p>
@@ -147,12 +107,6 @@
         <div class="mt-3">
             <p class="mb-2 font-semibold text-xl">Psihoterapijski rad sa decom :</p>
             <p class="text-lg">{{ $apply->psychotherapy_work_with_children }}</p>
-        </div>
-
-        <!-- Length of Psychotherapy Work with Children -->
-        <div class="mt-3">
-            <p class="mb-2 font-semibold text-xl">Dužina psihoterapijskog rada sa decom :</p>
-            <p class="text-lg">{{ $apply->length_of_psychotherapy_work_with_children }}</p>
         </div>
 
     </div>

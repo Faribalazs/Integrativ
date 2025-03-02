@@ -392,6 +392,7 @@ return [
             'confirm-delete'                => "Da li ste sigurni da želite da izbrišete",
             'delete-text'                   => "Izbriši",
             'status'                        => "Status",
+            'email'                         => "E-mail",
         ],
 
         'slider' => [
@@ -438,6 +439,16 @@ return [
             'url'                           => "Link za parnera",
             'order'                         => "Redosled",
             'image'                         => "Slika",
+        ],
+
+        'emails' => [
+            'title'                         => "E-mailovi",
+            'edit-title'                    => "Izmeni e-mail",
+            'email'                         => "E-mail",
+            'locale'                        => "Jezik",
+            'locale-hu'                     => "Mađarski",
+            'locale-en'                     => "Engleski",
+            'locale-sr'                     => "Srpski",
         ],
 
     ],

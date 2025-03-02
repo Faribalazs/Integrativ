@@ -780,9 +780,9 @@ class DataSeeder extends Seeder
           'sr' => 'Prijava za edukaciju'
       ]),
       'content' => json_encode([
-          'en' => 'user.views.forms.sign-up-for-education',
-          'hu' => 'user.views.forms.sign-up-for-education',
-          'sr' => 'user.views.forms.sign-up-for-education'
+          'en' => '<p>user.views.forms.sign-up-for-education</p><p>Popunete sve polja</p>',
+          'hu' => '<p>user.views.forms.sign-up-for-education</p><p>Popunete sve polja</p>',
+          'sr' => '<p>user.views.forms.sign-up-for-education</p><p>Popunete sve polja</p>'
       ]),
       'order' => 6,
       'custom_design' => 0,
@@ -1860,6 +1860,16 @@ class DataSeeder extends Seeder
       'order' => 1,
       'custom_design' => 0,
       'load_view' => 1
+    ]);
+
+    DB::table('emails')->insert([
+      'email' => 'valami1@gmail.com',
+      'locale' => 'hu'
+    ]);
+
+    DB::table('emails')->insert([
+      'email' => 'valami2@gmail.com',
+      'locale' => 'hu'
     ]);
   }
 }

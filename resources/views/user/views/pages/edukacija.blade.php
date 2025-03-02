@@ -18,7 +18,7 @@
         <script>
             Swal.fire({
                 icon: 'success',
-                title: "{{ __('app.admin.sucess') }}",
+                title: "{{ __('app.admin.success') }}",
                 text: '{{ session('success') }}',
             });
         </script>
@@ -58,12 +58,17 @@
             {!! $item->content !!}
         @elseif ($item->load_view == 1)
             @php
-                $view = preg_replace('/<\/?p>/i', '', $item->content);
+                if ($item->content) {
+                    $parts = explode('</p>', $item->content);
+
+                    $view = preg_replace('/<\/?p>/i', '', $parts[0]);
+                    $note = $parts[1] . '</p>';
+                }
             @endphp
 
             <div class="main-container my-20">
                 <h2 class="title my-10 text-center">{{ $item->title }}</h2>
-                {!! view()->make($view)->render() !!}
+                {!! view()->make($view)->with('note', $note)->render() !!}
             </div>
         @elseif ($item->image != null)
             <div class="main-container mt-10 mb-20">

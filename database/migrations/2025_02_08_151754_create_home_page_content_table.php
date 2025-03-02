@@ -97,7 +97,11 @@ return new class extends Migration
                     'en' => 'Partners',
                     'hu' => 'Partnerek',
                 ]),
-                'section_title' => null,
+                'section_title' => json_encode([
+                    'sr' => 'Partneri',
+                    'en' => 'Partners',
+                    'hu' => 'Partnerek',
+                ]),
                 'section_content' => json_encode([
                     'sr' => "user.views.home.partners",
                     'en' => "user.views.home.partners",
@@ -112,7 +116,11 @@ return new class extends Migration
                     'en' => 'Conferences',
                     'hu' => 'Konferenciák',
                 ]),
-                'section_title' => null,
+                'section_title' => json_encode([
+                    'sr' => 'Konferencije',
+                    'en' => 'Conferences',
+                    'hu' => 'Konferenciák',
+                ]),
                 'section_content' => json_encode([
                     'sr' => "user.views.home.conference",
                     'en' => "user.views.home.conference",
@@ -236,15 +244,12 @@ return new class extends Migration
 
                                         <div class="flex flex-wrap justify-center lg:mb-32 mb-20">
                                             <div class="pt-1 flex justify-between media-align gap-5">
-                                                <div class="flex align-center">
+                                                <a href="#" target="blank" class="flex align-center">
                                                     <i class="ri-facebook-circle-fill social-icon"></i>
-                                                </div>
-                                                <div class="flex align-center">
-                                                    <i class="ri-instagram-fill social-icon"></i>
-                                                </div>
-                                                <div class="flex align-center">
+                                                </a>
+                                                <a href="#" target="blank" class="flex align-center">
                                                     <i class="ri-linkedin-box-fill social-icon"></i>
-                                                </div>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -288,15 +293,12 @@ return new class extends Migration
 
                                 <div class="flex flex-wrap justify-center lg:mb-32 mb-20">
                                     <div class="pt-1 flex justify-between media-align gap-5">
-                                        <div class="flex align-center">
+                                        <a href="#" target="blank" class="flex align-center">
                                             <i class="ri-facebook-circle-fill social-icon"></i>
-                                        </div>
-                                        <div class="flex align-center">
-                                            <i class="ri-instagram-fill social-icon"></i>
-                                        </div>
-                                        <div class="flex align-center">
+                                        </a>
+                                        <a href="#" target="blank" class="flex align-center">
                                             <i class="ri-linkedin-box-fill social-icon"></i>
-                                        </div>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -340,15 +342,12 @@ return new class extends Migration
 
                             <div class="flex flex-wrap justify-center lg:mb-32 mb-20">
                                 <div class="pt-1 flex justify-between media-align gap-5">
-                                    <div class="flex align-center">
+                                    <a href="#" target="blank" class="flex align-center">
                                         <i class="ri-facebook-circle-fill social-icon"></i>
-                                    </div>
-                                    <div class="flex align-center">
-                                        <i class="ri-instagram-fill social-icon"></i>
-                                    </div>
-                                    <div class="flex align-center">
+                                    </a>
+                                    <a href="#" target="blank" class="flex align-center">
                                         <i class="ri-linkedin-box-fill social-icon"></i>
-                                    </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>

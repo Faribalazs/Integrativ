@@ -18,12 +18,12 @@ return new class extends Migration
             $table->string('occupation');
             $table->string('email');
             $table->string('phone');
-            $table->string('institution_or_company_name');
-            $table->string('pib');
-            $table->string('city');
-            $table->string('postcode');
-            $table->string('contact_phone');
-            $table->string('institution_email');
+            $table->string('institution_or_company_name')->nullable();
+            $table->string('pib')->nullable();
+            $table->string('city')->nullable();
+            $table->string('postcode')->nullable();
+            $table->string('contact_phone')->nullable();
+            $table->string('institution_email')->nullable();
             $table->timestamps();
         });
     }

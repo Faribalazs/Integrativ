@@ -88,6 +88,10 @@
                             class="icons {{ request()->routeIs('admin.activity.*') ? 'closed-icon-active' : '' }}">
                             <i class="ri-star-line"></i>
                         </a>
+                        <a href="{{ route('admin.email.create') }}"
+                            class="icons {{ request()->routeIs('admin.email.*') ? 'closed-icon-active' : '' }}">
+                            <i class="ri-mail-line"></i>
+                        </a>
                         <form method="POST" id="log-out-form" action="{{ route('admin.logout') }}"
                             class="admin-logout icons">
                             @csrf
@@ -210,6 +214,15 @@
                             <a href="{{ route('admin.activity.create') }}"
                                 class="icons {{ request()->routeIs('admin.activity.*') ? 'closed-icon-active' : '' }}">
                                 <i class="ri-star-line text-2xl"></i>
+                            </a>
+                        </div>
+                        <div class="flex items-center border-b-2 border-white w-full justify-between">
+                            <a href="{{ route('admin.email.create') }}" class="link">
+                                {{ __('app.admin.nav.emails') }}
+                            </a>
+                            <a href="{{ route('admin.email.create') }}"
+                                class="icons {{ request()->routeIs('admin.email.*') ? 'closed-icon-active' : '' }}">
+                                <i class="ri-mail-line text-2xl"></i>
                             </a>
                         </div>
                         <div class="flex items-center border-b-2 border-white w-full justify-between">

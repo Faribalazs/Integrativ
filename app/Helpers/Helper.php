@@ -16,14 +16,14 @@ class Helper
 
     public function getPartnerImages() {
 
-        $partners = Partners::all();
+        $partners = Partners::orderBy('order', 'asc')->get();
 
         return $partners;
     }
 
     public function getConferences() {
 
-        $conferences = Conferences::all();
+        $conferences = Conferences::orderBy('order', 'asc')->get();
 
         return $conferences;
     }
@@ -88,7 +88,7 @@ class Helper
 
     public function getActivities() {
 
-        $activities = Activities::all();
+        $activities = Activities::orderBy('order', 'asc')->get();
 
         return $activities;
     }

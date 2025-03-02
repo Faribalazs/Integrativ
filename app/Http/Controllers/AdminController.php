@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Admin, Tracker, Sections, Category, Worker, Slider, HomePageContent, Partners, Conferences, Contact, Psychotherapists, Page, PageContent, Education, SignUpConference, Activities};
+use App\Models\{Admin, Tracker, Sections, Category, Worker, Slider, HomePageContent, Partners, Conferences, Contact, Psychotherapists, Page, PageContent, Education, SignUpConference, Activities, Emails};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
@@ -1245,4 +1245,43 @@ class AdminController extends Controller
     return redirect()->back();
   }
 
+  public function emailsCreate()
+  {
+    $emails = Emails::paginate(15);
+
+    return view('admin.views.emails.show-emails', ['emails' => $emails]);
+  }
+
+  public function emailEdit($id)
+  {
+    $email = Emails::where('id', $id)->first();
+
+    return view('admin.views.emails.edit-email', ['email' => $email]);
+  }
+
+  public function emailsEditDone(Request $request, $id)
+  {
+    try {
+
+      $request->validate([
+          'email' => 'required|email|max:255',
+          'locale' => 'required|in:hu,sr,en',
+      ]);
+
+      $email = Emails::findOrFail($id);
+      $email->email = $request->input('email');
+      $email->locale = $request->input('locale');
+      $email->save();
+
+      // Success message
+      return redirect()
+          ->route('admin.email.create')
+          ->with('success', 'Email updated successfully!');
+    } catch (\Illuminate\Validation\ValidationException $e) {
+        return back()->withErrors($e->validator)->withInput();
+    } catch (\Exception $e) {
+        return back()->with('error', $e->getMessage());
+    }
+
+  }
 }

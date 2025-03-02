@@ -15,7 +15,7 @@
             <script>
                 Swal.fire({
                     icon: 'success',
-                    title: "{{ __('app.admin.sucess') }}",
+                    title: "{{ __('app.admin.success') }}",
                     text: '{{ session('success') }}',
                 });
             </script>
@@ -53,6 +53,9 @@
                     @php
                         $include = preg_replace('/<\/?p>/i', '', $content->section_content);
                     @endphp
+                    <div class="main-container my-20">
+                        <h2 class="title">{{ $content->section_name }}</h2>
+                    </div>
                     {!! view()->make($include)->render() !!}
                 @endif
             @endif
