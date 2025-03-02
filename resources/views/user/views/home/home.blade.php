@@ -7,6 +7,10 @@
 
     <x-slot name="homePage">
 
+        @php
+            \App\Models\Tracker::hit();
+        @endphp
+
         @if (session('success'))
             <script>
                 Swal.fire({

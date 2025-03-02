@@ -14,46 +14,59 @@ class AdminController extends Controller
 {
   public function dashboard()
   {
-    $max_visit = Tracker::where('visit_date', date('Y-m-d'))->orderByDesc('hits')->first();
-    $overall_visit_today = Tracker::where('visit_date', date('Y-m-d'))->sum('hits');
-    $overall_visit_last_30_days = Tracker::where('visit_date', '>', now()->subDays(30)->endOfDay())->sum('hits');
-    $diff_ip = Tracker::where('visit_date', date('Y-m-d'))->distinct('ip')->count();
-    $diff_ip_last_30_days = Tracker::where('visit_date', '>', now()->subDays(30)->endOfDay())->distinct('ip')->count();
+    $todaysVisits = Tracker::getTodaysVisits();
+    $last30DaysVisits = Tracker::getLast30DaysVisits();
 
-    $browserType = Tracker::select('browser')->where('visit_date', date('Y-m-d'))->count();
-    $deviceType = Tracker::select('device')->where('visit_date', date('Y-m-d'))->count();
+    $todaysStats = $this->processStats($todaysVisits);
+    $last30DaysStats = $this->processStats($last30DaysVisits);
 
-    $unknown_browser = $this->browser('unknown');
-    $chrome = $this->browser('chrome');
-    $firefox = $this->browser('firefox');
-    $opera = $this->browser('opera');
-    $safari = $this->browser('safari');
-    $ie = $this->browser('ie');
-    $edge = $this->browser('edge');
-
-    $unknown_device = $this->device('unknown');
-    $desktop = $this->device('desktop');
-    $mobile = $this->device('mobile');
-    $tablet = $this->device('tablet');
-    $bot = $this->device('bot');
-
-    return view('admin.views.admin-dash',compact(['max_visit',
-          'overall_visit_today','overall_visit_last_30_days',
-          'diff_ip','diff_ip_last_30_days',
-          'browserType','deviceType',
-          'unknown_browser', 'chrome', 'firefox', 'opera', 'safari', 'ie', 'edge',
-          'unknown_device', 'desktop', 'mobile', 'tablet', 'bot'
-        ]));
+    return view('admin.views.admin-dash', [
+      'overall_visit_today' => $todaysVisits->sum('hits'),
+      'overall_visit_last_30_days' => $last30DaysVisits->sum('hits'),
+      'browserType' => array_sum($todaysStats['browser']),
+      'deviceType' => array_sum($todaysStats['device']),
+      'chrome' => $todaysStats['browser']['chrome'],
+      'firefox' => $todaysStats['browser']['firefox'],
+      'opera' => $todaysStats['browser']['opera'],
+      'safari' => $todaysStats['browser']['safari'],
+      'ie' => $todaysStats['browser']['ie'],
+      'edge' => $todaysStats['browser']['edge'],
+      'unknown_browser' => $todaysStats['browser']['unknown'],
+      'desktop' => $todaysStats['device']['desktop'],
+      'mobile' => $todaysStats['device']['mobile'],
+      'tablet' => $todaysStats['device']['tablet'],
+      'bot' => $todaysStats['device']['bot'],
+      'unknown_device' => $todaysStats['device']['unknown'],
+    ]);
   }
 
-  private function browser($browser)
+  private function processStats($visits)
   {
-    return Tracker::where('browser', $browser)->where('visit_date', date('Y-m-d'))->count();
-  }
+      $stats = [
+          'device' => [
+              'mobile' => 0,
+              'tablet' => 0,
+              'desktop' => 0,
+              'bot' => 0,
+              'unknown' => 0,
+          ],
+          'browser' => [
+              'chrome' => 0,
+              'firefox' => 0,
+              'opera' => 0,
+              'safari' => 0,
+              'ie' => 0,
+              'edge' => 0,
+              'unknown' => 0,
+          ],
+      ];
 
-  private function device($device)
-  {
-    return Tracker::where('device', $device)->where('visit_date', date('Y-m-d'))->count();
+      foreach ($visits as $visit) {
+          $stats['device'][$visit->device]++;
+          $stats['browser'][$visit->browser]++;
+      }
+
+      return $stats;
   }
 
   public function insertAdmin()

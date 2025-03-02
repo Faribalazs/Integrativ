@@ -10,30 +10,18 @@ class Tracker extends Model
 {
     use HasFactory;
 
-    public $attributes = [ 'hits' => 0 ];
-
-    protected $fillable = [ 'ip', 'date', 'device', 'browser'];
+    protected $fillable = ['ip', 'visit_date', 'device', 'browser', 'visit_time', 'hits'];
 
     public $timestamps = false;
 
-    protected $table = 'worker_tracker';
-
-    public static function boot() {
-        // When a new instance of this model is created...
-        parent::boot();
-        static::creating(function ($tracker) {
-            $tracker->hits = 0;
-        } );
-        // Any time the instance is updated (but not created)
-        static::saving(function ($tracker) {
-            $tracker->visit_date = date('Y-m-d');
-            $tracker->visit_time = date('H:i:s');
-            $tracker->hits++;
-        } );
-    }
+    protected $table = 'tracker';
 
     public static function hit() {
         try {
+
+            // Call method to delete records older than 40 days
+            self::deleteOldRecords();
+            
             $deviceType = 'unknown';
 
             if (Browser::isMobile()) {
@@ -44,7 +32,7 @@ class Tracker extends Model
                 $deviceType = 'desktop';
             } elseif (Browser::isBot()) {
                 $deviceType = 'bot';
-            }     
+            }
 
             $browserType = 'unknown';
 
@@ -61,20 +49,42 @@ class Tracker extends Model
             } elseif (Browser::isEdge()) {
                 $browserType = 'edge';
             }
-            
-            static::firstOrCreate([
+
+            $tracker = new static([
                 'ip' => request()->ip() ?? '0.0.0.0',
                 'visit_date' => date('Y-m-d'),
+                'visit_time' => date('H:i:s'),
                 'device' => $deviceType,
                 'browser' => $browserType,
-            ])->save();
+                'hits' => 1,
+            ]);
+
+            $tracker->save();
         } catch (\Exception $e) {
-           dd($e->getMessage());
+            dd($e->getMessage());
         }
     }
 
     public function worker()
     {
         return $this->belongsTo(Worker::class, 'worker_id')->select('first_name','last_name');
+    }
+
+    // Method to get today's visits statistics
+    public static function getTodaysVisits()
+    {
+        return static::where('visit_date', date('Y-m-d'))->get();
+    }
+
+    // Method to get the last 30 days visits statistics
+    public static function getLast30DaysVisits()
+    {
+        return static::where('visit_date', '>=', now()->subDays(30)->startOfDay()->format('Y-m-d'))->get();
+    }
+
+    // Method to delete records older than 40 days
+    public static function deleteOldRecords()
+    {
+        static::where('visit_date', '<', now()->subDays(40)->startOfDay()->format('Y-m-d'))->delete();
     }
 }

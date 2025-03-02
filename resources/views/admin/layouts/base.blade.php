@@ -36,9 +36,6 @@
         </main>
     </div>
     @include('sweetalert::alert')
-    @php
-        \App\Models\Tracker::hit();
-    @endphp
     @if (isset($import) && $import != '')
         {{ $import }}
     @endif

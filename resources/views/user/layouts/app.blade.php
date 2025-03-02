@@ -70,9 +70,7 @@
 
     {{-- @include('user.layouts.footer') --}}
     @include('sweetalert::alert')
-    @php
-        \App\Models\Tracker::hit();
-    @endphp
+
     @if (isset($import) && $import != '')
         {{ $import }}
     @endif

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('worker_tracker', function (Blueprint $table) {
+        Schema::create('tracker', function (Blueprint $table) {
             $table->id();
             $table->ipAddress('ip');
             $table->unsignedBigInteger('hits');
@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('browser');
             $table->date('visit_date');
             $table->time('visit_time');
-            $table->unique(array('ip', 'visit_date'));
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('worker_tracker');
+        Schema::dropIfExists('tracker');
     }
 };
