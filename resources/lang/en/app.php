@@ -55,6 +55,10 @@ return [
         'no'                                => "No",
     ],
 
+    'home-page' => [
+        'title' => "Integrative Child Psychotherapy",
+    ],
+
     'admin' => [
         'dashboard'                     => "Dashboard",
         'users'                         => "Users",

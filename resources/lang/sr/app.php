@@ -114,7 +114,7 @@ return [
     ],
 
     'home-page' => [
-        'title'                         => "Ponuda majstora",
+        'title'                         => "Integrativna dečja psihoterapija",
     ],
 
     'admin' => [

@@ -60,6 +60,10 @@ return [
         'no'                                => "Nem",
     ],
 
+    'home-page' => [
+        'title' => "Integratív Gyermekpszichoterápia",
+    ],
+
     'admin' => [
         'dashboard'                     => "Kezdőlap",
         'users'                         => "Felhasználók",
