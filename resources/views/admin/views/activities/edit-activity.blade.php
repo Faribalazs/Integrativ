@@ -1,10 +1,10 @@
 <x-admin-app-layout>
     <x-slot name="pageTitle">
-        Edit activity
+        {{ __('app.admin.activity.edit-title') }}
     </x-slot>
 
     <x-slot name="header">
-        Edit activity
+        {{ __('app.admin.activity.edit-title') }}
     </x-slot>
 
     @php
@@ -49,7 +49,7 @@
 
             <!-- Name -->
             <div class="flex flex-col">
-                <label for="name" class="sm:text-xl text-base my-3">Ime ({{ $lang }}) :</label>
+                <label for="name" class="sm:text-xl text-base my-3">{{ __('app.admin.activity.name') }} ({{ $lang }}) :</label>
                 <input class="input-style {{ $errors->has('name') ? 'border-error mb-1' : 'mb-3' }}" name="name"
                     type="text" id="name" value="{{ $activity->name }}">
                 <p class="{{ $errors->has('name') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
@@ -58,14 +58,14 @@
 
             <!-- Activity content -->
             <div class="mt-5">
-                <label for="content" class="sm:text-xl text-base my-3">{{ __('app.admin.content') }}
+                <label for="content" class="sm:text-xl text-base my-3">{{ __('app.admin.activity.content') }}
                     ({{ $lang }}) :</label>
                 <textarea id="content" name="content">{{ $activity->content }}</textarea>
             </div>
 
             <!-- Order -->
             <div class="flex flex-col">
-                <label for="order" class="sm:text-xl text-base my-3">Redosled :</label>
+                <label for="order" class="sm:text-xl text-base my-3">{{ __('app.admin.activity.order') }} :</label>
                 <input class="input-style {{ $errors->has('order') ? 'border-error mb-1' : 'mb-3' }}" name="order"
                     type="text" id="order" value="{{ $activity->order }}">
                 <p class="{{ $errors->has('order') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
@@ -75,7 +75,7 @@
             <!-- Image -->
             <div class="mt-3 flex flex-col">
                 <label for="image" class="sm:text-xl text-base mb-2 mt-3">
-                    {{ __('app.admin.category.category-image') }}:
+                    {{ __('app.admin.activity.image') }}:
                 </label>
 
                 @if ($activity->image)

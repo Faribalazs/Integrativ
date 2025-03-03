@@ -1,9 +1,9 @@
 <x-admin-app-layout>
     <x-slot name="pageTitle">
-        Konferencije
+        {{ __('app.admin.conferences.title') }}
     </x-slot>
     <x-slot name="header">
-        Konferencije
+        {{ __('app.admin.conferences.title') }}
     </x-slot>
     @php
         $locale = app()->getLocale();
@@ -33,22 +33,22 @@
         <div class="flex justify-end mb-10">
             <a href="{{ route('admin.conference.add') }}" class="add-new-btn no-underline">
                 <i class="ri-add-line"></i>
-                Dodaj novu konferenciju
+                {{ __('app.admin.conferences.add-new-conference') }}
             </a>
         </div>
         <table class="table text-center">
             <thead>
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Naziv konferencije</th>
-                <th scope="col">Pozicija</th>
-                <th scope="col">Izmeni</th>
-                <th scope="col">Izbrisi</th>
+                <th scope="col">{{ __('app.admin.table.id') }}</th>
+                <th scope="col">{{ __('app.admin.table.name') }}</th>
+                <th scope="col">{{ __('app.admin.table.order') }}</th>
+                <th scope="col">{{ __('app.admin.table.edit') }}</th>
+                <th scope="col">{{ __('app.admin.table.delete') }}</th>
             </tr>
             </thead>
             <tbody>
             @foreach ($conferences as $conference)
-                <tr>1
+                <tr>
                     <td>{{$conference->id}}</td>
                     <td>{{$conference->name}}</td>
                     <td>{{$conference->order}}</td>

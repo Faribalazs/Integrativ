@@ -41,7 +41,7 @@
             <tr>
                 <th scope="col">{{ __('app.admin.table.id') }}</th>
                 <th scope="col">{{ __('app.admin.table.name') }}</th>
-                <th scope="col">{{ __('app.admin.table.position') }}</th>
+                <th scope="col">{{ __('app.admin.table.order') }}</th>
                 <th scope="col">{{ __('app.admin.table.edit') }}</th>
             </tr>
             </thead>

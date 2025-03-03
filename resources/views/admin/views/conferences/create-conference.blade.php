@@ -1,10 +1,10 @@
 <x-admin-app-layout>
     <x-slot name="pageTitle">
-        Nova konferencija
+        {{ __('app.admin.conferences.create-title') }}
     </x-slot>
 
     <x-slot name="header">
-        Nova konferencija
+        {{ __('app.admin.conferences.create-title') }}
     </x-slot>
 
     @php
@@ -38,7 +38,7 @@
 
             <!-- Conference Name -->
             <div class="flex flex-col">
-                <label for="conference_name" class="sm:text-xl text-base my-3">Ime Konferencije ({{ $lang }}) :</label>
+                <label for="conference_name" class="sm:text-xl text-base my-3">{{ __('app.admin.conferences.name') }} ({{ $lang }}) :</label>
                 <input class="input-style {{ $errors->has('conference_name') ? 'border-error mb-1' : 'mb-3' }}"
                     name="conference_name" type="text" id="conference_name">
                 <p class="{{ $errors->has('conference_name') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
@@ -47,15 +47,14 @@
 
             <!-- Conference content -->
             <div class="mt-5">
-                <label for="content" class="sm:text-xl text-base my-3">{{ __('app.admin.content') }} ({{ $lang }}) :</label>
+                <label for="content" class="sm:text-xl text-base my-3">{{ __('app.admin.conferences.content') }} ({{ $lang }}) :</label>
                 <textarea id="content" name="content">
                 </textarea>
             </div>
 
             <!-- Order -->
             <div class="mt-3 flex flex-col">
-                <label for="order" class="sm:text-xl text-base my-3">Redosled
-                    :</label>
+                <label for="order" class="sm:text-xl text-base my-3">{{ __('app.admin.conferences.order') }} :</label>
                 <input class="input-style {{ $errors->has('order') ? 'border-error mb-1' : 'mb-3' }}" name="order"
                     type="number" id="order">
                 <p class="{{ $errors->has('order') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
@@ -65,7 +64,7 @@
             <!-- Partner Image -->
             <div class="mt-3 flex flex-col">
                 <label for="image" class="sm:text-xl text-base mb-2 mt-3">
-                    {{ __('app.admin.category.category-image') }}:
+                    {{ __('app.admin.conferences.image') }}:
                 </label>
 
                 <img src="{{ asset('img/placeholder_image.jpg') }}" class="mt-2 profile-image profile-img">

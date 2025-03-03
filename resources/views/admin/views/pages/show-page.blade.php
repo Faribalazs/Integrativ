@@ -1,9 +1,9 @@
 <x-admin-app-layout>
     <x-slot name="pageTitle">
-        Pages
+        {{ __('app.admin.pages.title') }}
     </x-slot>
     <x-slot name="header">
-        Pages
+        {{ __('app.admin.pages.title') }}
     </x-slot>
     @php
         $locale = app()->getLocale();
@@ -43,9 +43,9 @@
         <table class="table text-center">
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Naziv stranice</th>
-                    <th scope="col">Pogledaj</th>
+                    <th scope="col">{{ __('app.admin.table.id') }}</th>
+                    <th scope="col">{{ __('app.admin.table.name') }}</th>
+                    <th scope="col">{{ __('app.admin.table.show') }}</th>
                 </tr>
             </thead>
             <tbody>

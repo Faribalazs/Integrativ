@@ -1,10 +1,10 @@
 <x-admin-app-layout>
     <x-slot name="pageTitle">
-        Edit Partner
+        {{ __('app.admin.psyhoterapist.edit-title') }}
     </x-slot>
 
     <x-slot name="header">
-        Edit Partner
+        {{ __('app.admin.psyhoterapist.edit-title') }}
     </x-slot>
 
     @php
@@ -49,8 +49,7 @@
 
             <!-- Name -->
             <div class="flex flex-col">
-                <label for="name" class="sm:text-xl text-base my-3">Ime i prezime ({{ $lang }})
-                    :</label>
+                <label for="name" class="sm:text-xl text-base my-3">{{ __('app.admin.psyhoterapist.name') }} :</label>
                 <input class="input-style {{ $errors->has('name') ? 'border-error mb-1' : 'mb-3' }}" name="name"
                     type="text" id="name" value="{{ $psychotherapist->name }}">
                 <p class="{{ $errors->has('name') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
@@ -59,7 +58,7 @@
 
             <!-- Position -->
             <div class="flex flex-col">
-                <label for="position" class="sm:text-xl text-base my-3">Pozicija ({{ $lang }}) :</label>
+                <label for="position" class="sm:text-xl text-base my-3">{{ __('app.admin.psyhoterapist.order') }} :</label>
                 <input class="input-style {{ $errors->has('position') ? 'border-error mb-1' : 'mb-3' }}" name="position"
                     type="text" id="position" value="{{ $psychotherapist->position }}">
                 <p class="{{ $errors->has('position') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
@@ -68,7 +67,7 @@
 
             <!-- Location -->
             <div class="flex flex-col">
-                <label for="location" class="sm:text-xl text-base my-3">Lokacija ({{ $lang }}) :</label>
+                <label for="location" class="sm:text-xl text-base my-3">{{ __('app.admin.psyhoterapist.location') }} :</label>
                 <input class="input-style {{ $errors->has('location') ? 'border-error mb-1' : 'mb-3' }}"
                     name="location" type="text" id="location" value="{{ $psychotherapist->location }}">
                 <p class="{{ $errors->has('location') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
@@ -77,7 +76,7 @@
 
             <!-- Email -->
             <div class="flex flex-col">
-                <label for="email" class="sm:text-xl text-base my-3">Email :</label>
+                <label for="email" class="sm:text-xl text-base my-3">{{ __('app.admin.psyhoterapist.email') }} :</label>
                 <input class="input-style {{ $errors->has('email') ? 'border-error mb-1' : 'mb-3' }}" name="email"
                     type="text" id="email" value="{{ $psychotherapist->email }}">
                 <p class="{{ $errors->has('email') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
@@ -86,7 +85,7 @@
 
             <!-- Phone -->
             <div class="flex flex-col">
-                <label for="phone" class="sm:text-xl text-base my-3">Telefon :</label>
+                <label for="phone" class="sm:text-xl text-base my-3">{{ __('app.admin.psyhoterapist.phone') }} :</label>
                 <input class="input-style {{ $errors->has('phone') ? 'border-error mb-1' : 'mb-3' }}" name="phone"
                     type="text" id="phone" value="{{ $psychotherapist->phone }}">
                 <p class="{{ $errors->has('phone') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
@@ -95,7 +94,7 @@
 
             <!-- Facebook -->
             <div class="flex flex-col">
-                <label for="facebook" class="sm:text-xl text-base my-3">Facebook :</label>
+                <label for="facebook" class="sm:text-xl text-base my-3">{{ __('app.admin.psyhoterapist.facebook') }} :</label>
                 <input class="input-style {{ $errors->has('facebook') ? 'border-error mb-1' : 'mb-3' }}"
                     name="facebook" type="text" id="facebook" value="{{ $psychotherapist->facebook }}">
                 <p class="{{ $errors->has('facebook') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
@@ -104,7 +103,7 @@
 
             <!-- Instagram -->
             <div class="flex flex-col">
-                <label for="instagram" class="sm:text-xl text-base my-3">Instagram :</label>
+                <label for="instagram" class="sm:text-xl text-base my-3">{{ __('app.admin.psyhoterapist.instagram') }} :</label>
                 <input class="input-style {{ $errors->has('instagram') ? 'border-error mb-1' : 'mb-3' }}"
                     name="instagram" type="text" id="instagram" value="{{ $psychotherapist->instagram }}">
                 <p class="{{ $errors->has('instagram') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
@@ -113,7 +112,7 @@
 
             <!-- Twitter -->
             <div class="flex flex-col">
-                <label for="twitter" class="sm:text-xl text-base my-3">Twitter :</label>
+                <label for="twitter" class="sm:text-xl text-base my-3">{{ __('app.admin.psyhoterapist.twitter') }} :</label>
                 <input class="input-style {{ $errors->has('twitter') ? 'border-error mb-1' : 'mb-3' }}" name="twitter"
                     type="text" id="twitter" value="{{ $psychotherapist->twitter }}">
                 <p class="{{ $errors->has('twitter') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
@@ -122,7 +121,7 @@
 
             <!-- LinkedIn -->
             <div class="flex flex-col">
-                <label for="linkedin" class="sm:text-xl text-base my-3">Linked In :</label>
+                <label for="linkedin" class="sm:text-xl text-base my-3">{{ __('app.admin.psyhoterapist.linkedin') }} :</label>
                 <input class="input-style {{ $errors->has('linkedin') ? 'border-error mb-1' : 'mb-3' }}"
                     name="linkedin" type="text" id="linkedin" value="{{ $psychotherapist->linkedin }}">
                 <p class="{{ $errors->has('linkedin') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
@@ -131,18 +130,18 @@
 
             <!-- Lead -->
             <div class="flex flex-col">
-                <label for="lead" class="sm:text-xl text-base my-3">Voditelj :</label>
+                <label for="lead" class="sm:text-xl text-base my-3">{{ __('app.admin.psyhoterapist.lead') }} :</label>
                 <select name="lead" id="lead" class="input-style">
                     <option selected></option>
-                    <option value="1" {{ $psychotherapist->lead == 1 ? 'selected' : '' }}>Da</option>
-                    <option value="0" {{ $psychotherapist->lead == 0 ? 'selected' : '' }}>Ne</option>
+                    <option value="1" {{ $psychotherapist->lead == 1 ? 'selected' : '' }}>{{ __('app.admin.psyhoterapist.yes') }}</option>
+                    <option value="0" {{ $psychotherapist->lead == 0 ? 'selected' : '' }}>{{ __('app.admin.psyhoterapist.no') }}</option>
                 </select>
             </div>
 
             <!-- Image -->
             <div class="mt-3 flex flex-col">
                 <label for="image" class="sm:text-xl text-base mb-2 mt-3">
-                    {{ __('app.admin.category.category-image') }}:
+                    {{ __('app.admin.psyhoterapist.image') }}:
                 </label>
 
                 @if ($psychotherapist->image)

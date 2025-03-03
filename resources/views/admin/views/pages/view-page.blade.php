@@ -1,9 +1,9 @@
 <x-admin-app-layout>
     <x-slot name="pageTitle">
-        Page content
+        {{ __('app.admin.pages.content-title') }}
     </x-slot>
     <x-slot name="header">
-        Page content
+        {{ __('app.admin.pages.content-title') }}
     </x-slot>
     @php
         $locale = app()->getLocale();
@@ -33,10 +33,10 @@
         <table class="table text-center">
             <thead>
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Naziv stranice</th>
-                <th scope="col">Izmeni</th>
-                <th scope="col">Izbrisi</th>
+                <th scope="col">{{ __('app.admin.table.id') }}</th>
+                <th scope="col">{{ __('app.admin.table.name') }}</th>
+                <th scope="col">{{ __('app.admin.table.edit') }}</th>
+                <th scope="col">{{ __('app.admin.table.delete') }}</th>
             </tr>
             </thead>
             <tbody>

@@ -1,9 +1,9 @@
 <x-admin-app-layout>
     <x-slot name="pageTitle">
-        Psihoterapeuti
+        {{ __('app.admin.psyhoterapist.title') }}
     </x-slot>
     <x-slot name="header">
-        Psihoterapeuti
+        {{ __('app.admin.psyhoterapist.title') }}
     </x-slot>
     @php
         $locale = app()->getLocale();
@@ -33,22 +33,22 @@
         <div class="flex justify-end mb-10">
             <a href="{{ route('admin.psychotherapist.add') }}" class="add-new-btn no-underline">
                 <i class="ri-add-line"></i>
-                Dodaj novu psihoterapeutu
+                {{ __('app.admin.psyhoterapist.add-new-psyhoterapist') }}
             </a>
         </div>
         <table class="table text-center">
             <thead>
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Ime</th>
-                <th scope="col">Pozicija</th>
-                <th scope="col">Izmeni</th>
-                <th scope="col">Izbrisi</th>
+                <th scope="col">{{ __('app.admin.table.id') }}</th>
+                <th scope="col">{{ __('app.admin.table.person-name') }}</th>
+                <th scope="col">{{ __('app.admin.table.order') }}</th>
+                <th scope="col">{{ __('app.admin.table.edit') }}</th>
+                <th scope="col">{{ __('app.admin.table.delete') }}</th>
             </tr>
             </thead>
             <tbody>
             @foreach ($psychotherapists as $psychotherapist)
-                <tr>1
+                <tr>
                     <td>{{$psychotherapist->id}}</td>
                     <td>{{$psychotherapist->name}}</td>
                     <td>{{$psychotherapist->position}}</td>

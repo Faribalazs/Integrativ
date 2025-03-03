@@ -1,9 +1,9 @@
 <x-admin-app-layout>
     <x-slot name="pageTitle">
-        Prijave za konferenciju
+        {{ __('app.admin.apply-for-conference.title') }}
     </x-slot>
     <x-slot name="header">
-        Prijave za konferenciju
+        {{ __('app.admin.apply-for-conference.title') }}
     </x-slot>
     @php
         $locale = app()->getLocale();
@@ -13,12 +13,12 @@
         <table class="table text-center">
             <thead>
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Ime i prezime</th>
-                <th scope="col">Email</th>
-                <th scope="col">Telefon</th>
-                <th scope="col">Pogledaj</th>
-                <th scope="col">Izbrisi</th>
+                <th scope="col">{{ __('app.admin.table.id') }}</th>
+                <th scope="col">{{ __('app.admin.table.person-name') }}</th>
+                <th scope="col">{{ __('app.admin.table.email') }}</th>
+                <th scope="col">{{ __('app.admin.table.phone') }}</th>
+                <th scope="col">{{ __('app.admin.table.show') }}</th>
+                <th scope="col">{{ __('app.admin.table.delete') }}</th>
             </tr>
             </thead>
             <tbody>

@@ -8,10 +8,10 @@
     <div class="flex mt-10 flex-col">
         <div>
             <span class="text-xl">
-                Ukupna poseta danas: {{ $overall_visit_today ?? 0 }}<br>
+                {{ __('app.admin.dashboard-page.daily') }}: {{ $overall_visit_today ?? 0 }}<br>
             </span>
             <span class="text-xl">
-                Ukupne posete u poslednjih 30 dana: {{ $overall_visit_last_30_days ?? 0 }}<br>
+                {{ __('app.admin.dashboard-page.last-30-days') }} : {{ $overall_visit_last_30_days ?? 0 }}<br>
             </span>
             
             @if ($browserType + $deviceType)
@@ -44,7 +44,7 @@
                         ]);
             
                         var options = {
-                            title: 'Detalji pretraživača danas - Ukupan broj pretraživača: {{ $browserType }}',
+                            title: '{{ __('app.admin.dashboard-page.daily-properties') }} : {{ $browserType }}',
                             is3D: true,
                         };
             
@@ -63,7 +63,7 @@
                         ]);
             
                         var options_device = {
-                            title: 'Detalji uređaja danas - Ukupan broj uređaja: {{ $deviceType }}',
+                            title: '{{ __('app.admin.dashboard-page.daily-properties-device') }} : {{ $deviceType }}',
                             is3D: true,
                         };
 

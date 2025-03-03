@@ -41,14 +41,14 @@
             <tr>
                 <th scope="col">{{ __('app.admin.table.id') }}</th>
                 <th scope="col">{{ __('app.admin.table.name') }}</th>
-                <th scope="col">{{ __('app.admin.table.position') }}</th>
+                <th scope="col">{{ __('app.admin.table.order') }}</th>
                 <th scope="col">{{ __('app.admin.table.edit') }}</th>
                 <th scope="col">{{ __('app.admin.table.delete') }}</th>
             </tr>
             </thead>
             <tbody>
             @foreach ($partners as $partner)
-                <tr>1
+                <tr>
                     <td>{{$partner->id}}</td>
                     <td>{{$partner->name}}</td>
                     <td>{{$partner->order}}</td>

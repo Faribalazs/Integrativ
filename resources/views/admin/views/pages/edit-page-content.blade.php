@@ -1,10 +1,10 @@
 <x-admin-app-layout>
     <x-slot name="pageTitle">
-        Edit Page
+        {{ __('app.admin.pages.edit-title') }}
     </x-slot>
 
     <x-slot name="header">
-        Edit Page
+        {{ __('app.admin.pages.edit-title') }}
     </x-slot>
 
     @php
@@ -49,8 +49,7 @@
 
             <!-- Title -->
             <div class="mt-3 flex flex-col">
-                <label for="title" class="sm:text-xl text-base my-3">Naslov
-                    :</label>
+                <label for="title" class="sm:text-xl text-base my-3">{{ __('app.admin.pages.name') }} :</label>
                 <input class="input-style {{ $errors->has('title') ? 'border-error mb-1' : 'mb-3' }}" name="title"
                     type="text" id="title" value="{{ $page->title }}">
                 <p class="{{ $errors->has('title') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
@@ -59,7 +58,7 @@
 
             <!-- Content -->
             <div class="mt-5">
-                <label for="content" class="sm:text-xl text-base my-3">{{ __('app.admin.slider.slider-text') }}
+                <label for="content" class="sm:text-xl text-base my-3">{{ __('app.admin.pages.content') }}
                     ({{ $lang }}) :</label>
                 <textarea id="content" name="content">
                 {{ $page->content }}
@@ -68,8 +67,7 @@
 
             <!-- Order -->
             <div class="mt-3 flex flex-col">
-                <label for="order" class="sm:text-xl text-base my-3">Redosled
-                    :</label>
+                <label for="order" class="sm:text-xl text-base my-3">{{ __('app.admin.pages.order') }} :</label>
                 <input class="input-style {{ $errors->has('order') ? 'border-error mb-1' : 'mb-3' }}" name="order"
                     type="number" id="order" value="{{ $page->order }}">
                 <p class="{{ $errors->has('order') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
@@ -79,7 +77,7 @@
             <!-- Image -->
             <div class="mt-3 flex flex-col">
                 <label for="image" class="sm:text-xl text-base mb-2 mt-3">
-                    {{ __('app.admin.category.category-image') }}:
+                    {{ __('app.admin.pages.image') }} :
                 </label>
 
                 @if ($page->image)
@@ -102,21 +100,19 @@
 
             <!-- Custom design -->
             <div class="mt-5 flex flex-col">
-                <label for="custom_design" class="sm:text-xl text-base my-3">{{ __('app.admin.slider.custom-design') }}
-                    :</label>
+                <label for="custom_design" class="sm:text-xl text-base my-3">{{ __('app.admin.pages.custom-design') }} :</label>
                 <select name="custom_design" id="custom_design" class="input-style">
-                    <option value="0" {{ $page->custom_design == 0 ? 'selected' : '' }}>Ne</option>
-                    <option value="1" {{ $page->custom_design == 1 ? 'selected' : '' }}>Da</option>
+                    <option value="0" {{ $page->custom_design == 0 ? 'selected' : '' }}>{{ __('app.admin.pages.yes') }}</option>
+                    <option value="1" {{ $page->custom_design == 1 ? 'selected' : '' }}>{{ __('app.admin.pages.no') }}</option>
                 </select>
             </div>
 
             <!-- Load view -->
             <div class="mt-5 flex flex-col">
-                <label for="load_view" class="sm:text-xl text-base my-3">{{ __('app.admin.slider.form') }}
-                    :</label>
+                <label for="load_view" class="sm:text-xl text-base my-3">{{ __('app.admin.pages.form') }} :</label>
                 <select name="load_view" id="load_view" class="input-style">
-                    <option value="0" {{ $page->load_view == 0 ? 'selected' : '' }}>Ne</option>
-                    <option value="1" {{ $page->load_view == 1 ? 'selected' : '' }}>Da</option>
+                    <option value="0" {{ $page->load_view == 0 ? 'selected' : '' }}>{{ __('app.admin.pages.yes') }}</option>
+                    <option value="1" {{ $page->load_view == 1 ? 'selected' : '' }}>{{ __('app.admin.pages.no') }}</option>
                 </select>
             </div>
 
