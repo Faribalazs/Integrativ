@@ -95,8 +95,8 @@ class AdminController extends Controller
 
     $user = Admin::create([
       'name' => 'Admin',
-      'email' => 'admin@admin.com',
-      'password' => Hash::make('admin123'),
+      'email' => 'integrativ.admin@gmail.com',
+      'password' => Hash::make('Int7031&'),
       'email_verified_at' => '2023-05-03',
     ]);
     $user->attachRole('admin');

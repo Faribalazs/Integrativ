@@ -20,16 +20,16 @@ class DataSeeder extends Seeder
       [
           'category_name' => [
               'sr' => 'Naslovna',
-              'hu' => 'Kezdolap',
+              'hu' => 'Kezdőlap',
               'en' => 'Home Page',
           ],
-          'slug' => 'naslovna',
+          'slug' => '',
           'order' => 1,
       ],
       [
           'category_name' => [
               'sr' => 'O nama',
-              'hu' => 'Rolunk',
+              'hu' => 'Rólunk',
               'en' => 'About us',
           ],
           'slug' => 'o-nama',
