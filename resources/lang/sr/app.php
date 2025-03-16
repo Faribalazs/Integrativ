@@ -23,6 +23,8 @@ return [
         'log-out-ask'                   => "Da li zaista želiš da se odjaviš",
         'yes'                           => "Da",
         'no'                            => "Ne",
+        'choose-image'                  => "Izaberite sliku",  
+        'no-img-selected'               => "Nije izabrana slika",
     ],
 
     'controllers' => [
@@ -165,6 +167,7 @@ return [
             'sign-up-for-conferences'       => "Prijave za konferencije",
             'psyhoterapist'                 => "Psihoterapeuti",
             'activities'                    => "Aktivnosti",
+            'emails'                        => "E-mailovi",
         ],
 
         'table' => [

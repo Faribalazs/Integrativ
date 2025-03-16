@@ -58,6 +58,8 @@ return [
         'log-out-ask'                       => "Biztosan ki szeretnél jelentkezni",
         'yes'                               => "Igen",
         'no'                                => "Nem",
+        'choose-image'                      => "Válasszon képet",  
+        'no-img-selected'                   => "Nincs kiválasztott kép",  
     ],
 
     'auth' => [
@@ -112,6 +114,7 @@ return [
             'sign-up-for-conferences'       => "Konferencia jelentkezések",
             'psyhoterapist'                 => "Pszichoterapeuták",
             'activities'                    => "Tevékenységek",
+            'emails'                        => "E-mailek",
         ],
 
         'table' => [

@@ -58,6 +58,8 @@ return [
         'log-out-ask'                       => "Do you really want to log out",
         'yes'                               => "Yes",
         'no'                                => "No",
+        'choose-image'                      => "Choose image",
+        'no-img-selected'                   => "No image selected",
     ],
 
     'home-page' => [
@@ -106,6 +108,7 @@ return [
             'sign-up-for-conferences'       => "Conference Registrations",
             'psyhoterapist'                 => "Psychotherapists",
             'activities'                    => "Activities",
+            'emails'                        => "Emails",
         ],
 
         'table' => [
