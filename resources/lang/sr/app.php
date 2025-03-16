@@ -117,6 +117,12 @@ return [
         'title'                         => "Integrativna dečja psihoterapija",
     ],
 
+    'auth' => [
+        'log-in'                            => "Prijava",
+        'e-mail'                             => "E-mail",
+        'password'                          => "Lozinka",
+    ],
+
     'admin' => [
         'dashboard'                     => "Početna",
         'users'                         => "Korisnici",

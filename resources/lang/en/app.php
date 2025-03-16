@@ -35,6 +35,11 @@ return [
         'reset-password-success-text'       => "Now you can log in with the new password",
     ],
 
+    'auth' => [
+        'log-in'                            => "Log in",
+        'e-mail'                             => "E-mail",
+        'password'                          => "Password",
+    ],
 
     'errors' => [
         'warning'                           => "Warning",

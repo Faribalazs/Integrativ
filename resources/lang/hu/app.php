@@ -60,6 +60,12 @@ return [
         'no'                                => "Nem",
     ],
 
+    'auth' => [
+        'log-in'                            => "Bejelentkezés",
+        'e-mail'                             => "E-mail",
+        'password'                          => "Jelszó",
+    ],
+
     'home-page' => [
         'title' => "Integratív Gyermekpszichoterápia",
     ],
