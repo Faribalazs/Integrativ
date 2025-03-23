@@ -23,7 +23,7 @@ class Helper
 
     public function getConferences() {
 
-        $conferences = Conferences::orderBy('order', 'asc')->get();
+        $conferences = Conferences::orderBy('order', 'desc')->get();
 
         return $conferences;
     }

@@ -62,7 +62,6 @@
 
 <script>
     const psychotherapistsSlider = new Swiper('.psychotherapistsSlider', {
-        loop: true,
         spaceBetween: 100,
         breakpoints: {
             300: {

@@ -11,23 +11,56 @@
         $lang = App::currentLocale();
     @endphp
 
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: "{{ __('app.admin.success') }}",
+                text: '{{ session('success') }}',
+            });
+        </script>
+    @endif
+
+    @if (session('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: "{{ __('app.admin.error') }}",
+                text: '{{ session('error') }}',
+            });
+        </script>
+    @endif
+
+    @if ($errors->any())
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Validation Errors',
+                html: '{!! implode('<br>', $errors->all()) !!}',
+            });
+        </script>
+    @endif
+
     <div class="main-container-admin w-full mt-10" style="overflow: auto">
-        <form method="POST" class="w-full" enctype="multipart/form-data" action="{{ route('admin.slider.edit.done', ['id' => request()->id]) }}">
-            
+        <form method="POST" class="w-full" enctype="multipart/form-data"
+            action="{{ route('admin.slider.edit.done', ['id' => request()->id]) }}">
+
             @csrf
 
             <!-- Category Name -->
             <div class="flex flex-col">
-                <label for="slider_name" class="sm:text-xl text-base my-3">{{ __('app.admin.slider.slider-name') }} ({{ $lang }}) :</label>
+                <label for="slider_name" class="sm:text-xl text-base my-3">{{ __('app.admin.slider.slider-name') }}
+                    ({{ $lang }}) :</label>
                 <input class="input-style {{ $errors->has('slider_name') ? 'border-error mb-1' : 'mb-3' }}"
-                    name="slider_name" type="text" id="slider_name" value="{{ $slider->slider_name }}" >
+                    name="slider_name" type="text" id="slider_name" value="{{ $slider->slider_name }}">
                 <p class="{{ $errors->has('slider_name') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
                     {{ $errors->first('slider_name') }}</p>
             </div>
 
             <!-- Slider text -->
             <div class="mt-5">
-                <label for="text" class="sm:text-xl text-base my-3">{{ __('app.admin.slider.slider-text') }} ({{ $lang }}) :</label>
+                <label for="text" class="sm:text-xl text-base my-3">{{ __('app.admin.slider.slider-text') }}
+                    ({{ $lang }}) :</label>
                 <textarea id="text" name="text">
                     {{ $slider->slider_text }}
                 </textarea>
@@ -35,7 +68,8 @@
 
             <!-- Vertical position -->
             <div class="mt-5 flex flex-col">
-                <label for="vertical" class="sm:text-xl text-base my-3">{{ __('app.admin.slider.vertical-position') }} :</label>
+                <label for="vertical" class="sm:text-xl text-base my-3">{{ __('app.admin.slider.vertical-position') }}
+                    :</label>
                 <select name="vertical" id="vertical" class="input-style">
                     <option value="start" {{ $slider->vertical == 'start' ? 'selected' : '' }}>Top</option>
                     <option value="center" {{ $slider->vertical == 'center' ? 'selected' : '' }}>Center</option>
@@ -45,7 +79,8 @@
 
             <!-- Horizontal position -->
             <div class="mt-5 flex flex-col">
-                <label for="horizontal" class="sm:text-xl text-base my-3">{{ __('app.admin.slider.horizontal-position') }} :</label>
+                <label for="horizontal"
+                    class="sm:text-xl text-base my-3">{{ __('app.admin.slider.horizontal-position') }} :</label>
                 <select name="horizontal" id="horizontal" class="input-style">
                     <option value="start" {{ $slider->horizontal == 'start' ? 'selected' : '' }}>Left</option>
                     <option value="center" {{ $slider->horizontal == 'center' ? 'selected' : '' }}>Center</option>
@@ -53,12 +88,12 @@
                 </select>
             </div>
 
-             <!-- Order -->
-             <div class="mt-3 flex flex-col">
+            <!-- Order -->
+            <div class="mt-3 flex flex-col">
                 <label for="order" class="sm:text-xl text-base my-3">{{ __('app.admin.slider.order') }}
                     :</label>
-                <input class="input-style {{ $errors->has('order') ? 'border-error mb-1' : 'mb-3' }}"
-                    name="order" type="number" id="order" value="{{ $slider->order }}">
+                <input class="input-style {{ $errors->has('order') ? 'border-error mb-1' : 'mb-3' }}" name="order"
+                    type="number" id="order" value="{{ $slider->order }}">
                 <p class="{{ $errors->has('order') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
                     {{ $errors->first('order') }}</p>
             </div>
@@ -121,7 +156,6 @@
             extended_valid_elements: 'span[*],div[*],i[*],svg[*],path[*],button[*]',
             forced_root_block: false,
         });
-
     </script>
 
     <style>

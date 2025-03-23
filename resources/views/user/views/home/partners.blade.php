@@ -5,11 +5,11 @@
 @endphp
 
 <div class="swiper partnerSlider my-16">
-    <div class="swiper-wrapper partners-slider-wrapper">
+    <div class="swiper-wrapper partners-slider-wrapper items-center">
         @foreach ($partnerImages as $partner)
-            <div class="swiper-slide relative">
+            <div class="swiper-slide relative flex justify-center items-center h-full w-full">
                 @if ($partner->slug)
-                    <a target="blank" href="{{ $partner->slug }}">
+                    <a class="h-full w-full" href="{{ $partner->slug }}">
                         <img class="partner-image" src="{{ asset('storage/' . $partner->image) }}" />
                     </a>
                 @else
@@ -18,11 +18,11 @@
             </div>
         @endforeach
     </div>
+    <div class="partner-swiper-pagination flex w-full md:justify-end justify-center mt-2 pr-2"></div>
 </div>
 
 <script>
     const partnerSwiper = new Swiper('.partnerSlider', {
-        loop: true,
         spaceBetween:100,
         breakpoints: {
             300: { slidesPerView: 1 },
@@ -30,6 +30,10 @@
             1024: { slidesPerView: 3 },
             1400: { slidesPerView: 4 },
             1900: { slidesPerView: 5 },
+        },
+        pagination: {
+            el: '.partner-swiper-pagination',
+            clickable: true,
         },
         autoplay: {
             delay: 2000,

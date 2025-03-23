@@ -74,10 +74,10 @@
                     {{ $errors->first('order') }}</p>
             </div>
 
-            <!-- Conference Image -->
+            <!-- Category Image -->
             <div class="mt-3 flex flex-col">
                 <label for="image" class="sm:text-xl text-base mb-2 mt-3">
-                    {{ __('app.admin.conferences.image') }}:
+                    {{ __('app.admin.slider.slider-image') }}:
                 </label>
 
                 @if ($conference->image)
@@ -98,7 +98,6 @@
                     {{ $errors->first('image') }}</p>
             </div>
 
-
             <div class="flex w-full justify-center mt-5 mb-20">
                 <button class="confirm-btn w-1/2">
                     {{ __('app.admin.save') }}
@@ -108,6 +107,10 @@
         </form>
     </div>
     <script>
+        document.getElementById("file-upload").onchange = function() {
+            document.getElementById("uploadFile").value = this.value.replace('C:\\fakepath\\', ' ');
+        };
+
         const input = document.getElementById("file-upload");
         const preview = document.querySelector(".preview");
         const image = document.querySelector(".profile-img");

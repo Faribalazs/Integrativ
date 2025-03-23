@@ -7,10 +7,10 @@
 @endphp
 
 <div class="swiper conferenceSlider md:my-16">
-    <div class="swiper-wrapper conference-slider-wrapper">
+    <div class="swiper-wrapper conference-slider-wrapper items-center">
         @foreach ($conferences as $conference)
-            <div class="swiper-slide relative">
-                <a target="blank" href="/{{ $lang }}/konferencije/show/{{ $conference->id }}">
+            <div class="swiper-slide relative flex justify-center items-center h-full w-full">
+                <a class="h-full w-full" href="/{{ $lang }}/konferencije/show/{{ $conference->id }}">
                     <img class="conference-image" src="{{ asset('storage/' . $conference->image) }}" />
                 </a>
             </div>
@@ -21,7 +21,6 @@
 
 <script>
     const conferenceSwiper = new Swiper('.conferenceSlider', {
-        loop: true,
         spaceBetween:50,
         breakpoints: {
             300: { slidesPerView: 1 },

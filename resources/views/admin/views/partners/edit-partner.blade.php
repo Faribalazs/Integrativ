@@ -43,17 +43,18 @@
 
     <div class="main-container-admin w-full mt-10" style="overflow: auto">
         <form method="POST" class="w-full" enctype="multipart/form-data"
-            action="{{ route('admin.home.edit.done', ['id' => request()->id]) }}">
+            action="{{ route('admin.partner.edit.done', ['id' => request()->id]) }}">
 
             @csrf
 
-            <!-- Section title -->
+            <!-- Partner name -->
             <div class="flex flex-col">
-                <label for="section_title" class="sm:text-xl text-base my-3">{{ __('app.admin.partners.name') }} ({{ $lang }}) :</label>
-                <input class="input-style {{ $errors->has('section_title') ? 'border-error mb-1' : 'mb-3' }}"
-                    name="section_title" type="text" id="section_title" value="{{ $partner->name }}">
-                <p class="{{ $errors->has('section_title') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
-                    {{ $errors->first('section_title') }}</p>
+                <label for="partner_name" class="sm:text-xl text-base my-3">{{ __('app.admin.partners.name') }}
+                    ({{ $lang }}) :</label>
+                <input class="input-style {{ $errors->has('partner_name') ? 'border-error mb-1' : 'mb-3' }}"
+                    name="partner_name" type="text" id="partner_name" value="{{ $partner->name }}">
+                <p class="{{ $errors->has('partner_name') ? 'flex text-red mt-1 pl-1' : 'hidden' }}">
+                    {{ $errors->first('partner_name') }}</p>
             </div>
 
 
@@ -81,37 +82,25 @@
             <!-- Category Image -->
             <div class="mt-3 flex flex-col">
                 <label for="image" class="sm:text-xl text-base mb-2 mt-3">
-                    {{ __('app.admin.partners.image') }}:
+                    {{ __('app.admin.slider.slider-image') }}:
                 </label>
 
-                <!-- Preview container for multiple images -->
-                <div id="preview-container" class="flex flex-wrap gap-2">
-                    @php
-                        $images = json_decode($partner->section_image, true) ?? [];
-                    @endphp
-
-                    @if (!empty($images))
-                        @foreach ($images as $image)
-                            <img src="{{ asset('storage/' . $image) }}" class="mt-2 w-40 h-40 object-cover rounded-md">
-                        @endforeach
-                    @else
-                        <img src="{{ asset('img/placeholder_image.jpg') }}"
-                            class="mt-2 w-40 h-40 object-cover rounded-md">
-                    @endif
-                </div>
+                @if ($partner->image)
+                    <img src="{{ asset('storage/' . $partner->image) }}" class="mt-2 profile-image profile-img">
+                @else
+                    <img src="{{ asset('img/placeholder_image.jpg') }}" class="mt-2 profile-image profile-img">
+                @endif
 
                 <div class="flex flex-col sm:flex-row mt-4">
                     <label for="file-upload" class="image-upload-btn px-4 py-3 cursor-pointer text-center">
                         {{ __('app.profile.choose-image') }}
                     </label>
-                    <input id="file-upload" name="images[]" type="file" multiple style="display:none;">
+                    <input id="file-upload" name="image" type="file" style="display:none;">
                     <input id="uploadFile" class="text-center sm:text-left sm:pl-3 pl-0 sm:mt-0 mt-2 max-w-full"
                         placeholder="{{ __('app.profile.no-img-selected') }}" disabled="disabled" />
                 </div>
-
                 <p class="{{ $errors->has('image') ? 'flex text-red mt-2 pl-1' : 'hidden' }}">
-                    {{ $errors->first('image') }}
-                </p>
+                    {{ $errors->first('image') }}</p>
             </div>
 
 
@@ -125,39 +114,19 @@
     </div>
     <script>
         document.getElementById("file-upload").onchange = function() {
-            const input = document.getElementById("file-upload");
-            const previewContainer = document.getElementById("preview-container");
-            previewContainer.innerHTML = ""; // Clear previous previews
-
-            if (input.files.length > 0) {
-                document.getElementById("uploadFile").value = Array.from(input.files)
-                    .map(file => file.name)
-                    .join(", ");
-
-                for (const file of input.files) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        const img = document.createElement("img");
-                        img.src = e.target.result;
-                        img.classList.add("w-40", "h-40", "object-cover", "rounded-md", "mt-2");
-                        previewContainer.appendChild(img);
-                    };
-                    reader.readAsDataURL(file);
-                }
-            }
+            document.getElementById("uploadFile").value = this.value.replace('C:\\fakepath\\', ' ');
         };
 
-        tinymce.init({
-            selector: 'textarea#section_content',
-            height: 500,
-            width: "100%",
-            plugins: 'wordcount save fullscreen code table lists link hr',
-            toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor alignleft aligncenter alignright alignjustify | link hr | numlist bullist outdent indent  | removeformat | code',
-            image_advtab: false,
-            valid_elements: '*[*]',
-            extended_valid_elements: 'span[*],div[*],i[*],svg[*],path[*],button[*]',
-            forced_root_block: false,
-        });
+        const input = document.getElementById("file-upload");
+        const preview = document.querySelector(".preview");
+        const image = document.querySelector(".profile-img");
+        input.addEventListener("change", updateImageDisplay);
+
+        function updateImageDisplay() {
+            const curFiles = input.files;
+            image.src = URL.createObjectURL(curFiles[0]);
+            image.style.opacity = 1;
+        }
     </script>
 
     <style>

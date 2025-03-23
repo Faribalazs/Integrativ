@@ -416,6 +416,18 @@ pre {
     background: var(--black) !important;
 }
 
+.partner-swiper-pagination .swiper-pagination-bullet {
+    border: 0.125rem solid var(--black) !important;
+    background: var(--white) !important;
+    width: 1rem !important;
+    height: 1rem !important;
+}
+
+.partner-swiper-pagination .swiper-pagination-bullet-active {
+    border: 0.125rem solid var(--black) !important;
+    background: var(--black) !important;
+}
+
 .activity-swiper-pagination .swiper-pagination-bullet {
     border: 0.125rem solid var(--black) !important;
     background: var(--white) !important;
@@ -2451,11 +2463,13 @@ body {
     width: 100%;
     object-fit: cover;
     max-height: 200px;
+    height: 100%;
 }
 
 .conference-image {
     width: 100%;
     object-fit: cover;
+    height: 100%;
 }
 
 .contact-number {

@@ -126,9 +126,9 @@ class AdminController extends Controller
 
       // Validate the incoming request
       $data = $request->validate([
-          'category_name' => 'required|string|max:255',
+          'category_name' => 'required|string|max:500',
           'order' => 'nullable|integer',
-          'slug' => 'required|string|max:255',
+          'slug' => 'required|string|max:500',
           'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
       ]);
 
@@ -185,7 +185,7 @@ class AdminController extends Controller
         
         // Validate the incoming request
         $data = $request->validate([
-            'category_name' => 'required|string|max:255',
+            'category_name' => 'required|string|max:500',
             'order' => 'nullable|integer',
             'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
@@ -251,10 +251,10 @@ class AdminController extends Controller
       try {
           // Validate the incoming request
           $data = $request->validate([
-              'slider_name' => 'required|string|max:255',
-              'text' => 'required|string|max:255',
-              'vertical' => 'required|string|max:255',
-              'horizontal' => 'required|string|max:255',
+              'slider_name' => 'required|string|max:500',
+              'text' => 'required|string',
+              'vertical' => 'required|string|max:500',
+              'horizontal' => 'required|string|max:500',
               'order' => 'nullable|integer',
               'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
           ]);
@@ -318,10 +318,10 @@ class AdminController extends Controller
         
         // Validate the incoming request
         $data = $request->validate([
-            'slider_name' => 'required|string|max:255',
-            'text' => 'required|string|max:255',
-            'vertical' => 'required|string|max:255',
-            'horizontal' => 'required|string|max:255',
+            'slider_name' => 'required|string|max:500',
+            'text' => 'required|string',
+            'vertical' => 'required|string|max:500',
+            'horizontal' => 'required|string|max:500',
             'order' => 'nullable|integer',
             'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
@@ -359,14 +359,11 @@ class AdminController extends Controller
         return redirect()
             ->route('admin.slider.create')
             ->with('success', 'Slider updated successfully!');
-    } catch (\Illuminate\Validation\ValidationException $e) {
-        // Handle validation errors
-        alert()->error($e->validator)->showCloseButton()->showConfirmButton(__('app.basic.close'));
-        return back()->withErrors($e->validator)->withInput();
-    } catch (\Exception $e) {
-        // Generic error handling
-        return back()->withErrors($e->getMessage())->withInput();
-    }
+          } catch (\Illuminate\Validation\ValidationException $e) {
+            return back()->withErrors($e->validator)->withInput();
+          } catch (\Exception $e) {
+              return back()->with('error', $e->getMessage());
+          }
 
   }
 
@@ -393,8 +390,8 @@ class AdminController extends Controller
 
       // Validate the incoming request
       $data = $request->validate([
-          'section_name' => 'required|string|max:255',
-          'title' => 'required|string|max:255',
+          'section_name' => 'required|string|max:500',
+          'title' => 'required|string|max:500',
           'content' => 'nullable|string',
           'btn_link' => 'nullable|string',
           'btn_text' => 'nullable|string',
@@ -500,7 +497,7 @@ class AdminController extends Controller
   
           // Validate the incoming request
           $data = $request->validate([
-              'section_title' => 'nullable|string|max:255',
+              'section_title' => 'nullable|string|max:500',
               'section_content' => 'nullable',
               'order' => 'nullable|integer',
               'images.*' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048', // Multiple images
@@ -565,8 +562,8 @@ class AdminController extends Controller
       try {
           // Validate the incoming request
           $data = $request->validate([
-              'partner_name' => 'nullable|string|max:255',
-              'partner_slug' => 'nullable|string|max:255',
+              'partner_name' => 'nullable|string|max:500',
+              'partner_slug' => 'nullable|string|max:500',
               'order' => 'nullable|integer',
               'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
           ]);
@@ -628,8 +625,8 @@ class AdminController extends Controller
         
         // Validate the incoming request
         $data = $request->validate([
-          'partner_name' => 'nullable|string|max:255',
-          'partner_slug' => 'nullable|string|max:255',
+          'partner_name' => 'nullable|string|max:500',
+          'partner_slug' => 'nullable|string|max:500',
           'order' => 'nullable|integer',
           'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
@@ -698,7 +695,7 @@ class AdminController extends Controller
       try {
           // Validate the incoming request
           $data = $request->validate([
-              'conference_name' => 'nullable|string|max:255',
+              'conference_name' => 'nullable|string|max:500',
               'content' => 'nullable',
               'order' => 'nullable|integer',
               'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -761,7 +758,7 @@ class AdminController extends Controller
         
         // Validate the incoming request
         $data = $request->validate([
-            'conference_name' => 'nullable|string|max:255',
+            'conference_name' => 'nullable|string|max:500',
             'content' => 'nullable',
             'order' => 'nullable|integer',
             'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -868,7 +865,7 @@ class AdminController extends Controller
       
       // Validate the incoming request
       $data = $request->validate([
-        'title' => 'nullable|string|max:255',
+        'title' => 'nullable|string|max:500',
         'content' => 'nullable',
         'order' => 'nullable|integer',
         'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -980,15 +977,15 @@ class AdminController extends Controller
       try {
           // Validate the incoming request
           $data = $request->validate([
-              'name' => 'required|string|max:255',
-              'position' => 'nullable|string|max:255',
-              'location' => 'nullable|string|max:255',
-              'email' => 'nullable|email|max:255',
+              'name' => 'required|string|max:500',
+              'position' => 'nullable|string|max:500',
+              'location' => 'nullable|string|max:500',
+              'email' => 'nullable|email|max:500',
               'phone' => 'nullable|string|max:20',
-              'facebook' => 'nullable|url|max:255',
-              'instagram' => 'nullable|url|max:255',
-              'twitter' => 'nullable|url|max:255',
-              'linkedin' => 'nullable|url|max:255',
+              'facebook' => 'nullable|url|max:500',
+              'instagram' => 'nullable|url|max:500',
+              'twitter' => 'nullable|url|max:500',
+              'linkedin' => 'nullable|url|max:500',
               'lead' => 'nullable|boolean',
               'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
           ]);
@@ -1056,15 +1053,15 @@ class AdminController extends Controller
           
           // Validate the incoming request
           $data = $request->validate([
-              'name' => 'required|string|max:255',
-              'position' => 'nullable|string|max:255',
-              'location' => 'nullable|string|max:255',
-              'email' => 'nullable|email|max:255',
+              'name' => 'required|string|max:500',
+              'position' => 'nullable|string|max:500',
+              'location' => 'nullable|string|max:500',
+              'email' => 'nullable|email|max:500',
               'phone' => 'nullable|string|max:20',
-              'facebook' => 'nullable|url|max:255',
-              'instagram' => 'nullable|url|max:255',
-              'twitter' => 'nullable|url|max:255',
-              'linkedin' => 'nullable|url|max:255',
+              'facebook' => 'nullable|url|max:500',
+              'instagram' => 'nullable|url|max:500',
+              'twitter' => 'nullable|url|max:500',
+              'linkedin' => 'nullable|url|max:500',
               'lead' => 'nullable|boolean',
               'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
           ]);
@@ -1135,7 +1132,7 @@ class AdminController extends Controller
       try {
           // Validate the incoming request
           $data = $request->validate([
-              'name' => 'required|string|max:255',
+              'name' => 'required|string|max:500',
               'content' => 'nullable|string',
               'order' => 'nullable|integer',
               'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -1197,7 +1194,7 @@ class AdminController extends Controller
           
           // Validate the incoming request
           $data = $request->validate([
-              'name' => 'required|string|max:255',
+              'name' => 'required|string|max:500',
               'content' => 'nullable|string',
               'order' => 'nullable|integer',
               'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -1264,7 +1261,7 @@ class AdminController extends Controller
     try {
 
       $request->validate([
-          'email' => 'required|email|max:255',
+          'email' => 'required|email|max:500',
           'locale' => 'required|in:hu,sr,en',
       ]);
 

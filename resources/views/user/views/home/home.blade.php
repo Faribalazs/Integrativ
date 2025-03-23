@@ -119,7 +119,6 @@
 
         <script>
             const swiper = new Swiper('.homePageSwiper', {
-                loop: true,
                 pagination: {
                     el: '.swiper-pagination',
                     clickable: true,
