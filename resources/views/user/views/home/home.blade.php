@@ -91,21 +91,21 @@
 
                         <div class="lg:w-1/2 w-full">
                             <input class="input-style mb-5 w-full" type="text" name="name"
-                                placeholder="Ime i prezime" />
+                                placeholder="{{ __('app.front.contact.name') }}" />
                             <div class="w-full flex sm:flex-row flex-col sm:gap-5">
                                 <div class="sm:w-1/2 w-full">
                                     <input class="input-style mb-5 w-full" type="text" name="email"
-                                        placeholder="Email" />
+                                        placeholder="{{ __('app.front.contact.email') }}" />
                                 </div>
                                 <div class="sm:w-1/2 w-full">
                                     <input class="input-style mb-5 w-full" type="text" name="phone"
-                                        placeholder="Telefon" />
+                                        placeholder="{{ __('app.front.contact.phone') }}" />
                                 </div>
                             </div>
-                            <textarea class="w-full input-style" rows="6" placeholder="Poruka" name="message"></textarea>
+                            <textarea class="w-full input-style" rows="6" placeholder="{{ __('app.front.contact.message') }}" name="message"></textarea>
                             <div class="felx w-full mt-5">
                                 <button class="main-btn w-full">
-                                    Posaji poruku
+                                    {{ __('app.front.contact.submit') }}
                                 </button>
                             </div>
                         </div>

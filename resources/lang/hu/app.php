@@ -293,4 +293,39 @@ return [
         ],
 
     ],
+
+    'front' => [
+        'education' => [
+            'title'                         => "Általános információk",
+            'name'                          => 'Név',
+            'date_of_birth'                 => 'Születési dátum',
+            'address'                       => 'Cím',
+            'email'                         => 'Email',
+            'phone'                         => 'Telefon',
+            'basic_studies'                 => 'Alapfokú tanulmányok',
+            'occupation'                    => 'Foglalkozás',
+            'field_of_specialization'       => 'Szakosodási terület',
+            'job_position'                  => 'Munkakör',
+            'work_experience_with_children' => 'Tapasztalat gyermekekkel végzett munkában',
+            'most_frequently_addressed_issues' => 'Leggyakrabban feldolgozott témák',
+            'type_of_psychotherapy_modality' => 'Pszichoterápiás modalitás típusa',
+            'achieved_level_of_education'   => 'Elért iskolai végzettség',
+            'length_of_psychotherapy_experience' => 'Pszichoterápiás tapasztalat időtartama',
+            'psychotherapy_work_with_children' => 'Pszichoterápiás munka gyermekekkel',
+            'sub-1'                         => 'Szakmai fejlődés és elköteleződés',
+            'sub-2'                         => 'Szakosodás',
+            'sub-3'                         => 'Szakmai munka és elköteleződés gyermekekkel',
+            'sub-4'                         => 'Szakmai fejlődés és elköteleződés',
+            'submit'                        => 'Küldés',
+        ],
+
+        'contact' => [
+            'title'                         => "Kapcsolat",
+            'name'                          => "Név",
+            'email'                         => "E-mail",
+            'phone'                         => "Telefon",
+            'message'                       => "Üzenet",
+            'submit'                        => "Küldés",
+        ],
+    ],
 ];
